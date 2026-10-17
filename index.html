@@ -127,6 +127,202 @@ input{width:min(100%,340px); padding:12px 14px; border-radius:12px; border:1px s
   .panel{padding:16px;border-radius:22px;}
   .section-copy h2{font-size:23px;}
 }
+/* ===== Stella: 月光と星明かりの演出（公開版） ===== */
+:root{
+ --text:#2b416a;--text-soft:#59739a;--heading:#233d68;
+ --line:#bdcfee;--line-strong:#97b4e8;
+ --shadow:0 20px 55px rgba(84,113,175,.16);
+}
+body{
+ background:
+ radial-gradient(ellipse 52% 22% at 82% 0%,rgba(255,252,226,.93),transparent 85%),
+ radial-gradient(ellipse 50% 28% at 4% 16%,rgba(210,229,255,.85),transparent 85%),
+ radial-gradient(ellipse 54% 33% at 98% 72%,rgba(219,215,252,.6),transparent 85%),
+ linear-gradient(174deg,#eef6ff 0%,#fcfdff 38%,#eaf3ff 78%,#f9fcff 100%);
+}
+body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 1px,transparent 1.4px),radial-gradient(rgba(119,159,230,.21) 1.1px,transparent 1.6px);background-size:58px 70px,126px 112px;}
+.container{max-width:1130px;padding-top:24px}
+.hero{
+ border:1px solid rgba(255,255,255,.96);
+ box-shadow:0 26px 76px rgba(86,126,196,.19),0 0 0 5px rgba(255,255,255,.48);
+ background:#eff7ff;
+}
+.hero::before{
+ content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background-image:radial-gradient(circle,rgba(255,255,255,.98) 0 2px,rgba(255,255,255,0) 6px),radial-gradient(circle,rgba(253,241,192,.9) 0 1px,transparent 7px),radial-gradient(circle,rgba(255,255,255,.8) 0 2px,transparent 7px);
+ background-position:20% 16%,60% 26%,91% 70%;background-size:260px 260px,340px 320px,420px 400px;
+ animation:starBreathe 9s ease-in-out infinite alternate;
+}
+.hero::after{background:linear-gradient(90deg,rgba(249,253,255,.98) 0%,rgba(247,252,255,.88) 32%,rgba(242,250,255,.24) 68%,rgba(238,247,255,.03) 100%)}
+.hero-content{z-index:2}
+.hero .eyebrow{letter-spacing:.2em;color:#637ba6}
+.site-logo{filter:drop-shadow(0 7px 15px rgba(255,255,255,.95))}
+.hero .sub{color:#3c5980;max-width:31em}
+/* 光の選択盤 */
+.nav{gap:13px;margin:0 0 20px;scroll-margin-top:14px}
+.tab{
+ position:relative;overflow:hidden;min-height:102px;border-radius:24px;
+ display:flex;gap:4px;flex-direction:column;align-items:center;justify-content:center;
+ padding:12px 10px 11px;
+ background:linear-gradient(155deg,rgba(255,255,255,.99),rgba(237,245,255,.94) 59%,rgba(225,239,255,.98));
+ border:1px solid #c5d8f3;box-shadow:0 8px 22px rgba(84,129,204,.1),inset 0 1px 0 rgba(255,255,255,.98);
+ color:#34507c;isolation:isolate;
+}
+.tab::before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse at 50% -18%,rgba(255,252,213,.99),transparent 57%);
+ opacity:.75;transition:opacity .25s;
+}
+.tab::after{content:"";position:absolute;inset:5px;border-radius:19px;pointer-events:none;border:1px solid rgba(255,255,255,.75)}
+.tab:hover{transform:translateY(-3px);background:linear-gradient(155deg,#fff,#f1f7ff);box-shadow:0 16px 33px rgba(84,129,204,.19)}
+.tab[aria-selected=true]{background:linear-gradient(155deg,#fffdf4,#f7fbff 35%,#e0edff);border-color:#b8cdea;box-shadow:0 0 0 2px rgba(244,215,150,.4),0 14px 34px rgba(92,132,203,.21)}
+.tab[aria-selected=true]::before{opacity:1}
+.tab[aria-selected=true] .tab-sigil{filter:drop-shadow(0 0 12px rgba(208,178,94,.62));transform:scale(1.07)}
+.tab-sigil{font-family:Georgia,'Yu Mincho',serif;font-size:29px;line-height:1.2;color:#7996c6;text-shadow:0 2px 0 white,0 0 18px rgba(184,211,255,.85);transition:transform .2s,filter .2s}
+.tab-name{font-size:14px;letter-spacing:.055em;line-height:1.5}
+.tab-caption{font-size:10px;font-weight:500;letter-spacing:.07em;color:#7489ae}
+/* 星明かりの占い室 */
+.panel{
+ --accent:#8b9fcf;--tint:#e5edff;position:relative;isolation:isolate;overflow:hidden;
+ border:1px solid rgba(176,200,235,.94);border-radius:32px;
+ padding:clamp(20px,3.7vw,38px);
+ background:radial-gradient(ellipse at 98% 0%,rgba(248,240,203,.46),transparent 37%),
+ radial-gradient(ellipse at 0% 100%,var(--tint),transparent 62%),
+ linear-gradient(140deg,#fff 0%,#f7fbff 48%,#edf5ff 100%);
+ box-shadow:0 19px 58px rgba(84,119,184,.14),inset 0 1px 0 white;
+}
+.panel::before{
+ content:"";position:absolute;pointer-events:none;inset:11px;z-index:-1;
+ border:1px solid rgba(179,207,244,.45);border-radius:23px;
+ background-image:radial-gradient(circle at 2% 3%,rgba(238,205,124,.76) 0 2px,transparent 5px),radial-gradient(circle at 95% 94%,rgba(167,198,244,.73) 0 2px,transparent 5px);
+}
+.panel::after{
+ content:"";position:absolute;z-index:0;pointer-events:none;width:260px;height:260px;border-radius:50%;
+ right:-140px;top:-175px;border:1px solid rgba(171,193,224,.35);
+ box-shadow:0 0 0 26px rgba(234,242,253,.15),0 0 0 52px rgba(194,213,238,.12);
+}
+#three{--accent:#879bd8;--tint:#e6eeff}
+#tarot{--accent:#8398cf;--tint:#e9e8ff}
+#daily{--accent:#6fadd2;--tint:#e4f7ff}
+#omikuji{--accent:#aa9ed5;--tint:#eee9ff}
+.panel.active{animation:panelAppear .44s cubic-bezier(.2,.75,.26,1) both}
+.panel-grid{position:relative;z-index:1;gap:26px;align-items:center}
+.section-copy{min-width:0;padding:5px 3px 4px}
+.section-copy h2{font-family:'Yu Mincho','Hiragino Mincho ProN',Georgia,serif;font-weight:600;letter-spacing:.065em;color:#2c4677;font-size:clamp(23px,3vw,29px);margin:0 0 14px}
+.section-copy h2::after{content:"";display:block;width:120px;height:2px;margin-top:12px;border-radius:3px;background:linear-gradient(90deg,#d4b576,#d8e5fb 68%,transparent);box-shadow:0 0 12px rgba(215,195,121,.35)}
+.intro{font-size:15px;line-height:2.04;color:#587096;max-width:35em;margin-bottom:20px}
+/* イラストを魔法の窓として縁取る */
+.section-visual{
+ position:relative;isolation:isolate;overflow:hidden;padding:10px 10px 12px;
+ border:1px solid rgba(205,214,239,.95);border-radius:27px;
+ background:linear-gradient(145deg,rgba(255,255,255,.99),#e5efff);
+ box-shadow:0 18px 42px rgba(91,123,188,.17),0 0 0 5px rgba(255,255,255,.38);
+}
+.section-visual::before{
+ content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+ background:radial-gradient(circle at 16% 18%,rgba(255,255,255,.96) 0 2px,transparent 9px),radial-gradient(circle at 88% 23%,rgba(254,237,171,.96) 0 2px,transparent 12px),radial-gradient(circle at 65% 83%,rgba(255,255,255,.87) 0 1px,transparent 8px),linear-gradient(126deg,rgba(255,255,255,.28),transparent 37%);
+ background-repeat:no-repeat;animation:starBreathe 8s ease-in-out infinite alternate;
+}
+.section-visual::after{content:"✧";pointer-events:none;position:absolute;z-index:3;right:14px;top:4px;font-family:serif;font-size:30px;color:#fffbd9;text-shadow:0 0 12px #ffeac1,0 0 27px #fff;animation:starBreathe 4s ease-in-out infinite alternate}
+.section-visual img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:19px;border:1px solid rgba(255,255,255,.96);box-shadow:0 13px 27px rgba(87,122,196,.13);filter:saturate(1.06) brightness(1.045)}
+.visual-caption{color:#647fa6;text-align:center;margin:12px 4px 2px;font-size:12px;line-height:1.8}
+/* 三つの星の印章 */
+.choices{gap:12px;margin:14px 0 0}
+.choice{
+ --orb:#c1d3ff;position:relative;isolation:isolate;overflow:hidden;
+ min-height:170px;padding:19px 6px 16px;border-radius:23px;
+ border:1px solid #c5d4ef;
+ background:radial-gradient(circle at 50% 24%,rgba(255,255,255,1) 0%,rgba(255,255,255,.88) 23%,transparent 49%),linear-gradient(180deg,#fff,#e6f0ff);
+ color:#38527c;box-shadow:0 9px 19px rgba(96,135,193,.1),inset 0 1px 0 white;
+ transition:transform .25s,box-shadow .25s,border-color .25s;
+}
+.choice:nth-child(2){--orb:#d7d6ff;background:radial-gradient(circle at 50% 24%,#fff 0%,rgba(255,255,255,.89) 23%,transparent 49%),linear-gradient(180deg,#fff,#eeebff)}
+.choice:nth-child(3){--orb:#d8e5ff;background:radial-gradient(circle at 50% 24%,#fff 0%,rgba(255,255,255,.89) 23%,transparent 49%),linear-gradient(180deg,#fff,#e6eafb)}
+.choice::before{content:"";position:absolute;z-index:-1;width:82px;height:82px;left:50%;top:14px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0,var(--orb) 54%,transparent 74%);filter:blur(2px);opacity:.89;box-shadow:0 0 24px var(--orb)}
+.choice::after{content:"✧";position:absolute;right:13px;top:8px;font-size:13px;color:#acb9d9}
+.choice:hover,.choice[aria-pressed=true]{transform:translateY(-4px);border-color:#b6a8df;box-shadow:0 16px 32px rgba(99,137,205,.18),0 0 0 2px rgba(232,214,167,.35)}
+.choice[aria-pressed=true]::before{box-shadow:0 0 35px var(--orb)}
+.choice .symbol{display:block;font-family:Georgia,serif;font-size:44px;line-height:1.8;color:#7797d5;text-shadow:0 2px 5px white,0 0 14px white;animation:orbBreathe 5.2s ease-in-out infinite}
+.choice:nth-child(2) .symbol{animation-delay:1.2s}
+.choice:nth-child(3) .symbol{animation-delay:2.4s}
+.choice-name{display:block;font-weight:700;letter-spacing:.05em}
+.choice-trace{display:block;font-size:11px;font-weight:400;letter-spacing:.01em;color:#768aaf;margin-top:2px}
+/* タロット：本のように開く立体カード */
+.cardwrap{position:relative;padding:8px 0 2px}
+.cardwrap::before{content:"";position:absolute;z-index:0;pointer-events:none;left:50%;top:12px;transform:translateX(-50%);width:310px;height:280px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,246,201,.57),rgba(192,213,250,.33) 45%,transparent 72%)}
+.cardpick{position:relative;z-index:1;padding:0;perspective:900px;width:178px;height:248px;margin:0 auto 18px;display:block;border:0;border-radius:21px;box-shadow:0 18px 35px rgba(80,111,184,.2);background:transparent;transition:transform .25s,box-shadow .25s}
+.cardpick:hover{transform:translateY(-5px) rotate(-1deg);box-shadow:0 23px 40px rgba(80,111,184,.25)}
+.tarot-card-inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.15,1)}
+.cardpick.is-revealed .tarot-card-inner{transform:rotateY(180deg)}
+.tarot-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid #cad4ed;border-radius:20px;overflow:hidden;box-shadow:inset 0 0 0 7px rgba(255,255,255,.8),inset 0 0 0 9px rgba(189,210,240,.72);background:radial-gradient(circle at 50% 28%,#fffdf4,transparent 45%),linear-gradient(145deg,#e6f1ff,#b9cbef 49%,#ecf4ff);color:#637db3}
+.tarot-back-moon{font-family:Georgia,serif;font-size:80px;line-height:1;color:#eff8ff;text-shadow:0 0 14px #6d92d0,0 0 3px #4267b7}
+.tarot-card-back small{font-size:11px;letter-spacing:.18em;color:#5274ab}
+.tarot-card-front{transform:rotateY(180deg);padding:18px;background:radial-gradient(circle at 50% 35%,#fffef3,transparent 58%),linear-gradient(145deg,#fdfbff,#e5ecfc)}
+.tarot-front-icon{font-family:Georgia,serif;font-size:40px;color:#bba06a;text-shadow:0 0 10px #fff1c3}
+.tarot-front-name{font-family:'Yu Mincho',Georgia,serif;font-weight:700;font-size:23px;color:#3a5083;line-height:1.35}
+.tarot-front-orientation{font-size:12px;color:#7c8aa8;letter-spacing:.08em}
+.cardwrap .btn{position:relative;z-index:1}
+/* くじ箱の月光 */
+.oracle-stage{height:158px;width:min(100%,310px);margin:5px auto 15px;position:relative;display:flex;align-items:center;justify-content:center;isolation:isolate}
+.oracle-stage::before{content:"";position:absolute;z-index:-1;width:260px;height:132px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,249,218,.96),rgba(205,220,252,.39) 42%,transparent 74%);filter:blur(3px)}
+.oracle-stage::after{content:"";position:absolute;z-index:-1;width:200px;height:70px;border-bottom:2px solid rgba(177,190,232,.45);border-radius:50%;bottom:14px}
+.oracle-moon{font-family:Georgia,serif;font-size:95px;line-height:1;color:#dce9ff;text-shadow:0 0 10px #88abdd,0 0 35px rgba(152,182,249,.6);animation:moonFloat 6s ease-in-out infinite}
+.oracle-star{position:absolute;font-family:serif;font-size:29px;color:#fff9da;text-shadow:0 0 9px #f6d79b,0 0 24px #e5c989;animation:starBreathe 3.7s ease-in-out infinite alternate}
+.oracle-star.a{top:5px;left:30%}.oracle-star.b{right:21%;top:42px;font-size:22px;animation-delay:1.1s}.oracle-star.c{left:19%;bottom:28px;font-size:18px;animation-delay:2.1s}
+.oracle-stage.is-drawing .oracle-moon{animation:oracleReveal .75s ease-in-out both}
+.oracle-stage.is-drawing .oracle-star{animation:oracleTwinkle .75s ease-in-out both}
+/* 今日の運勢の月印と入力欄 */
+.name-field{padding:16px 17px 18px;background:linear-gradient(135deg,rgba(255,255,255,.91),rgba(232,244,255,.84));border:1px solid #cad9ee;border-radius:20px;margin:8px 0 19px;box-shadow:0 9px 20px rgba(91,127,187,.08)}
+.name-field label{display:block;margin-bottom:8px;font-size:13px;font-weight:700;color:#536b92}
+.name-field input{width:100%;max-width:none;border:1px solid #bdcfe9;background:#fffdfa;border-radius:13px;box-shadow:inset 0 1px 3px rgba(88,121,174,.08)}
+/* 星を授けるボタンと結果のカード */
+.btn{position:relative;isolation:isolate;overflow:hidden;min-height:47px;padding:12px 26px;letter-spacing:.035em;border:1px solid #b6cae9;border-radius:999px;background:linear-gradient(135deg,#fffefa,#e8f2ff 65%,#d6e7ff);color:#36517f;box-shadow:0 9px 20px rgba(105,140,205,.15),inset 0 1px 0 white;transition:transform .2s,box-shadow .2s}
+.btn::after{content:"";position:absolute;z-index:-1;inset:-10px -50%;background:linear-gradient(105deg,transparent 39%,rgba(255,255,255,.77) 50%,transparent 61%);transform:translateX(-110%);pointer-events:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(105,140,205,.25)}
+.btn:hover::after{animation:buttonShimmer .72s ease forwards}
+.btn:focus-visible,.choice:focus-visible,.tab:focus-visible,.cardpick:focus-visible,input:focus-visible{outline:3px solid #759de7;outline-offset:3px}
+.result{position:relative;overflow:hidden;z-index:2;padding:26px 23px 23px;background:radial-gradient(ellipse at 92% 2%,rgba(251,238,189,.42),transparent 43%),linear-gradient(160deg,#fffefa 0%,#f5f9ff 55%,#edf3ff 100%);border:1px solid #bdcff0;border-radius:23px;box-shadow:0 14px 38px rgba(93,124,191,.15),inset 0 0 0 5px rgba(255,255,255,.66);animation:none}
+.result.is-revealing{animation:resultReveal .62s cubic-bezier(.14,.7,.25,1) both}
+.result::before{content:"✦";position:absolute;right:16px;top:6px;font-family:Georgia,serif;font-size:32px;color:#d6bb82;text-shadow:0 0 12px #fff2c8;opacity:.79}
+.result::after{content:"";display:block;height:1px;width:70%;margin:17px auto 0;background:linear-gradient(90deg,transparent,#c8d9f6,#d8bd8a,transparent)}
+.result h3{font-family:'Yu Mincho',Georgia,serif;font-size:clamp(20px,2.5vw,24px);line-height:1.55;margin:0 38px 10px 0;color:#334f84}
+.result .lead{color:#455f96;font-weight:700;line-height:1.9}
+.result p{font-size:14px;line-height:2;white-space:pre-wrap;margin:10px 0}
+.result .hint{padding:13px 14px;border-radius:13px;background:rgba(235,243,255,.65);color:#5c7297;font-size:12px}
+.hint{color:#7b8dab;font-size:12px;line-height:1.8}
+.footer{color:#617ca1}.footer-link{color:#3f649d}
+@keyframes panelAppear{from{opacity:.2;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes starBreathe{from{opacity:.46}to{opacity:1}}
+@keyframes orbBreathe{0%,100%{transform:translateY(0);filter:drop-shadow(0 0 5px #fff)}50%{transform:translateY(-4px);filter:drop-shadow(0 0 17px #fff)}}
+@keyframes moonFloat{0%,100%{transform:translateY(2px)}50%{transform:translateY(-5px)}}
+@keyframes oracleReveal{0%{transform:translateY(2px) rotate(-6deg);opacity:.6}50%{transform:translateY(-15px) rotate(7deg);opacity:1}100%{transform:translateY(2px) rotate(0deg);opacity:1}}
+@keyframes oracleTwinkle{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.6);opacity:1}}
+@keyframes buttonShimmer{to{transform:translateX(110%)}}
+@keyframes resultReveal{from{opacity:0;transform:translateY(12px) scale(.986);filter:brightness(1.12)}to{opacity:1;transform:translateY(0) scale(1);filter:brightness(1)}}
+@media(max-width:860px){.panel-grid{align-items:start}.section-visual{max-width:600px;margin:auto;width:100%}.panel{padding:24px}}
+@media(max-width:570px){
+ .container{padding:16px 12px 55px}
+ .hero{min-height:285px;border-radius:24px;margin-bottom:14px}
+ .hero-content{min-height:285px;padding:20px 17px 22px}
+ .hero::after{background:linear-gradient(180deg,rgba(244,250,255,.12) 0%,rgba(246,251,255,.48) 37%,rgba(245,251,255,.98) 100%)}
+ .nav{gap:9px;margin-bottom:13px}
+ .tab{min-height:87px;border-radius:18px;padding:10px 7px}
+ .tab::after{inset:4px;border-radius:14px}
+ .tab-sigil{font-size:25px}.tab-name{font-size:13px}.tab-caption{font-size:10px}
+ .panel{border-radius:23px;padding:19px 15px}
+ .panel::before{inset:7px;border-radius:18px}
+ .section-copy h2{font-size:23px}.intro{font-size:14px;line-height:1.9}
+ .choices{gap:8px}.choice{min-height:143px;border-radius:17px;padding:13px 3px 12px}
+ .choice::before{width:70px;height:70px}.choice .symbol{font-size:34px;line-height:1.95}
+ .choice-name{font-size:12px}.choice-trace{font-size:10px;letter-spacing:0}
+ .section-visual{padding:8px 8px 10px;border-radius:19px}.section-visual img{border-radius:13px}
+ .result{padding:21px 17px}.result p{font-size:13px}
+ .oracle-stage{height:137px}.oracle-moon{font-size:82px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
@@ -142,22 +338,22 @@ input{width:min(100%,340px); padding:12px 14px; border-radius:12px; border:1px s
   </header>
 
   <nav class="nav" role="tablist" aria-label="占いを選ぶ">
-    <button class="tab" role="tab" aria-controls="three" data-tab="three" aria-selected="true">✦ 三択占い</button>
-    <button class="tab" role="tab" aria-controls="tarot" data-tab="tarot" aria-selected="false">☾ タロット</button>
-    <button class="tab" role="tab" aria-controls="daily" data-tab="daily" aria-selected="false">✧ 今日の運勢</button>
-    <button class="tab" role="tab" aria-controls="omikuji" data-tab="omikuji" aria-selected="false">☆ おみくじ</button>
+    <button class="tab" id="tab-three" role="tab" aria-controls="three" data-tab="three" aria-selected="true" tabindex="0"><span class="tab-sigil" aria-hidden="true">✦</span><span class="tab-name">三択占い</span><span class="tab-caption">心に響く星を選ぶ</span></button>
+    <button class="tab" id="tab-tarot" role="tab" aria-controls="tarot" data-tab="tarot" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">☽</span><span class="tab-name">タロット</span><span class="tab-caption">月のカードをひらく</span></button>
+    <button class="tab" id="tab-daily" role="tab" aria-controls="daily" data-tab="daily" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">✧</span><span class="tab-name">今日の運勢</span><span class="tab-caption">今日の星を読み解く</span></button>
+    <button class="tab" id="tab-omikuji" role="tab" aria-controls="omikuji" data-tab="omikuji" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">✵</span><span class="tab-name">おみくじ</span><span class="tab-caption">星明かりの便りを引く</span></button>
   </nav>
 
 
-  <section id="three" role="tabpanel" class="panel active">
+  <section id="three" aria-labelledby="tab-three" role="tabpanel" class="panel active">
     <div class="panel-grid">
       <div class="section-copy">
         <h2>✦ 星の三択占い</h2>
         <p class="intro">月の光、星の光、宵の光。心が惹かれるものを、ひとつ選んでください。</p>
         <div class="choices">
-          <button class="choice" data-star="0"><span class="symbol">☽</span>月の星</button>
-          <button class="choice" data-star="1"><span class="symbol">✦</span>光の星</button>
-          <button class="choice" data-star="2"><span class="symbol">☄</span>宵の星</button>
+          <button class="choice" data-star="0" aria-pressed="false"><span class="symbol" aria-hidden="true">☽</span><span class="choice-name">月の星</span><span class="choice-trace">静けさのひかり</span></button>
+          <button class="choice" data-star="1" aria-pressed="false"><span class="symbol" aria-hidden="true">✦</span><span class="choice-name">光の星</span><span class="choice-trace">希望のきらめき</span></button>
+          <button class="choice" data-star="2" aria-pressed="false"><span class="symbol" aria-hidden="true">✧</span><span class="choice-name">宵の星</span><span class="choice-trace">夕空のまどろみ</span></button>
         </div>
         <div id="threeResult" class="result" hidden aria-live="polite"></div>
         <p class="hint">気になる光は、いつでも選び直せます。</p>
@@ -169,13 +365,13 @@ input{width:min(100%,340px); padding:12px 14px; border-radius:12px; border:1px s
     </div>
   </section>
 
-  <section id="tarot" role="tabpanel" class="panel">
+  <section id="tarot" aria-labelledby="tab-tarot" role="tabpanel" class="panel">
     <div class="panel-grid">
       <div class="section-copy">
         <h2>☾ タロット1枚引き</h2>
         <p class="intro">心に浮かぶ問いを、大切にしてみてください。カードが映す言葉を、今のあなたに合う形で受け取れます。</p>
         <div class="cardwrap">
-          <button class="cardpick" id="tarotButton" aria-label="タロットカードを1枚引く"><span>☾</span></button>
+          <button class="cardpick" id="tarotButton" aria-label="タロットカードを1枚引く"><span class="tarot-card-inner"><span class="tarot-face tarot-card-back"><span class="tarot-back-moon" aria-hidden="true">☾</span><small>✦ STELLA ✦</small></span><span class="tarot-face tarot-card-front"><span class="tarot-front-icon" aria-hidden="true">✧</span><span class="tarot-front-name" id="tarotFaceName">星のカード</span><span class="tarot-front-orientation" id="tarotFacePosition"></span></span></span></button>
           <button class="btn" id="tarotAgain">カードを引く</button>
         </div>
         <div id="tarotResult" class="result" hidden aria-live="polite"></div>
@@ -188,13 +384,12 @@ input{width:min(100%,340px); padding:12px 14px; border-radius:12px; border:1px s
     </div>
   </section>
 
-  <section id="daily" role="tabpanel" class="panel">
+  <section id="daily" aria-labelledby="tab-daily" role="tabpanel" class="panel">
     <div class="panel-grid">
       <div class="section-copy">
         <h2>✧ 今日の運勢</h2>
         <p class="intro">星の本をそっと開くように。今日という一日に、寄り添う言葉をお届けします。</p>
-        <label for="nickname">お名前・ニックネーム（入力は任意）</label>
-        <div style="margin:10px 0 20px"><input id="nickname" maxlength="30" placeholder="例：星の旅人"/></div>
+        <div class="name-field"><label for="nickname">お名前・ニックネーム（入力は任意）</label><input id="nickname" maxlength="30" autocomplete="nickname" placeholder="例：星の旅人"/></div>
         <button class="btn" id="dailyButton">今日の運勢を見る</button>
         <div id="dailyResult" class="result" hidden aria-live="polite"></div>
         <p class="hint">入力したお名前は、サイトの外へ送信されません。</p>
@@ -206,12 +401,12 @@ input{width:min(100%,340px); padding:12px 14px; border-radius:12px; border:1px s
     </div>
   </section>
 
-  <section id="omikuji" role="tabpanel" class="panel">
+  <section id="omikuji" aria-labelledby="tab-omikuji" role="tabpanel" class="panel">
     <div class="panel-grid">
       <div class="section-copy">
         <h2>☆ 月夜のおみくじ</h2>
         <p class="intro">月明かりに包まれた小さな箱から、今のあなたへ一枚の便りを。</p>
-        <div class="fortune" aria-hidden="true">✧</div>
+        <div class="oracle-stage" id="oracleStage" aria-hidden="true"><span class="oracle-star a">✦</span><span class="oracle-star b">✧</span><span class="oracle-moon">☾</span><span class="oracle-star c">✦</span></div>
         <div style="text-align:center"><button class="btn" id="omikujiButton">おみくじを引く</button></div>
         <div id="omikujiResult" class="result" hidden aria-live="polite"></div>
         <p class="hint">そのとき出会った言葉を、気軽に楽しんでください。</p>
@@ -968,6 +1163,9 @@ function renderRichResult(id, title, lead, body, extra='') {
   target.append(h, p1, p2);
   if (extra) { const more = document.createElement('p'); more.className = 'hint'; more.textContent = extra; target.append(more); }
   target.hidden = false;
+  target.classList.remove('is-revealing');
+  void target.offsetWidth;
+  target.classList.add('is-revealing');
 }
 
 function dateLocal() { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
@@ -981,6 +1179,7 @@ function selectFortuneTab(id, updateUrl = true) {
   tabs.forEach(tab => {
     const selected = tab.dataset.tab === id;
     tab.setAttribute('aria-selected', String(selected));
+    tab.tabIndex = selected ? 0 : -1;
   });
   document.querySelectorAll('.panel').forEach(panel => panel.classList.toggle('active', panel.id === id));
   if (updateUrl) {
@@ -988,7 +1187,20 @@ function selectFortuneTab(id, updateUrl = true) {
     document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
   }
 }
-tabs.forEach(tab => tab.addEventListener('click', () => selectFortuneTab(tab.dataset.tab)));
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectFortuneTab(tab.dataset.tab));
+  tab.addEventListener('keydown', e => {
+    let next = index;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (index + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (index + tabs.length - 1) % tabs.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = tabs.length - 1;
+    else return;
+    e.preventDefault();
+    tabs[next].focus();
+    selectFortuneTab(tabs[next].dataset.tab, false);
+  });
+});
 const incomingTab = decodeURIComponent(location.hash.replace(/^#/, ''));
 if (validTabs.has(incomingTab)) selectFortuneTab(incomingTab, false);
 window.addEventListener('hashchange', () => {
@@ -998,6 +1210,7 @@ window.addEventListener('hashchange', () => {
 
 document.querySelectorAll('[data-star]').forEach(b=>b.addEventListener('click',()=>{
   const item=starMessages[Number(b.dataset.star)];
+  document.querySelectorAll('[data-star]').forEach(choice => choice.setAttribute('aria-pressed', String(choice === b)));
   renderRichResult('threeResult', item.title, item.lead, item.body, item.tip);
 }));
 
@@ -1005,6 +1218,13 @@ function drawTarot() {
   const card = tarotCards[randomIndex(tarotCards.length)];
   const reverse = randomIndex(2)===1;
   const face = reverse ? card.reversed : card.upright;
+  const tarotButton = document.getElementById('tarotButton');
+  tarotButton.classList.remove('is-revealed');
+  document.getElementById('tarotFaceName').textContent = card.name;
+  document.getElementById('tarotFacePosition').textContent = reverse ? '逆位置' : '正位置';
+  tarotButton.setAttribute('aria-label', 'タロットを引き直す。現在のカード：' + card.name + '・' + (reverse ? '逆位置' : '正位置'));
+  void tarotButton.offsetWidth;
+  tarotButton.classList.add('is-revealed');
   renderRichResult('tarotResult', card.name + ' ・ ' + (reverse ? '逆位置' : '正位置'), face.lead, face.body, '星からの問い：' + card.question);
 }
 document.getElementById('tarotButton').addEventListener('click', drawTarot);
@@ -1024,6 +1244,10 @@ document.getElementById('dailyButton').addEventListener('click',()=>{
 
 document.getElementById('omikujiButton').addEventListener('click',()=>{
   const f = omikujiFortunes[randomIndex(omikujiFortunes.length)];
+  const stage = document.getElementById('oracleStage');
+  stage.classList.remove('is-drawing');
+  void stage.offsetWidth;
+  stage.classList.add('is-drawing');
   renderRichResult('omikujiResult', f.name, f.lead, f.body, f.tip);
 });
 </script>
