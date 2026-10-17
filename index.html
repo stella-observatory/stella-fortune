@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#87a8ff"/>
+<title>星々と月の占い</title>
+<meta name="description" content="白・青・銀の星明かりと月明かりに包まれた、やさしい占いの小さな観測所。今日の運勢、タロット、おみくじを通して、自分の気持ちをそっと見つめるためのStella風占いサイトです。"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="星々と月の占い"/>
+<meta property="og:description" content="今日の運勢・タロット・おみくじを、白・青・銀の幻想的な世界観で楽しめる占いサイト。星々と月のやさしい導きをテーマにしています。"/>
+<meta property="og:image" content="assets/ogp.jpg"/>
+<meta property="og:site_name" content="星々と月の占い"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="星々と月の占い"/>
+<meta name="twitter:description" content="Stella風の幻想的な占いサイト。星々と月の導きをイメージした、今日の運勢・タロット・おみくじをやさしい言葉でお届けします。"/>
+<meta name="twitter:image" content="assets/ogp.jpg"/>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<style>
+:root{
+  color-scheme:light;
+  --line:#bfd0f4;
+  --line-strong:#9eb7ee;
+  --text:#28406b;
+  --text-soft:#56729e;
+  --heading:#1d3660;
+  --shadow:0 18px 52px rgba(62,95,168,.16);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;
+  color:var(--text);
+  line-height:1.85;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left, rgba(210,227,255,.96), transparent 28%),
+    radial-gradient(circle at top right, rgba(238,244,255,.96), transparent 22%),
+    linear-gradient(180deg,#f3f8ff 0%,#eaf2ff 46%,#f4f9ff 100%);
+  position:relative;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,.95) .8px, transparent 1px),
+    radial-gradient(rgba(154,184,255,.16) 1px, transparent 1.3px);
+  background-size:46px 48px, 120px 120px;
+  background-position:0 0, 20px 15px;
+  opacity:.62;
+  pointer-events:none;
+}
+img{max-width:100%;display:block}
+button,input{font:inherit}
+.container{max-width:1080px;margin:auto;padding:24px 16px 72px;position:relative}
+.hero{position:relative; overflow:hidden; border-radius:34px; min-height:470px; border:1px solid rgba(255,255,255,.72); box-shadow:var(--shadow); background:#dbe7ff; margin:8px 0 26px;}
+.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(246,250,255,.95) 0%, rgba(244,249,255,.85) 34%, rgba(241,248,255,.45) 58%, rgba(240,246,255,.18) 100%);}
+.hero-content{position:relative; z-index:1; max-width:580px; padding:38px 26px 34px; min-height:470px; display:flex; flex-direction:column; justify-content:flex-end}
+.eyebrow{letter-spacing:.22em; color:#5f84c8; font-size:12px; margin-bottom:8px; font-weight:700}
+h1{margin:0 0 12px; font-size:clamp(30px,5vw,50px); line-height:1.2; font-family:serif; font-weight:600; color:var(--heading); text-shadow:0 2px 10px rgba(255,255,255,.45)}
+.sub{color:#3f5c8d; font-size:15px; max-width:34em}
+.nav{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:20px 0 26px}
+.tab{background:linear-gradient(180deg,#fbfdff,#eef5ff); border:1px solid var(--line); border-radius:18px; color:var(--heading); padding:14px 8px; cursor:pointer; font-weight:700; transition:.2s ease; box-shadow:0 6px 18px rgba(109,144,220,.08);}
+.tab:hover{transform:translateY(-2px); background:linear-gradient(180deg,#ffffff,#ecf4ff)}
+.tab[aria-selected=true]{background:linear-gradient(180deg,#dfeaff,#cfe0ff); border-color:var(--line-strong); box-shadow:0 0 0 2px rgba(132,167,246,.24), 0 10px 28px rgba(93,143,240,.13);}
+.tab:focus-visible,.choice:focus-visible,.btn:focus-visible,.cardpick:focus-visible,input:focus-visible{outline:3px solid #8eb0ff; outline-offset:3px}
+.panel{display:none; background:linear-gradient(180deg,rgba(251,253,255,.95),rgba(241,247,255,.97)); border:1px solid rgba(180,202,244,.9); border-radius:30px; padding:clamp(18px,4vw,34px); min-height:440px; box-shadow:var(--shadow);}
+.panel.active{display:block}
+.panel-grid{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr); gap:24px; align-items:start}
+.section-visual{background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(241,247,255,.92)); border:1px solid rgba(184,204,244,.85); border-radius:24px; padding:10px; box-shadow:0 10px 24px rgba(108,146,224,.08);}
+.section-visual img{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:18px; box-shadow:0 14px 36px rgba(95,132,209,.14)}
+.visual-caption{color:var(--text-soft); font-size:13px; margin:10px 4px 0}
+.section-copy h2{font-size:26px; margin:0 0 8px; color:var(--heading)}
+.intro{color:var(--text-soft); margin-bottom:16px}
+.choices{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:22px 0 0}
+.choice{border:1px solid #c6d7fb; border-radius:20px; min-height:124px; background:linear-gradient(180deg,#fdfefe,#eef5ff); color:var(--heading); cursor:pointer; padding:18px 8px; transition:.2s ease; box-shadow:0 8px 22px rgba(95,132,209,.08);}
+.choice:hover,.cardpick:hover{transform:translateY(-4px); border-color:#9dbaf7; box-shadow:0 12px 28px rgba(101,138,214,.16)}
+.symbol{display:block; font-size:42px; line-height:1.35; color:#6f96ee}
+.btn{border:1px solid #b2c7f8; background:linear-gradient(180deg,#fefeff,#dce9ff); color:#26416e; border-radius:999px; padding:12px 24px; font-weight:700; cursor:pointer; transition:filter .15s, transform .15s, box-shadow .15s; box-shadow:0 8px 18px rgba(110,146,221,.12);}
+.btn:hover{filter:brightness(1.02); transform:translateY(-1px); box-shadow:0 12px 24px rgba(110,146,221,.18)}
+.result{margin-top:22px; background:linear-gradient(180deg,#fdfefe,#edf5ff); border:1px solid #bfd3fa; border-radius:18px; padding:20px; animation:fade .35s ease; box-shadow:0 10px 22px rgba(110,146,221,.08);}
+.result[hidden]{display:none}
+.result h3{color:#355694; margin:0 0 8px; font-size:22px}
+.result p{white-space:pre-wrap; margin:8px 0; color:var(--text)}
+.result .lead{font-weight:700; color:#4468a7}
+.hint{color:var(--text-soft); font-size:13px; margin-top:16px}
+.cardwrap{text-align:center}
+.cardpick{cursor:pointer; border:1px solid #c8d8fb; border-radius:18px; background:linear-gradient(145deg,#f9fbff,#e8f1ff); width:180px; height:240px; margin:12px auto 18px; color:#6b92eb; display:flex; align-items:center; justify-content:center; font-size:72px; box-shadow:0 14px 30px rgba(101,138,214,.14); transition:.2s ease;}
+.cardpick span{border:1px solid #c0d3fb; border-radius:12px; display:grid; place-items:center; width:150px; height:210px; background:linear-gradient(180deg,#ffffff,#edf4ff)}
+input{width:min(100%,340px); padding:12px 14px; border-radius:12px; border:1px solid #bfd0f4; background:#ffffff; color:var(--heading); box-shadow: inset 0 1px 0 rgba(255,255,255,.6);}
+.fortune{font-size:58px; text-align:center; color:#7395eb; margin:16px 0 18px; filter:drop-shadow(0 0 8px rgba(136,174,251,.28))}
+.footer{text-align:center; color:#6380ad; font-size:12px; margin-top:38px; padding:0 8px}
+.footer strong{color:#45659c}
+@keyframes fade{from{opacity:0; transform:translateY(7px)} to{opacity:1; transform:translateY(0)}}
+@media(max-width:860px){.hero{min-height:430px} .hero-content{min-height:430px} .panel-grid{grid-template-columns:1fr;}}
+@media(max-width:570px){.container{padding:18px 12px 60px} .hero{min-height:390px; border-radius:26px} .hero::after{background:linear-gradient(180deg,rgba(243,248,255,.38) 0%, rgba(241,247,255,.7) 36%, rgba(239,246,255,.96) 100%)} .hero-content{max-width:none; padding:22px 18px 24px; justify-content:flex-end} .nav{grid-template-columns:repeat(2,1fr)} .choices{gap:8px} .choice{min-height:118px} .symbol{font-size:36px}}
+
+/* 星空の世界観を保ちながら、占いへの導線を主役にする */
+.site-logo{width:min(100%,440px);margin:0 0 10px;filter:drop-shadow(0 3px 14px rgba(255,255,255,.3));}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;clip-path:inset(50%)}
+.hero{min-height:340px;margin-bottom:18px;}
+.hero-content{min-height:340px;max-width:540px;justify-content:center;padding:22px 30px;}
+.hero::after{background:linear-gradient(90deg,rgba(244,249,255,.96) 0%,rgba(244,249,255,.84) 33%,rgba(244,249,255,.28) 65%,rgba(244,249,255,.08) 100%);}
+.hero .sub{margin:0;line-height:1.8;color:#375982;font-size:15px;text-shadow:0 1px 6px #fff;}
+.nav{margin:0 0 16px;gap:10px;}
+.tab{min-height:56px;}
+.panel{scroll-margin-top:10px;}
+.footer{padding:14px 0 8px;line-height:1.9;}
+.footer p{margin:12px 0;}
+.footer-link{color:#4469a8;text-decoration:none;border-bottom:1px solid #a8c0e8;padding-bottom:2px;}
+.footer-link:hover{text-decoration:underline;}
+@media(max-width:860px){.hero,.hero-content{min-height:320px}}
+@media(max-width:570px){
+  .hero{min-height:280px;margin-bottom:14px;}
+  .hero-content{min-height:280px;padding:18px 18px 20px;max-width:100%;justify-content:flex-end;}
+  .hero-image{object-position:58% center;}
+  .hero::after{background:linear-gradient(180deg,rgba(238,246,255,.18) 0%,rgba(240,247,255,.67) 43%,rgba(239,247,255,.95) 100%);}
+  .site-logo{width:min(100%,300px);margin-bottom:2px;}
+  .hero .sub{font-size:13px;}
+  .nav{gap:8px;margin-bottom:12px;}
+  .tab{min-height:48px;padding:9px 5px;border-radius:13px;font-size:14px;}
+  .panel{padding:16px;border-radius:22px;}
+  .section-copy h2{font-size:23px;}
+}
+</style>
+</head>
+<body>
+<main class="container">
+  <header class="hero">
+    <img class="hero-image" src="assets/hero.jpg" alt="月夜の観測所で微笑む銀髪の少女と星空"/>
+    <div class="hero-content">
+      <div class="eyebrow">Stella · 星の観測所</div>
+      <img class="site-logo" src="assets/logo.png" alt="星々と月の占い"/>
+      <h1 class="visually-hidden">星々と月の占い</h1>
+      <p class="sub">静かな星の夜に、心へ届くひとことを。<br/>気になる光を、そっと選んでみてください。</p>
+    </div>
+  </header>
+
+  <nav class="nav" role="tablist" aria-label="占いを選ぶ">
+    <button class="tab" role="tab" aria-controls="three" data-tab="three" aria-selected="true">✦ 三択占い</button>
+    <button class="tab" role="tab" aria-controls="tarot" data-tab="tarot" aria-selected="false">☾ タロット</button>
+    <button class="tab" role="tab" aria-controls="daily" data-tab="daily" aria-selected="false">✧ 今日の運勢</button>
+    <button class="tab" role="tab" aria-controls="omikuji" data-tab="omikuji" aria-selected="false">☆ おみくじ</button>
+  </nav>
+
+
+  <section id="three" role="tabpanel" class="panel active">
+    <div class="panel-grid">
+      <div class="section-copy">
+        <h2>✦ 星の三択占い</h2>
+        <p class="intro">月の光、星の光、宵の光。心が惹かれるものを、ひとつ選んでください。</p>
+        <div class="choices">
+          <button class="choice" data-star="0"><span class="symbol">☽</span>月の星</button>
+          <button class="choice" data-star="1"><span class="symbol">✦</span>光の星</button>
+          <button class="choice" data-star="2"><span class="symbol">☄</span>宵の星</button>
+        </div>
+        <div id="threeResult" class="result" hidden aria-live="polite"></div>
+        <p class="hint">気になる光は、いつでも選び直せます。</p>
+      </div>
+      <aside class="section-visual">
+        <img src="assets/three.jpg" alt="三つのきらめくオーブを示す少女の三択占いイラスト"/>
+        <p class="visual-caption">月・星・流れ星のきらめきから、ひとつ選んでください。</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="tarot" role="tabpanel" class="panel">
+    <div class="panel-grid">
+      <div class="section-copy">
+        <h2>☾ タロット1枚引き</h2>
+        <p class="intro">心に浮かぶ問いを、大切にしてみてください。カードが映す言葉を、今のあなたに合う形で受け取れます。</p>
+        <div class="cardwrap">
+          <button class="cardpick" id="tarotButton" aria-label="タロットカードを1枚引く"><span>☾</span></button>
+          <button class="btn" id="tarotAgain">カードを引く</button>
+        </div>
+        <div id="tarotResult" class="result" hidden aria-live="polite"></div>
+        <p class="hint">心に残る言葉だけを、そっと持ち帰ってください。</p>
+      </div>
+      <aside class="section-visual">
+        <img src="assets/tarot.jpg" alt="カードを差し出す少女のタロット占いイラスト"/>
+        <p class="visual-caption">一枚のカードが、今のあなたへやさしいテーマを映します。</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="daily" role="tabpanel" class="panel">
+    <div class="panel-grid">
+      <div class="section-copy">
+        <h2>✧ 今日の運勢</h2>
+        <p class="intro">星の本をそっと開くように。今日という一日に、寄り添う言葉をお届けします。</p>
+        <label for="nickname">お名前・ニックネーム（入力は任意）</label>
+        <div style="margin:10px 0 20px"><input id="nickname" maxlength="30" placeholder="例：星の旅人"/></div>
+        <button class="btn" id="dailyButton">今日の運勢を見る</button>
+        <div id="dailyResult" class="result" hidden aria-live="polite"></div>
+        <p class="hint">入力したお名前は、サイトの外へ送信されません。</p>
+      </div>
+      <aside class="section-visual">
+        <img src="assets/daily.jpg" alt="星の本をひらく少女の今日の運勢イラスト"/>
+        <p class="visual-caption">今夜の星の本から、心に寄り添うひとことを。</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="omikuji" role="tabpanel" class="panel">
+    <div class="panel-grid">
+      <div class="section-copy">
+        <h2>☆ 月夜のおみくじ</h2>
+        <p class="intro">月明かりに包まれた小さな箱から、今のあなたへ一枚の便りを。</p>
+        <div class="fortune" aria-hidden="true">✧</div>
+        <div style="text-align:center"><button class="btn" id="omikujiButton">おみくじを引く</button></div>
+        <div id="omikujiResult" class="result" hidden aria-live="polite"></div>
+        <p class="hint">そのとき出会った言葉を、気軽に楽しんでください。</p>
+      </div>
+      <aside class="section-visual">
+        <img src="assets/omikuji.jpg" alt="おみくじの札を差し出す少女のイラスト"/>
+        <p class="visual-caption">月の札に込められた、小さなひとこと。</p>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>すべての言葉を受け取らなくても大丈夫。<br/>今夜、心に残ったひとことだけを。</p>
+    <p><a class="footer-link" href="guide.html">占いとの付き合い方・利用案内</a></p>
+    <strong>© Stella · 星の観測所</strong>
+  </footer>
+</main>
+
+<script>
+const starMessages = [
+  {
+    title:'月の星 ― 休んでいい夜',
+    lead:'月は欠けている夜も、月のまま。',
+    body:'いつも満ちていなくても、あなたの大切さは変わりません。言葉にならない気持ちは、今すぐ答えにしなくて大丈夫。静かな夜が、まだ名前のない思いをそっと包んでくれるかもしれません。',
+    tip:'星からの問い：今日は、どんな「頑張らなきゃ」をひとつ手放せそうですか？'
+  },
+  {
+    title:'光の星 ― 小さな始まり',
+    lead:'小さな光にも、夜を照らす力がある。',
+    body:'変わりたいと思う気持ちを、いきなり大きな行動に変えなくても大丈夫。ほんの少し気になったことを試すだけで、自分の知らなかった一面に出会えるかもしれません。小さな一歩も、あなた自身が選んだ大切な一歩です。',
+    tip:'星からの問い：今日、5分だけ試してみたいことは何ですか？'
+  },
+  {
+    title:'宵の星 ― 心地よい距離',
+    lead:'近づきすぎなくても、心はあたたかくつながれる。',
+    body:'誰かを大切にすることと、自分の境界を守ることは、両立していいものです。無理に笑ったり、すべてを打ち明けたりしなくても、あなたらしい関わり方があります。心がほっとする距離を、どうか大切にしてください。',
+    tip:'星からの問い：あなたが自然体でいられるのは、どんな時間ですか？'
+  }
+];
+
+const tarotCards = [
+  {name:'愚者', upright:{lead:'まだ知らない道にも、あなたの景色が待っている。',body:'すべてを知ってから歩き出す必要はありません。好奇心が小さく動いたなら、その気持ちを大切にしてみて。'}, reversed:{lead:'立ち止まることも、旅の一部。',body:'勢いだけで決めなくても大丈夫。足元を見つめる時間が、次の一歩を穏やかにしてくれます。'}, question:'いま、心が少しだけ向いている方向は？'},
+  {name:'魔術師', upright:{lead:'今あるものから、始められる。',body:'特別な道具や完璧な準備がなくても、あなたの経験には使える力があります。まずは手元にあるものを確かめてみましょう。'}, reversed:{lead:'できない日があっても、力は消えない。',body:'思うように進まないときは、やり方を減らしてみてもいいのです。ひとつずつ整えるうちに、手応えが戻るかもしれません。'}, question:'今の自分がすでに持っているものは？'},
+  {name:'女教皇', upright:{lead:'静けさの中でだけ、聞こえる本音がある。',body:'すぐに答えを出さず、少し観察してみてください。あなた自身の違和感や安心感が、考えるための大切な手がかりになります。'}, reversed:{lead:'考え続ける心にも、休む場所を。',body:'正しい答えを探しすぎて疲れたなら、今日は決めなくても構いません。ひと息ついてから見えることもあります。'}, question:'今の気持ちを、ひと言で表すなら？'},
+  {name:'女帝', upright:{lead:'やさしさは、分けてもあなたの中に残る。',body:'心地よいものを味わい、誰かや自分をいたわる時間を。小さな豊かさに気づくことで、気持ちがほどけるかもしれません。'}, reversed:{lead:'自分にも、やさしさの順番を。',body:'周りを大切にするあまり、自分の疲れを後回しにしていませんか。受け取ることや断ることも、健やかな選択です。'}, question:'自分に贈りたい小さなご褒美は？'},
+  {name:'皇帝', upright:{lead:'揺れないために、やさしい土台を作ろう。',body:'守りたいものを決めると、選択が少し軽くなります。無理のない決まりごとが、あなたの日々を支えてくれるでしょう。'}, reversed:{lead:'強くあることと、硬くなることは違う。',body:'いつもの方法が窮屈なら、少し柔らかくしてみて。頼ることも、考えを変えることも、あなたの強さを損ないません。'}, question:'本当に守りたいものは何ですか？'},
+  {name:'教皇', upright:{lead:'教わった言葉が、自分の道しるべになる日。',body:'信頼できる人の知恵や経験に耳を傾けてみましょう。その中から、今のあなたに合う部分だけ選んで構いません。'}, reversed:{lead:'みんなの正解が、あなたの正解とは限らない。',body:'大切な教えでも、合わないと感じることがあります。礼儀と自分の考えを両方持っていていいのです。'}, question:'今の自分に合う学びはどれでしょう？'},
+  {name:'恋人', upright:{lead:'心があたたかくなるほうを、選んでいい。',body:'人との調和も、自分の本音も、大切にしたいとき。誰かの期待だけでなく、自分の納得も選択の中に入れてみましょう。'}, reversed:{lead:'迷うのは、大切にしたいものがあるから。',body:'すぐに決められない気持ちを責めなくて大丈夫。選ぶ前に、何を守りたいのかを書き出してみるのも一つの方法です。'}, question:'今の選択で、自分が大切にしたいことは？'},
+  {name:'戦車', upright:{lead:'あなたの歩幅で、前へ進める。',body:'目指す場所が見えたら、一歩ずつ向かってみましょう。速さより、どこへ向かうかを自分で選ぶことが大切です。'}, reversed:{lead:'進まない勇気が、道を整えることもある。',body:'気持ちが急いでいるなら、少し速度を緩めてみて。方向を確かめる時間は、遠回りではありません。'}, question:'今日の一歩を、小さくするなら？'},
+  {name:'力', upright:{lead:'本当の強さは、やさしく向き合うことにも宿る。',body:'押し切るのではなく、丁寧に伝えることで届く思いがあります。あなたの穏やかさも、確かな力のひとつです。'}, reversed:{lead:'いつも強くなくても、あなたはあなた。',body:'うまく笑えない日や、気持ちが揺れる日もあります。自分にまで厳しくしなくていいのです。'}, question:'今日、自分にかけたい言葉は？'},
+  {name:'隠者', upright:{lead:'ひとりの時間が、心の灯りになる。',body:'誰かの声から少し離れると、自分の考えが聞こえやすくなることがあります。静かなひとときを味方につけてみてください。'}, reversed:{lead:'静けさと孤独は、同じではない。',body:'ひとりで考えすぎて苦しくなったら、安心できる誰かの声を借りてもいいのです。つながり方は、自分で選べます。'}, question:'今ほしいのは、静かな時間？ それとも対話？'},
+  {name:'運命の輪', upright:{lead:'風向きが変わっても、舵はあなたの手の中。',body:'予想外の出来事にも、小さな選択の余地はあります。変化をすべて理解しようとせず、目の前のことから確かめてみましょう。'}, reversed:{lead:'思いどおりでない時間にも、意味を急がなくていい。',body:'流れが読めないときは、確かな日常をひとつ大切に。変化を待つことと、何もしないことは同じではありません。'}, question:'今、自分で選べることは何でしょう？'},
+  {name:'正義', upright:{lead:'やさしさと公平さは、並んで歩ける。',body:'気持ちも事実も、どちらも丁寧に見つめてみましょう。決めつけない視点が、納得できる判断につながるかもしれません。'}, reversed:{lead:'白か黒かに分けなくてもいい。',body:'答えがひとつに見えないときは、事情や立場を少しずつ整理してみて。保留することも立派な判断です。'}, question:'まだ見ていない立場はありますか？'},
+  {name:'吊るされた男', upright:{lead:'動かない時間が、違う景色を見せてくれる。',body:'目先の結果から少し離れると、見えてくるものがあります。いつもと違う角度で眺めてみるのもよさそうです。'}, reversed:{lead:'我慢だけが、答えではない。',body:'続けてきたことが苦しいなら、やり方を見直しても構いません。手放すことは、必ずしも負けではありません。'}, question:'見方をひとつ変えるなら、どこから？'},
+  {name:'死神', upright:{lead:'終わりは、あなたの価値を減らさない。',body:'役目を終えたものを静かに見送ると、新しい余白が生まれることがあります。急いで次を探さず、区切りを大切にしてみましょう。'}, reversed:{lead:'手放せない気持ちも、大切にしていい。',body:'変わることが怖いときもあります。いきなり全部を変えず、少しずつ心の準備をしていきましょう。'}, question:'今、区切りをつけたい小さなことは？'},
+  {name:'節制', upright:{lead:'心地よいリズムは、少しずつ整えられる。',body:'頑張りすぎず、休みすぎを責めず、自分に合うバランスを探してみましょう。小さな調整の積み重ねが日々を支えます。'}, reversed:{lead:'乱れた日にも、戻れる場所がある。',body:'いつもの調子でなくても大丈夫。全部を立て直そうとせず、できることを一つだけ整えてみてください。'}, question:'今日、少し整えたい習慣は？'},
+  {name:'悪魔', upright:{lead:'大切にしたいものと、離れられないものは違う。',body:'何かが気になって手放せないなら、その理由を責めずに眺めてみましょう。気づくことから、選択肢が増えるかもしれません。'}, reversed:{lead:'自分で選び直せる瞬間が、きっとある。',body:'以前の約束や習慣を見直すことは、悪いことではありません。今の自分に合う距離を少しずつ探してみて。'}, question:'少し距離を置くと楽になりそうなことは？'},
+  {name:'塔', upright:{lead:'思い込みがほどけた先に、別の空が見える。',body:'予想と違う出来事に戸惑ったら、まず今わかっていることだけを確かめて。急いで意味を決めなくても、新しい見方は後から生まれます。'}, reversed:{lead:'壊れる前に、立ち止まって整えてもいい。',body:'気になる違和感があれば、小さなところから手を入れてみましょう。安心できる土台をつくり直す時間です。'}, question:'今、確かめたい事実は何でしょう？'},
+  {name:'星', upright:{lead:'遠くの星は、今夜の空にも輝いている。',body:'すぐに届かない願いがあっても、大切に思う気持ちは消えません。小さな希望を、今日できる形で温めてみてください。'}, reversed:{lead:'希望が見えない夜も、空はなくならない。',body:'前向きな気持ちになれないときは、無理に明るくしなくて大丈夫。安心できる小さなことから始めましょう。'}, question:'ほんの少し、心が明るくなるものは？'},
+  {name:'月', upright:{lead:'揺れる気持ちにも、そっと灯りを。',body:'不安や迷いがあるときは、事実と想像を分けてみると心が軽くなることがあります。わからないことは、わからないままで大丈夫です。'}, reversed:{lead:'霧の向こうを、今すぐ見通さなくてもいい。',body:'あいまいな状況が続くなら、決めつけずに様子を見る時間を。手元の小さな確かさを大切にしてください。'}, question:'今わかっていることは、どこまでですか？'},
+  {name:'太陽', upright:{lead:'あなたの笑顔が自然にこぼれる瞬間を。',body:'うれしいことは遠慮せずに味わってみましょう。ささやかな幸せも、今日の大切な一場面です。'}, reversed:{lead:'晴れの日にも、木陰があっていい。',body:'元気に振る舞えない日でも、あなたのよさは変わりません。無理に明るくせず、心地よい光を探してみてください。'}, question:'最近、自然に笑えたのはどんなとき？'},
+  {name:'審判', upright:{lead:'もう一度選ぶことは、前へ進むこと。',body:'過去の経験から気づいたことを、今の自分に生かしてみましょう。やり直しは、同じ場所に戻ることではありません。'}, reversed:{lead:'過去の自分を、責め続けなくていい。',body:'あのときの選択には、あのときの事情があったはず。今できることを一つ見つければ、それで十分な始まりになります。'}, question:'今のあなたなら、どう選びたいですか？'},
+  {name:'世界', upright:{lead:'ここまで歩いてきた道にも、花を添えよう。',body:'できたことをひとつ数えてみてください。完成は終点ではなく、次の景色へ向かう穏やかな区切りにもなります。'}, reversed:{lead:'途中にいる自分も、ひとつの完成形。',body:'まだ足りないところばかり数えなくて大丈夫。今あるものを認めながら、自分のペースで続けてみましょう。'}, question:'ここまでの自分に、何を伝えたいですか？'}
+];
+
+const dailyFortunes = [
+  {
+    "card": "愚者",
+    "variants": [
+      {
+        "lead": "まだ知らない道にも、あなたの景色が待っている。",
+        "body": "今日は「少し気になる」に素直になるほど、心がやわらかくひらいていきそうです。正解を確かめてからではなく、軽く触れてみることから始めてみましょう。",
+        "tip": "小さな一歩：気になっていたものを、5分だけ見てみる。"
+      },
+      {
+        "lead": "風まかせに見える日にも、ちゃんと心は進みたがっている。",
+        "body": "予定どおりでなくても、今日の寄り道には意味がありそうです。思いがけない出会いや発見を、評価せずそのまま受け取ってみてください。",
+        "tip": "小さな一歩：寄り道の中で「少し楽しい」と感じたものを覚えておく。"
+      },
+      {
+        "lead": "荷物を減らすと、歩ける景色が増える。",
+        "body": "抱えすぎている考えや不安をひとつ軽くすると、心の動きが戻ってきそうです。完璧な準備より、身軽さが味方になる一日です。",
+        "tip": "小さな一歩：今日は「やらなくてもいいこと」を一つ外してみる。"
+      },
+      {
+        "lead": "はじめての一歩は、勇気よりも好奇心で踏み出せる。",
+        "body": "背伸びしなくても大丈夫。あなたの中にある「見てみたい」「知ってみたい」が、今日の運勢をやさしく導いてくれます。",
+        "tip": "小さな一歩：問いをひとつ作り、その答えを少しだけ探す。"
+      }
+    ]
+  },
+  {
+    "card": "魔術師",
+    "variants": [
+      {
+        "lead": "今あるもので、今日を少しだけ変えられる。",
+        "body": "新しい何かを足さなくても、すでに持っている力や経験が役に立ちそうです。できる範囲から手を動かすことで、流れが整っていきます。",
+        "tip": "小さな一歩：手元にあるものだけで始めてみる。"
+      },
+      {
+        "lead": "言葉にした願いは、形になりやすい。",
+        "body": "ぼんやりした思いをそのままにせず、今日は一度言葉にしてみましょう。小さく明確にするほど、現実との距離が縮まりそうです。",
+        "tip": "小さな一歩：今ほしいものを一文で書いてみる。"
+      },
+      {
+        "lead": "ひらめきは、使ってみてはじめて自分の力になる。",
+        "body": "思いついたことを「まだ早い」と引っ込めなくて大丈夫。試すこと自体が、今日のあなたの才能を目覚めさせてくれます。",
+        "tip": "小さな一歩：思いついた案を一つ試してみる。"
+      },
+      {
+        "lead": "あなたの中の光は、誰かの許可を待たなくていい。",
+        "body": "今日は少し自信を持って、自分の感覚を前に出してみるとよさそうです。遠慮しすぎないことが、運をひらく鍵になります。",
+        "tip": "小さな一歩：迷ったら、自分の第一印象を優先する。"
+      }
+    ]
+  },
+  {
+    "card": "女教皇",
+    "variants": [
+      {
+        "lead": "静かな場所でだけ聞こえる、本音がある。",
+        "body": "にぎやかな答えよりも、今日はあなたの内側の感覚が頼りになります。判断を急がず、落ち着いた時間の中で心の声を待ってみましょう。",
+        "tip": "小さな一歩：ひとりで過ごす静かな5分をつくる。"
+      },
+      {
+        "lead": "言葉にならない違和感も、大切な手がかり。",
+        "body": "なんとなく気になることがあるなら、それを無視しないでください。理由がわからなくても、感覚は先に気づいていることがあります。",
+        "tip": "小さな一歩：「気になる」を一つ書き留めておく。"
+      },
+      {
+        "lead": "見えないものを信じる日は、心が少しやわらぐ。",
+        "body": "すべてを説明しきれなくても大丈夫。今日のあなたには、静かな直感や雰囲気を読む力がやさしく働きそうです。",
+        "tip": "小さな一歩：答えを出す前に、一度深呼吸する。"
+      },
+      {
+        "lead": "沈黙は、何もない時間ではない。",
+        "body": "言葉を急がないことで、むしろ伝わることがあります。今日は「すぐ返さない」「少し考える」があなたを守ってくれそうです。",
+        "tip": "小さな一歩：返事をひとつ、少しだけゆっくりにする。"
+      }
+    ]
+  },
+  {
+    "card": "女帝",
+    "variants": [
+      {
+        "lead": "やさしさは、巡るほど豊かになる。",
+        "body": "今日は自分にも他人にも、やわらかなまなざしを向けられそうです。小さな心地よさを選ぶことが、運気を穏やかに育ててくれます。",
+        "tip": "小さな一歩：好きな香りや飲み物で自分をいたわる。"
+      },
+      {
+        "lead": "心がほどける場所に、幸運は宿りやすい。",
+        "body": "頑張ることより、満たされることを意識するとよい日です。安心できる空間や人との時間が、今日のあなたを整えてくれます。",
+        "tip": "小さな一歩：落ち着く場所で数分過ごす。"
+      },
+      {
+        "lead": "受け取ることも、立派な優しさ。",
+        "body": "誰かの好意や助けを遠慮しすぎなくて大丈夫。今日は、受け取ったぬくもりが次のやさしさへつながっていきそうです。",
+        "tip": "小さな一歩：「ありがとう」を一度素直に言う。"
+      },
+      {
+        "lead": "小さな贅沢が、心の土をふかふかにする。",
+        "body": "美味しいもの、きれいなもの、気持ちのいい布や光。そんなささやかな豊かさに触れるほど、あなたの内側がやさしく回復していきます。",
+        "tip": "小さな一歩：今日は「好き」を一つ丁寧に味わう。"
+      }
+    ]
+  },
+  {
+    "card": "皇帝",
+    "variants": [
+      {
+        "lead": "守りたいものがわかると、心は落ち着く。",
+        "body": "今日は土台を整えることに向いています。大きな成果より、日々を安定させる小さな決まりや整理が力になりそうです。",
+        "tip": "小さな一歩：一つだけ「これを大切にする」を決める。"
+      },
+      {
+        "lead": "強さは、声の大きさではなく安定感に表れる。",
+        "body": "感情に流されず、落ち着いて考えられる日です。無理に厳しくならなくても、やさしく筋を通すことで信頼が育ちます。",
+        "tip": "小さな一歩：急がず、順番を決めて動く。"
+      },
+      {
+        "lead": "整えることは、自分を縛ることではない。",
+        "body": "今日はルールや枠があなたを助けてくれそうです。心地よく守れる範囲の基準をつくると、安心して過ごせるでしょう。",
+        "tip": "小さな一歩：明日のために一つ準備しておく。"
+      },
+      {
+        "lead": "頼れる自分は、少しずつ作っていける。",
+        "body": "今すぐ完璧でなくても大丈夫。今日のあなたは、小さな責任を穏やかに引き受けることで、自分への信頼を増やしていけます。",
+        "tip": "小さな一歩：気になっていた用事を一つ済ませる。"
+      }
+    ]
+  },
+  {
+    "card": "教皇",
+    "variants": [
+      {
+        "lead": "学びは、あなたを責めるためではなく支えるためにある。",
+        "body": "今日は誰かの経験や知恵から、やさしいヒントを受け取りやすい日です。全部を真似しなくても、ひとつ合うものを持ち帰れば十分です。",
+        "tip": "小さな一歩：参考になる言葉を一つ控える。"
+      },
+      {
+        "lead": "受け継がれてきたものの中に、安心がある。",
+        "body": "慣れた方法や信頼できる手順を選ぶと、今日は気持ちが整いやすそうです。基本に戻ることが、かえって近道になることもあります。",
+        "tip": "小さな一歩：いつもの整え方を一つ実行する。"
+      },
+      {
+        "lead": "優しい助言は、今の自分に合う形で受け取ればいい。",
+        "body": "今日は人の言葉に救われる場面があるかもしれません。ただし、無理に全部を飲み込まず、自分の感覚も一緒に大切にしてください。",
+        "tip": "小さな一歩：助言の中で「使えそう」と思うものだけ選ぶ。"
+      },
+      {
+        "lead": "問いを持つ人ほど、学びは深くなる。",
+        "body": "ただ教わるだけでなく、自分なりの疑問を持つことで運がひらけそうです。答えを急がず、良い問いを育ててみてください。",
+        "tip": "小さな一歩：今の自分に必要な問いを一つ考える。"
+      }
+    ]
+  },
+  {
+    "card": "恋人",
+    "variants": [
+      {
+        "lead": "心があたたかくなる方角に、今日の答えがある。",
+        "body": "選ぶことに迷ったら、義務感よりも心がゆるむ方を見てみましょう。やさしい納得感が、今日の運勢を支えてくれます。",
+        "tip": "小さな一歩：選択肢を並べて、心が少し軽い方を選ぶ。"
+      },
+      {
+        "lead": "大切な関係ほど、素直さがやわらかく効いてくる。",
+        "body": "今日は人とのやりとりにあたたかい流れが生まれそうです。取り繕いすぎず、自然な言葉で気持ちを伝えるほど、安心が育つでしょう。",
+        "tip": "小さな一歩：好意や感謝をひとこと伝える。"
+      },
+      {
+        "lead": "好きという気持ちは、答えを急がなくてもいい。",
+        "body": "迷っているなら、その迷い自体を否定しなくて大丈夫。今日のあなたは、選ぶ前に自分の本音を知ることが大切な一日です。",
+        "tip": "小さな一歩：本当に大切にしたいことを3つ書く。"
+      },
+      {
+        "lead": "調和は、無理に合わせることではなく自然に響くこと。",
+        "body": "今日は誰かとの心地よい距離感を見つけやすい日です。あなたらしさを消さない関わり方が、良いご縁を育ててくれます。",
+        "tip": "小さな一歩：無理のない返事や関わり方を選ぶ。"
+      }
+    ]
+  },
+  {
+    "card": "戦車",
+    "variants": [
+      {
+        "lead": "進みたい気持ちが、今日の追い風になる。",
+        "body": "足踏みしていたことにも、そろそろ動きが出てきそうです。勢いを信じつつ、方向だけはやさしく確かめて進みましょう。",
+        "tip": "小さな一歩：ひとつ前に進めたいことを決める。"
+      },
+      {
+        "lead": "速さより、ちゃんと前へ向かっていることが大切。",
+        "body": "今日は少しずつでも動くことで、自分の手応えを感じられそうです。小さな前進を軽く見ないでください。",
+        "tip": "小さな一歩：途中でも「ここまで進んだ」を認める。"
+      },
+      {
+        "lead": "迷いながらでも、ハンドルはあなたの手の中。",
+        "body": "周囲の流れに引っ張られすぎず、自分で方向を選ぶことが幸運につながります。決めたことを、今日は一度やってみる日です。",
+        "tip": "小さな一歩：自分で決めた予定を一つ守る。"
+      },
+      {
+        "lead": "前へ進む力は、心が静かなときほど強い。",
+        "body": "焦りから走るより、落ち着きの中で動く方が今日はうまくいきそうです。深呼吸してから一歩目を出してみましょう。",
+        "tip": "小さな一歩：行動の前に3回深呼吸する。"
+      }
+    ]
+  },
+  {
+    "card": "力",
+    "variants": [
+      {
+        "lead": "やわらかさの中にも、ちゃんと強さはある。",
+        "body": "今日は押し切るより、優しく向き合うことで物事が整いやすい日です。穏やかな言葉や態度が、思っている以上に力を持ちます。",
+        "tip": "小さな一歩：自分にも人にも、言い方をひとつ柔らかくする。"
+      },
+      {
+        "lead": "心が揺れても、あなたの芯はなくならない。",
+        "body": "不安や迷いが出ても、それは弱さではありません。今日は揺れを否定せず抱えられることが、あなたの本当の強さになります。",
+        "tip": "小さな一歩：今の気持ちをそのまま認める。"
+      },
+      {
+        "lead": "自分を責めないことが、回復の近道になる日。",
+        "body": "うまくできないことがあっても、今日は厳しさよりいたわりを選ぶほど流れが整います。優しさは甘さではなく、前に進むための力です。",
+        "tip": "小さな一歩：自分を労う言葉を一つかける。"
+      },
+      {
+        "lead": "静かな忍耐は、ちゃんと花を咲かせる。",
+        "body": "すぐに結果が出なくても、続けてきたことには意味があります。今日は焦らず粘る姿勢が、後の安心につながっていくでしょう。",
+        "tip": "小さな一歩：続けてきたことを一つ振り返る。"
+      }
+    ]
+  },
+  {
+    "card": "隠者",
+    "variants": [
+      {
+        "lead": "ひとりの時間が、心の地図を描き直してくれる。",
+        "body": "今日は少し静かな時間を持つことで、考えが整理されやすくなりそうです。外の声から距離を置くほど、自分の本音が見えてきます。",
+        "tip": "小さな一歩：通知を少しだけ離れて過ごす。"
+      },
+      {
+        "lead": "急がない問いは、深い答えを連れてくる。",
+        "body": "答えを焦るより、今日は考え続けること自体に価値があります。すぐに形にならない思索も、今のあなたに必要な時間です。",
+        "tip": "小さな一歩：気になる問いをひとつ書いて眺める。"
+      },
+      {
+        "lead": "静けさの中で、心の灯りは強くなる。",
+        "body": "人と離れることが冷たさではなく、自分を整えるための優しさになる日です。今日は「ひとりでいる心地よさ」を味方にしてください。",
+        "tip": "小さな一歩：落ち着く音や景色をひとつ選ぶ。"
+      },
+      {
+        "lead": "見つめるほど、自分の輪郭がやわらかく見えてくる。",
+        "body": "自己理解が少し進みやすい日です。正しく分析するよりも、「本当はどう感じていたか」を丁寧に拾ってみましょう。",
+        "tip": "小さな一歩：今日の気持ちを日記に一行残す。"
+      }
+    ]
+  },
+  {
+    "card": "運命の輪",
+    "variants": [
+      {
+        "lead": "流れが変わる日は、すべてを理解しなくていい。",
+        "body": "今日は少し予想外の動きがあっても、慌てず受け止めるほど運が味方しそうです。変化の中で選べる小さなことに目を向けましょう。",
+        "tip": "小さな一歩：変化の中で「今できること」を一つ探す。"
+      },
+      {
+        "lead": "偶然に見える出会いにも、やさしい意味がある。",
+        "body": "思いがけない巡り合わせに恵まれやすい日です。深く考えすぎず、面白いと感じた流れに少し乗ってみるのもよさそうです。",
+        "tip": "小さな一歩：気になった話題をひとつ追ってみる。"
+      },
+      {
+        "lead": "止まっていた歯車が、静かに回り出す気配。",
+        "body": "最近停滞を感じていたことにも、少し光が差し込みそうです。急発進ではなく、ゆるやかな動きとして受け取ると安心できます。",
+        "tip": "小さな一歩：今日は変化の兆しをひとつ探してみる。"
+      },
+      {
+        "lead": "波のある日にも、あなたは舵を持っている。",
+        "body": "流れ任せに見える場面でも、選び方はちゃんと残されています。無力さよりも、今の自分が選べる範囲を大切にしてみてください。",
+        "tip": "小さな一歩：今日の自分の選択をひとつ意識する。"
+      }
+    ]
+  },
+  {
+    "card": "正義",
+    "variants": [
+      {
+        "lead": "やさしさと公正さは、両立していい。",
+        "body": "今日は感情だけでなく事実も見つめることで、納得できる判断がしやすい日です。急がず整理すれば、心は静かに整っていきます。",
+        "tip": "小さな一歩：感じたことと事実を分けて書く。"
+      },
+      {
+        "lead": "きちんと考える時間が、あなたを守ってくれる。",
+        "body": "曖昧なまま流さない姿勢が、今日は穏やかな安心につながります。判断を先延ばしにするより、少しずつ整理してみるとよさそうです。",
+        "tip": "小さな一歩：迷っていることの条件を書き出す。"
+      },
+      {
+        "lead": "片方だけを見ない視点に、今日の運が宿る。",
+        "body": "自分の気持ちも相手の事情も、どちらも置き去りにしないことが大切な日です。中間の優しい答えが見つかるかもしれません。",
+        "tip": "小さな一歩：別の立場から一度考えてみる。"
+      },
+      {
+        "lead": "保留もまた、丁寧な判断のひとつ。",
+        "body": "今日は無理に白黒を決めない方がよい場面もありそうです。急いで結論に飛びつかず、少し待つことが整える力になります。",
+        "tip": "小さな一歩：結論を急ぎたくなったら、一晩置く選択も考える。"
+      }
+    ]
+  },
+  {
+    "card": "吊るされた男",
+    "variants": [
+      {
+        "lead": "動けない時間にも、見えてくるものがある。",
+        "body": "今日は進むことより、少し立ち止まることで気づけることがありそうです。焦りを減らし、違う角度から眺めると心が楽になります。",
+        "tip": "小さな一歩：問題を「別の見方」で一度書いてみる。"
+      },
+      {
+        "lead": "我慢してきた分だけ、やさしい見直しを。",
+        "body": "無理を当然にしないでください。今日は今まで続けてきたやり方を少し緩めることで、運気が穏やかに整っていきそうです。",
+        "tip": "小さな一歩：ひとつだけ「頑張りすぎ」を減らす。"
+      },
+      {
+        "lead": "遠回りに見える景色が、心を育てている。",
+        "body": "今日は結果よりも、途中で見つかる気づきに意味がありそうです。すぐに役立たなくても、今の経験はやがて形になります。",
+        "tip": "小さな一歩：今日の学びをひとつメモする。"
+      },
+      {
+        "lead": "今は答えより、見方を変えることが先かもしれない。",
+        "body": "思考が固まったと感じたら、一歩引いて眺めてみましょう。止まることは後退ではなく、景色を変えるための準備です。",
+        "tip": "小さな一歩：場所を変えて考えてみる。"
+      }
+    ]
+  },
+  {
+    "card": "死神",
+    "variants": [
+      {
+        "lead": "終わりは、あなたを減らす出来事ではない。",
+        "body": "今日は手放しや区切りがテーマになりやすい日です。古い流れに感謝しながら離れることで、新しい余白が静かに生まれていくでしょう。",
+        "tip": "小さな一歩：役目を終えたものを一つ片づける。"
+      },
+      {
+        "lead": "変わることは、裏切りではなく成長でもある。",
+        "body": "前と同じでいられない自分を責めなくて大丈夫。今日のあなたには、変化を受け入れるやさしい勇気が育っています。",
+        "tip": "小さな一歩：今の自分に合わなくなったものを見つめる。"
+      },
+      {
+        "lead": "区切りを丁寧に迎えるほど、心は軽くなる。",
+        "body": "無理に明るく切り替えようとしなくても大丈夫です。ひとつの終わりをちゃんと感じることが、次の始まりを穏やかにします。",
+        "tip": "小さな一歩：終えたいことに「ありがとう」を向ける。"
+      },
+      {
+        "lead": "空いた場所には、新しい風が入ってくる。",
+        "body": "今日は何かを減らすことがむしろ運をよくしそうです。捨てる、やめる、離れる、そのどれもが今のあなたを守る選択になりえます。",
+        "tip": "小さな一歩：ひとつ手放して、空いた感覚を味わう。"
+      }
+    ]
+  },
+  {
+    "card": "節制",
+    "variants": [
+      {
+        "lead": "ちょうどよさは、今日のあなたが作っていける。",
+        "body": "今日は極端に振れず、自分に合うバランスを探すほど心が整いやすい日です。完璧でなくても、少し心地よければそれで十分です。",
+        "tip": "小さな一歩：やりすぎていることを少し減らす。"
+      },
+      {
+        "lead": "混ざり合うことで、生まれるやさしさがある。",
+        "body": "相反するものの間に立つことが、今日は穏やかな調和を運んできそうです。白か黒かより、ちょうどいい中間を探してみましょう。",
+        "tip": "小さな一歩：両方のよさを一つずつ見つける。"
+      },
+      {
+        "lead": "小さな調整が、明日の安心をつくる。",
+        "body": "大きく変えるより、少し整えることに向いている日です。生活の流れ、気分の波、予定の詰め方をやさしく見直してみてください。",
+        "tip": "小さな一歩：今日の生活を一つだけ整える。"
+      },
+      {
+        "lead": "落ち着きは、頑張りの対極ではなく支えになる。",
+        "body": "今日は静かなペースで進むほど、結果的にうまくいきやすそうです。心を急かさず、呼吸が整う速さを選びましょう。",
+        "tip": "小さな一歩：焦りを感じたら、行動を一段ゆっくりにする。"
+      }
+    ]
+  },
+  {
+    "card": "悪魔",
+    "variants": [
+      {
+        "lead": "手放せないものには、責めるより気づくことから。",
+        "body": "今日は執着や習慣に目が向きやすい日です。悪いと決めつけず、「なぜ必要だったのか」を見つめることで心が少し自由になります。",
+        "tip": "小さな一歩：気になって離れないことを書き出す。"
+      },
+      {
+        "lead": "魅力に引かれる心も、あなたの大切な一部。",
+        "body": "惹かれてしまうものを無理に否定しなくて大丈夫。今日は距離感を少し整えることで、苦しさではなく楽しさとして扱いやすくなりそうです。",
+        "tip": "小さな一歩：少しだけ距離を置く時間をつくる。"
+      },
+      {
+        "lead": "選び直せると知るだけで、心は軽くなる。",
+        "body": "過去の癖や約束にしばられすぎなくて大丈夫。今日は「今の自分はどうしたいか」を基準にすると、運気が穏やかに動きます。",
+        "tip": "小さな一歩：今の自分に合う距離を決め直す。"
+      },
+      {
+        "lead": "欲しさの奥にある本音を見つけてみよう。",
+        "body": "何かを強く求めるとき、その裏には安心や癒やしへの願いが隠れていることがあります。今日は表面より奥の気持ちに目を向ける日です。",
+        "tip": "小さな一歩：本当に欲しいものを一段深く考える。"
+      }
+    ]
+  },
+  {
+    "card": "塔",
+    "variants": [
+      {
+        "lead": "思い込みがほどけると、空気が少し澄んでくる。",
+        "body": "今日は予定外のことや驚きがあっても、そこから新しい見方が生まれやすい日です。すぐ意味づけせず、まずは事実だけ受け取ってみましょう。",
+        "tip": "小さな一歩：起きたことを評価なしで書き出す。"
+      },
+      {
+        "lead": "崩れたように見える日にも、整え直す余地がある。",
+        "body": "うまくいかない流れを感じたら、小さな部分から立て直していけば大丈夫。今日は土台の見直しが、長い目で見て助けになりそうです。",
+        "tip": "小さな一歩：まず一番小さい修正を一つする。"
+      },
+      {
+        "lead": "突然の気づきは、心を自由にするためにやってくる。",
+        "body": "予想外の発見や本音に出会いやすい日です。怖がるより「知れてよかった」と思える部分を探すと、運気がやわらかくなります。",
+        "tip": "小さな一歩：驚いたことの中に、学びを一つ探す。"
+      },
+      {
+        "lead": "無理を続ける前に、壊れる前の手入れを。",
+        "body": "今日は違和感を見過ごさないことが大切です。大ごとになる前に少し整えることで、心も現実も安定しやすくなるでしょう。",
+        "tip": "小さな一歩：気になっている場所を一つ整える。"
+      }
+    ]
+  },
+  {
+    "card": "星",
+    "variants": [
+      {
+        "lead": "小さな希望でも、夜をやわらかく照らしてくれる。",
+        "body": "今日は未来を信じる気持ちが少し戻りやすい日です。大きな夢でなくても、心がほんの少し明るくなるものを大切にしてください。",
+        "tip": "小さな一歩：希望を感じることを一つ書く。"
+      },
+      {
+        "lead": "癒やしは静かに、でも確かに進んでいる。",
+        "body": "すぐに元気になれなくても大丈夫。今日は回復の途中にある自分を信じることで、運気がやさしく整っていきます。",
+        "tip": "小さな一歩：回復できている点を一つ見つける。"
+      },
+      {
+        "lead": "遠くの光を見上げるだけで、救われる夜もある。",
+        "body": "答えが見えなくても、希望を失わないことが今日の運勢を支えてくれます。明日でなくても、その先へつながる灯りは残っています。",
+        "tip": "小さな一歩：好きな未来の景色を少し想像する。"
+      },
+      {
+        "lead": "願いは強く握るより、やさしく灯しておく方が育つ。",
+        "body": "焦って叶えようとしなくても大丈夫。今日は「願いを大切に持っている自分」を認めることで、心が穏やかになるでしょう。",
+        "tip": "小さな一歩：願いをひとつ、静かに言葉にする。"
+      }
+    ]
+  },
+  {
+    "card": "月",
+    "variants": [
+      {
+        "lead": "わからなさの中でも、心はちゃんと感じ取っている。",
+        "body": "今日は不安や迷いが出やすい一方で、感受性も高まりやすい日です。事実と想像を分けながら、やさしく様子を見ていきましょう。",
+        "tip": "小さな一歩：不安を書いたあと、事実だけを書き直す。"
+      },
+      {
+        "lead": "霧の夜は、足元の灯りを大切に。",
+        "body": "先のことが読めなくても、今わかることまでで十分です。遠くを見通すより、今日の安心をひとつ増やすことが助けになります。",
+        "tip": "小さな一歩：今安心できるものを一つ確認する。"
+      },
+      {
+        "lead": "揺れる気持ちは、心が働いている証でもある。",
+        "body": "気持ちが定まらない日には、決めきれない自分を責めなくて大丈夫。今日は結論よりも、感じているものを丁寧に受け止める時間です。",
+        "tip": "小さな一歩：決める前に、今の気持ちを言葉にする。"
+      },
+      {
+        "lead": "見えないものが多いときほど、優しく確かめて。",
+        "body": "想像が膨らみやすい日は、無理に白黒つけない方が心が守られます。確かさは少しずつ集めれば十分です。",
+        "tip": "小さな一歩：確認できることを一つだけ確かめる。"
+      }
+    ]
+  },
+  {
+    "card": "太陽",
+    "variants": [
+      {
+        "lead": "あなたらしい明るさが、自然とにじみ出る日。",
+        "body": "今日は気負わずに笑える瞬間が増えやすい日です。小さな嬉しさを遠慮なく受け取ることで、運気がより明るくなっていくでしょう。",
+        "tip": "小さな一歩：楽しかったことを一つ声に出してみる。"
+      },
+      {
+        "lead": "素直な気持ちは、いちばん強い光になる。",
+        "body": "良いと思ったこと、嬉しかったことをそのまま大切にするとよい日です。飾らない反応が、良い流れを呼び込んでくれます。",
+        "tip": "小さな一歩：嬉しいと感じたら、素直に味わう。"
+      },
+      {
+        "lead": "晴れた心は、周りにもやさしく広がっていく。",
+        "body": "今日はあなたの明るさが誰かを和ませるかもしれません。無理に元気になる必要はありませんが、やさしい笑顔は十分な力になります。",
+        "tip": "小さな一歩：挨拶やひとことを少し丁寧に。"
+      },
+      {
+        "lead": "照らされる喜びも、照らす優しさもどちらも大切。",
+        "body": "受け取る幸せと、分け合う幸せの両方を味わいやすい日です。心地よい時間を、安心できる形で広げてみてください。",
+        "tip": "小さな一歩：良かったことを一つ分け合う。"
+      }
+    ]
+  },
+  {
+    "card": "審判",
+    "variants": [
+      {
+        "lead": "もう一度選び直せることは、希望でもある。",
+        "body": "今日は過去の経験がやさしく意味を持ち直す日です。やり直しではなく、今の自分として新しく選ぶ感覚を大切にしてください。",
+        "tip": "小さな一歩：昔の経験から学べたことを一つ思い出す。"
+      },
+      {
+        "lead": "呼び戻されるような気持ちには、耳を澄ませて。",
+        "body": "忘れていた願いや、後回しにしていた本音が浮かびやすい日です。責めずに見つめることで、次の動きが見えてきそうです。",
+        "tip": "小さな一歩：今また気になっていることを書いてみる。"
+      },
+      {
+        "lead": "過去を責めるより、今を選び直す方へ。",
+        "body": "昔の自分の不完全さを責めなくても大丈夫。今日は「いまならどうするか」を考えるほど、心が前を向きやすくなります。",
+        "tip": "小さな一歩：今の自分の答えを一つ決める。"
+      },
+      {
+        "lead": "目覚めるような気づきが、静かに訪れる日。",
+        "body": "突然何かが腑に落ちることがあるかもしれません。大げさに動かなくても、その気づきを大切に抱えるだけで十分です。",
+        "tip": "小さな一歩：ピンときたことをメモしておく。"
+      }
+    ]
+  },
+  {
+    "card": "世界",
+    "variants": [
+      {
+        "lead": "ここまで来た自分に、やさしく花丸を。",
+        "body": "今日は達成やまとまりを感じやすい日です。完璧でなくても、ここまで歩いてきたこと自体に大きな意味があります。",
+        "tip": "小さな一歩：今日の自分を一つ褒める。"
+      },
+      {
+        "lead": "ひとつの区切りは、次の景色への入り口でもある。",
+        "body": "終わったこと、整ったことに目を向けるほど、心に安心が戻ってきそうです。一区切りついた自分を、どうかちゃんと労ってください。",
+        "tip": "小さな一歩：終えたことを一つ書き出す。"
+      },
+      {
+        "lead": "足りなさではなく、つながってきたものを見てみよう。",
+        "body": "今日は欠けているものより、今あるものの豊かさに気づきやすい日です。揃ってきたものを見つめると、穏やかな満足感が広がります。",
+        "tip": "小さな一歩：すでにある恵みを三つ数える。"
+      },
+      {
+        "lead": "あなたの物語は、ちゃんとひとつの輪になっている。",
+        "body": "散らばっていた経験がつながって見えやすい日です。無駄だったと思っていたことにも、小さな意味を感じられるかもしれません。",
+        "tip": "小さな一歩：最近の出来事の共通点を探してみる。"
+      }
+    ]
+  }
+];
+const omikujiFortunes = [
+  {
+    "name": "大大吉",
+    "lead": "今日の空は、あなたにとてもやさしい。",
+    "body": "追い風のような軽さが感じられそうな一日です。うれしい流れが来たら、遠慮せず素直に受け取ってみてください。",
+    "tip": "星からのひとこと：喜びを小さく分け合うと、さらに運がやわらぎます。"
+  },
+  {
+    "name": "極吉",
+    "lead": "静かな自信が、運を呼び込む日。",
+    "body": "大きく目立たなくても、あなたの中の落ち着いた光がよい流れを引き寄せそうです。いつもの丁寧さを大切に。",
+    "tip": "星からのひとこと：焦らない姿勢が、いちばんの強みです。"
+  },
+  {
+    "name": "月光吉",
+    "lead": "月明かりのような救いがそっと届く。",
+    "body": "思いがけず、心がほっとする場面に出会えそうです。やさしい言葉や小さな親切を、見逃さず受け取ってみましょう。",
+    "tip": "星からのひとこと：安心できた瞬間を覚えておいてください。"
+  },
+  {
+    "name": "星福吉",
+    "lead": "小さな幸運が、いくつも散りばめられる日。",
+    "body": "派手ではなくても「なんだか助かった」と思える流れが重なりそうです。ささやかな幸せほど、丁寧に味わうと心に残ります。",
+    "tip": "星からのひとこと：今日のよかったことを三つ数えてみて。"
+  },
+  {
+    "name": "朝露吉",
+    "lead": "やわらかな始まりに恵まれる気配。",
+    "body": "新しく始めたいことや、少し整えたいことに向いた日です。無理なく始めた一歩が、あとから心強い支えになるでしょう。",
+    "tip": "星からのひとこと：最初は小さくて大丈夫。"
+  },
+  {
+    "name": "花灯吉",
+    "lead": "心がほころぶような優しさに触れやすい日。",
+    "body": "人や景色、音や香りなど、感性がやさしく満たされそうです。自分にとって美しいものを大切にすると運が整います。",
+    "tip": "星からのひとこと：好きなものを遠慮せず味わって。"
+  },
+  {
+    "name": "青空吉",
+    "lead": "気持ちが少し晴れやすい日。",
+    "body": "考えすぎていたことにも、軽やかな見方が戻ってきそうです。完璧な答えより、少し楽な答えを選んでみましょう。",
+    "tip": "星からのひとこと：肩の力をひとつ抜いてみて。"
+  },
+  {
+    "name": "銀風吉",
+    "lead": "流れが静かに整っていく気配。",
+    "body": "停滞していたことも、今日は少し風向きが変わりそうです。無理に追いかけず、来た流れを穏やかに受ける姿勢が吉。",
+    "tip": "星からのひとこと：変化の兆しに気づいてみて。"
+  },
+  {
+    "name": "虹雫吉",
+    "lead": "涙のあとに見える景色がある。",
+    "body": "感情が動いた出来事にも、やさしい意味が残りそうです。無理に明るくならず、揺れた自分をそのまま大切に。",
+    "tip": "星からのひとこと：心が動いた理由をそっと見つめて。"
+  },
+  {
+    "name": "中吉",
+    "lead": "ちょうどよい運のめぐり。",
+    "body": "大きな波はなくても、穏やかに進みやすい一日です。小さな積み重ねや日常の丁寧さが、やさしくあなたを助けてくれるでしょう。",
+    "tip": "星からのひとこと：普通の一日ほど、大切に過ごして。"
+  },
+  {
+    "name": "光吉",
+    "lead": "見落としていた良さに気づける日。",
+    "body": "すでに持っているものの価値が、少しわかりやすく感じられそうです。足りなさよりも、今ある恵みに目を向けてみましょう。",
+    "tip": "星からのひとこと：今あるものを一つ褒めてみて。"
+  },
+  {
+    "name": "音羽吉",
+    "lead": "やさしい言葉が運をひらく。",
+    "body": "会話や文章のやりとりに良い流れが宿りやすい日です。強く言うより、やわらかく伝える方がうまくいきそうです。",
+    "tip": "星からのひとこと：ひとこと丁寧に添えてみて。"
+  },
+  {
+    "name": "吉",
+    "lead": "ゆるやかに、でも確かに良い日。",
+    "body": "劇的ではなくても、心が安心する方向へ進みやすい一日です。大きな成果より、穏やかさそのものを大切にしてください。",
+    "tip": "星からのひとこと：安心できたことをひとつ覚えておいて。"
+  },
+  {
+    "name": "和み吉",
+    "lead": "人とのぬくもりが心を支える日。",
+    "body": "無理に深く関わらなくても、やさしいつながりが救いになりそうです。ひとりで抱えすぎず、安心できる気配を味方に。",
+    "tip": "星からのひとこと：信頼できる相手を一人思い浮かべて。"
+  },
+  {
+    "name": "宵星吉",
+    "lead": "夜ほど、やさしさが見えやすい。",
+    "body": "にぎやかさより静けさの中で、落ち着きを取り戻しやすい日です。今日は頑張りより、穏やかな時間の質を大切に。",
+    "tip": "星からのひとこと：夜に心が休むことを一つしてみて。"
+  },
+  {
+    "name": "半吉",
+    "lead": "急がなくても、ちゃんと良い方へ向かっている。",
+    "body": "すぐに形が見えないだけで、流れは悪くありません。焦って進めるより、少しずつ整えていくことが今日の吉です。",
+    "tip": "星からのひとこと：途中にいる自分を認めてあげて。"
+  },
+  {
+    "name": "小吉",
+    "lead": "ささやかな喜びが心をあたためる日。",
+    "body": "大きな幸運よりも、小さな嬉しさがじんわり残りそうです。派手でないものほど、今日は心に深く届くでしょう。",
+    "tip": "星からのひとこと：小さな「嬉しい」を軽く見ないで。"
+  },
+  {
+    "name": "雪月吉",
+    "lead": "静かな美しさに支えられる気配。",
+    "body": "ひとりで過ごす時間や、落ち着いた空気の中で心が整いやすい日です。今日は静けさそのものが運になります。",
+    "tip": "星からのひとこと：心が落ち着く景色を見てみて。"
+  },
+  {
+    "name": "末吉",
+    "lead": "ゆっくりでも、運はちゃんと育っている。",
+    "body": "今はまだ大きく見えない流れでも、少しずつ良い方向へ整っていきそうです。焦らず、今日できることをひとつだけ。",
+    "tip": "星からのひとこと：明日につながる小さな準備を。"
+  },
+  {
+    "name": "願い吉",
+    "lead": "願いを持ち続けること自体が力になる日。",
+    "body": "叶うかどうかを急がず、願っている自分を大切にしてみてください。その柔らかな火が、これからの道を照らしてくれます。",
+    "tip": "星からのひとこと：願いを静かに言葉にしてみて。"
+  },
+  {
+    "name": "凪吉",
+    "lead": "波の静かな日に、心も休めていい。",
+    "body": "今日は大きく動くより、落ち着いて整えることに向いた日です。何も起きないように見える時間にも、ちゃんと意味があります。",
+    "tip": "星からのひとこと：休めるときに、少し休んでください。"
+  }
+];
+const luckyColors = ['月白','銀青','淡い水色','星空の青','勿忘草色','白銀','薄藍','夜明けの青','月影の紫','氷の青','やさしい紺色'];
+
+function renderRichResult(id, title, lead, body, extra='') {
+  const target = document.getElementById(id);
+  target.replaceChildren();
+  const h = document.createElement('h3'); h.textContent = title;
+  const p1 = document.createElement('p'); p1.className = 'lead'; p1.textContent = lead;
+  const p2 = document.createElement('p'); p2.textContent = body;
+  target.append(h, p1, p2);
+  if (extra) { const more = document.createElement('p'); more.className = 'hint'; more.textContent = extra; target.append(more); }
+  target.hidden = false;
+}
+
+function dateLocal() { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function hashText(s) { let h=2166136261; for(const ch of s) { h=Math.imul(h^ch.codePointAt(0),16777619); } return h>>>0; }
+function randomIndex(max) { if(window.crypto && window.crypto.getRandomValues) { const a=new Uint32Array(1); window.crypto.getRandomValues(a); return Math.floor(a[0]/4294967296*max); } return Math.floor(Math.random()*max); }
+
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const validTabs = new Set(tabs.map(tab => tab.dataset.tab));
+function selectFortuneTab(id, updateUrl = true) {
+  if (!validTabs.has(id)) return;
+  tabs.forEach(tab => {
+    const selected = tab.dataset.tab === id;
+    tab.setAttribute('aria-selected', String(selected));
+  });
+  document.querySelectorAll('.panel').forEach(panel => panel.classList.toggle('active', panel.id === id));
+  if (updateUrl) {
+    try { history.replaceState(null, '', '#' + id); } catch (_) { /* file:// 環境でも動作 */ }
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+tabs.forEach(tab => tab.addEventListener('click', () => selectFortuneTab(tab.dataset.tab)));
+const incomingTab = decodeURIComponent(location.hash.replace(/^#/, ''));
+if (validTabs.has(incomingTab)) selectFortuneTab(incomingTab, false);
+window.addEventListener('hashchange', () => {
+  const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+  if (validTabs.has(id)) selectFortuneTab(id, false);
+});
+
+document.querySelectorAll('[data-star]').forEach(b=>b.addEventListener('click',()=>{
+  const item=starMessages[Number(b.dataset.star)];
+  renderRichResult('threeResult', item.title, item.lead, item.body, item.tip);
+}));
+
+function drawTarot() {
+  const card = tarotCards[randomIndex(tarotCards.length)];
+  const reverse = randomIndex(2)===1;
+  const face = reverse ? card.reversed : card.upright;
+  renderRichResult('tarotResult', card.name + ' ・ ' + (reverse ? '逆位置' : '正位置'), face.lead, face.body, '星からの問い：' + card.question);
+}
+document.getElementById('tarotButton').addEventListener('click', drawTarot);
+document.getElementById('tarotAgain').addEventListener('click', drawTarot);
+
+document.getElementById('dailyButton').addEventListener('click',()=>{
+  const name = document.getElementById('nickname').value.trim() || '星の旅人';
+  const date = dateLocal();
+  const seed = hashText(name+'|'+date);
+  const cardIndex = seed % dailyFortunes.length;
+  const variantIndex = Math.floor(seed / dailyFortunes.length) % 4;
+  const item = dailyFortunes[cardIndex];
+  const variant = item.variants[variantIndex];
+  const color = luckyColors[Math.floor(seed / 97) % luckyColors.length];
+  renderRichResult('dailyResult', date + 'の運勢 ・ 今日のカード「' + item.card + '」', variant.lead, variant.body, variant.tip + ' ／ ラッキーカラー：' + color);
+});
+
+document.getElementById('omikujiButton').addEventListener('click',()=>{
+  const f = omikujiFortunes[randomIndex(omikujiFortunes.length)];
+  renderRichResult('omikujiResult', f.name, f.lead, f.body, f.tip);
+});
+</script>
+</body>
+</html>
