@@ -412,6 +412,16 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
   .footer-card{padding:18px 13px 16px;border-radius:22px}
 }
 
+
+.result-figure{margin:0 0 16px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(238,246,255,.95));border:1px solid rgba(191,211,243,.95);box-shadow:0 12px 28px rgba(86,120,185,.1)}
+.result-figure img{display:block;width:100%;height:auto}
+.result-figure figcaption{padding:10px 14px 12px;font-size:12px;line-height:1.7;color:#5c78a8;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(240,247,255,.92))}
+.result-figure.is-card{max-width:320px;margin:0 auto 18px}
+.result-figure.is-overview{max-width:420px;margin:0 auto 18px}
+#omikuji .section-visual img,#tarot .section-visual img{border:1px solid rgba(196,214,243,.85);box-shadow:0 8px 24px rgba(84,119,186,.08)}
+#tab-omikuji .tab-caption{color:#6680ad}
+#omikuji .panel-meta,#omikuji .btn{filter:saturate(1.02)}
+
 </style>
 </head>
 <body>
@@ -1290,9 +1300,23 @@ const omikujiFortunes = [
 ];
 const luckyColors = ['月白','銀青','淡い水色','星空の青','勿忘草色','白銀','薄藍','夜明けの青','月影の紫','氷の青','やさしい紺色'];
 
-function renderRichResult(id, title, lead, body, extra='') {
+function renderRichResult(id, title, lead, body, extra='', artwork=null) {
   const target = document.getElementById(id);
   target.replaceChildren();
+  if (artwork && artwork.src) {
+    const fig = document.createElement('figure');
+    fig.className = 'result-figure ' + (artwork.variant || '');
+    const img = document.createElement('img');
+    img.src = artwork.src;
+    img.alt = artwork.alt || title;
+    fig.append(img);
+    if (artwork.caption) {
+      const cap = document.createElement('figcaption');
+      cap.textContent = artwork.caption;
+      fig.append(cap);
+    }
+    target.append(fig);
+  }
   const h = document.createElement('h3'); h.textContent = title;
   const p1 = document.createElement('p'); p1.className = 'lead'; p1.textContent = lead;
   const p2 = document.createElement('p'); p2.textContent = body;
@@ -1303,7 +1327,9 @@ function renderRichResult(id, title, lead, body, extra='') {
   copy.title='占いの言葉を文章としてコピーします';
   copy.setAttribute('aria-label','この占い結果をコピーして持ち帰る');
   copy.addEventListener('click',async()=>{
-    const message=[title,lead,body,extra].filter(Boolean).join('\n\n');
+    const message=[title,lead,body,extra].filter(Boolean).join('
+
+');
     try { await navigator.clipboard.writeText(message); copy.textContent='言葉を持ち帰りました ✧'; }
     catch (_) { copy.textContent='コピーできませんでした'; }
   });
@@ -1376,7 +1402,7 @@ function drawTarot() {
   tarotButton.setAttribute('aria-label', 'タロットを引き直す。現在のカード：' + card.name + '・' + (reverse ? '逆位置' : '正位置'));
   void tarotButton.offsetWidth;
   tarotButton.classList.add('is-revealed');
-  renderRichResult('tarotResult', card.name + ' ・ ' + (reverse ? '逆位置' : '正位置'), face.lead, face.body, '星からの問い：' + card.question);
+  renderRichResult('tarotResult', card.name + ' ・ ' + (reverse ? '逆位置' : '正位置'), face.lead, face.body, '星からの問い：' + card.question, {src:'assets/tarot_overview.jpg', alt:'大アルカナ二十二枚の一覧イメージ', caption:'中性的な星詠みの気配で描いた、大アルカナ二十二枚の一覧です。', variant:'is-overview'});
 }
 document.getElementById('tarotButton').addEventListener('click', drawTarot);
 document.getElementById('tarotAgain').addEventListener('click', drawTarot);
@@ -1393,13 +1419,36 @@ document.getElementById('dailyButton').addEventListener('click',()=>{
   renderRichResult('dailyResult', date + 'の運勢 ・ 今日のカード「' + item.card + '」', variant.lead, variant.body, variant.tip + ' ／ ラッキーカラー：' + color);
 });
 
+const omikujiArtwork = {
+  '大大吉':'assets/omikuji_cards/01.jpg',
+  '極吉':'assets/omikuji_cards/02.jpg',
+  '月光吉':'assets/omikuji_cards/03.jpg',
+  '星福吉':'assets/omikuji_cards/04.jpg',
+  '朝露吉':'assets/omikuji_cards/05.jpg',
+  '花灯吉':'assets/omikuji_cards/06.jpg',
+  '青空吉':'assets/omikuji_cards/07.jpg',
+  '銀風吉':'assets/omikuji_cards/08.jpg',
+  '虹雫吉':'assets/omikuji_cards/09.jpg',
+  '中吉':'assets/omikuji_cards/10.jpg',
+  '光吉':'assets/omikuji_cards/11.jpg',
+  '音羽吉':'assets/omikuji_cards/12.jpg',
+  '吉':'assets/omikuji_cards/13.jpg',
+  '和み吉':'assets/omikuji_cards/14.jpg',
+  '宵星吉':'assets/omikuji_cards/15.jpg',
+  '半吉':'assets/omikuji_cards/16.jpg',
+  '小吉':'assets/omikuji_cards/17.jpg',
+  '雪月吉':'assets/omikuji_cards/18.jpg',
+  '末吉':'assets/omikuji_cards/19.jpg',
+  '願い吉':'assets/omikuji_cards/20.jpg',
+  '凪吉':'assets/omikuji_cards/21.jpg'
+};
 document.getElementById('omikujiButton').addEventListener('click',()=>{
   const f = omikujiFortunes[randomIndex(omikujiFortunes.length)];
   const stage = document.getElementById('oracleStage');
   stage.classList.remove('is-drawing');
   void stage.offsetWidth;
   stage.classList.add('is-drawing');
-  renderRichResult('omikujiResult', f.name, f.lead, f.body, f.tip);
+  renderRichResult('omikujiResult', f.name, f.lead, f.body, f.tip, {src: omikujiArtwork[f.name], alt: f.name + 'のおみくじイメージ', caption:'中性的な星詠みが手渡す、青と銀と白の星明かりのおみくじ札です。', variant:'is-card'});
 });
 
 /* SNSでの紹介：外部のDiscord招待先は未指定のため、招待リンクを捏造しない */
