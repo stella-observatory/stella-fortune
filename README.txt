@@ -13,3 +13,12 @@ GitHub Desktopなら、リポジトリをCloneした後、展開した中身を�
 index.htmlはリポジトリ直下に配置します。assetsフォルダーの構造はそのまま保ちます。
 
 公開URL: https://stella-observatory.github.io/stella-fortune/
+
+
+【2026-10 公開表記調整】
+- トップのロゴ直下に小さく「Stella公式占いサイト」を明記。
+- 英語の装飾見出しを日本語へ統一。
+- 「今夜」の表現はそのまま維持。
+- トップの案内文は短く、占いの入り口を優先。
+- 占いプログラム・カード・おみくじの種類数・画像素材には変更なし。
+- GitHub Pagesで更新する際は、ZIPを展開し中身（index.html、guide.html、omikuji-gallery.html、assetsフォルダー等）をアップロード。
