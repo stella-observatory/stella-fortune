@@ -9,12 +9,18 @@
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="星々と月の占い"/>
 <meta property="og:description" content="今日の運勢・タロット・おみくじを、白・青・銀の幻想的な世界観で楽しめる占いサイト。星々と月のやさしい導きをテーマにしています。"/>
-<meta property="og:image" content="assets/ogp.jpg"/>
+<meta property="og:url" content="https://stella-observatory.github.io/stella-fortune/"/>
+<meta property="og:image" content="https://stella-observatory.github.io/stella-fortune/assets/ogp.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:alt" content="星々と月の占い。銀髪の少女と星空、月の幻想的な共有画像"/>
 <meta property="og:site_name" content="星々と月の占い"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="星々と月の占い"/>
 <meta name="twitter:description" content="Stella風の幻想的な占いサイト。星々と月の導きをイメージした、今日の運勢・タロット・おみくじをやさしい言葉でお届けします。"/>
-<meta name="twitter:image" content="assets/ogp.jpg"/>
+<meta name="twitter:image" content="https://stella-observatory.github.io/stella-fortune/assets/ogp.jpg"/>
+<link rel="canonical" href="https://stella-observatory.github.io/stella-fortune/"/>
 <link rel="icon" href="favicon.ico" sizes="any"/>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png"/>
@@ -323,6 +329,25 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
 
+ 
+.result::before{content:'✦　☽　✧';display:block;text-align:center;color:#9badd7;letter-spacing:.7em;font-size:19px;margin-bottom:9px}
+.result::after{content:'✧　星明かりの便り　✧';display:block;text-align:center;color:#7893bc;letter-spacing:.12em;font-size:11px;border-top:1px solid #d7e3f7;padding-top:13px;margin-top:15px}
+.result-copy{display:block;margin:18px auto 0;border:1px solid #b8cbeb;background:linear-gradient(135deg,#fff,#eaf2ff);border-radius:999px;padding:11px 19px;color:#365586;font:inherit;cursor:pointer}
+.result-copy:focus-visible{outline:3px solid #668dd1;outline-offset:3px}
+@media(max-width:600px){.result p{font-size:15px;line-height:1.9}.tab-caption,.hint{font-size:13px!important;color:#506c99}}
+@media(prefers-reduced-motion:reduce){.is-revealing,.result,.oracle-star{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* 公開サイトの共有導線：主役は占い、外部リンクはフッターに小さく */
+.site-share{max-width:680px;margin:20px auto 18px;padding:15px 13px;background:linear-gradient(135deg,rgba(255,255,255,.67),rgba(229,242,255,.70));border:1px solid rgba(179,207,245,.8);border-radius:20px;box-shadow:0 9px 26px rgba(74,115,185,.08)}
+.site-share-label{margin:0 0 12px!important;font-size:13px;color:#4b6794;letter-spacing:.04em}
+.site-share-logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#335484;font-size:14px;font-weight:700;border-radius:12px;padding:5px 10px}
+.site-share-logo img{width:34px;height:34px;object-fit:contain}
+.site-share-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:10px auto 0}
+.site-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 14px;border-radius:999px;background:linear-gradient(140deg,#fffefd,#e8f2ff);border:1px solid #bfd2ef;color:#345480;font:inherit;font-size:13px;text-decoration:none;cursor:pointer;box-shadow:0 5px 14px rgba(76,111,174,.08)}
+.site-share-button:hover,.site-share-logo:hover{background:#f0f7ff;box-shadow:0 7px 18px rgba(76,111,174,.15)}
+.site-share-button:focus-visible,.site-share-logo:focus-visible{outline:3px solid #82a7e7;outline-offset:2px}
+@media(max-width:570px){.site-share{padding:13px 8px}.site-share-button{font-size:13px;padding:8px 12px}.site-share-actions{gap:7px}}
+
 </style>
 </head>
 <body>
@@ -421,6 +446,16 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
   <footer class="footer">
     <p>すべての言葉を受け取らなくても大丈夫。<br/>今夜、心に残ったひとことだけを。</p>
     <p><a class="footer-link" href="guide.html">占いとの付き合い方・利用案内</a></p>
+    <div class="site-share" aria-label="サイトを紹介・共有する">
+      <p class="site-share-label">✧ この小さな観測所を、誰かにも</p>
+      <a class="site-share-logo" href="https://stella-observatory.github.io/stella-fortune/" target="_blank" rel="noopener noreferrer" aria-label="星々と月の占いを新しいタブで開く"><img src="assets/link-icon.png" alt="" loading="lazy"/>星々と月の占い ↗</a>
+      <div class="site-share-actions">
+        <button class="site-share-button" type="button" id="copySiteUrl">☾ サイトのリンクをコピー</button>
+        <a class="site-share-button" target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?text=%E6%98%9F%E3%80%85%E3%81%A8%E6%9C%88%E3%81%AE%E5%8D%A0%E3%81%84&url=https%3A%2F%2Fstella-observatory.github.io%2Fstella-fortune%2F">✦ Xで紹介する ↗</a>
+        <button class="site-share-button" type="button" id="copyDiscordIntro">✧ Discord用の紹介文をコピー</button>
+      </div>
+    </div>
+
     <strong>© Stella · 星の観測所</strong>
   </footer>
 </main>
@@ -445,6 +480,24 @@ const starMessages = [
     body:'誰かを大切にすることと、自分の境界を守ることは、両立していいものです。無理に笑ったり、すべてを打ち明けたりしなくても、あなたらしい関わり方があります。心がほっとする距離を、どうか大切にしてください。',
     tip:'星からの問い：あなたが自然体でいられるのは、どんな時間ですか？'
   }
+];
+
+const starMessageVariants = [
+ [
+ {title:'月の星 ― 静かな再出発',lead:'見えないところでも、心は少しずつ育っている。',body:'急いで答えを見つけなくても大丈夫。静かな時間の中で、あなたが大切にしたいことはゆっくり輪郭を持ちはじめます。今日は一つだけ、自分に優しい選択をしてみてください。',tip:'星からの問い：いま守りたい、小さな安らぎは何ですか？'},
+ {title:'月の星 ― 余白の贈り物',lead:'満たすことより、空けておくことが必要な夜もある。',body:'予定や期待でいっぱいになった心に、少し余白を作ってみませんか。何もしない時間も、次の気づきにつながる大切なひとときです。',tip:'星からの問い：今日、ひとつ減らせる負担はありますか？'},
+ {title:'月の星 ― やわらかな境界',lead:'静かな「いいえ」も、あなたを守る大切な言葉。',body:'相手を大事に思う気持ちと、自分を大事にする気持ちは対立しません。無理をせずにいられる距離を、あなた自身が選んでいいのです。',tip:'星からの問い：心が落ち着く距離はどのくらいでしょう？'}
+ ],
+ [
+ {title:'光の星 ― はじめの一歩',lead:'小さな好奇心が、今日の扉を開く。',body:'立派な目標がなくても構いません。少し面白そうだと感じたことに触れるだけで、今日の景色は変わります。あなたの歩幅を大切にしてください。',tip:'星からの問い：いま試してみたいことは何ですか？'},
+ {title:'光の星 ― 可能性の芽',lead:'まだ形にならない願いにも、居場所がある。',body:'夢を急いで説明する必要はありません。小さな思いつきを温めながら、できるところから進んでみましょう。',tip:'星からの問い：大切に育てたい思いは何ですか？'},
+ {title:'光の星 ― 誰かと灯す',lead:'ひとつの光が、別の光を見つけることもある。',body:'自分だけで抱え込まず、気持ちを少し分け合ってみてもいい日です。言葉にできた分だけ、心が軽くなるかもしれません。',tip:'星からの問い：安心して話せる相手はいますか？'}
+ ],
+ [
+ {title:'宵の星 ― ほどける時間',lead:'今日の終わりに、肩の力を抜いていい。',body:'思いどおりにならなかったことも、今日を過ごしたあなたの価値を減らしません。夜の静けさの中で、できたことを一つ思い出してみてください。',tip:'星からの問い：今日の自分にかけたい言葉は？'},
+ {title:'宵の星 ― 選べる距離',lead:'離れることは、嫌いになることとは限らない。',body:'心地よい関係には、それぞれの間合いがあります。今は少し離れて見守る選択も、やさしさの一つかもしれません。',tip:'星からの問い：自分らしくいられる関わり方は？'},
+ {title:'宵の星 ― 明日へ渡す灯',lead:'夜が深いほど、遠くの光に気づくことがある。',body:'今夜すべてを解決しなくても大丈夫。今日の気づきをひとつだけ胸に置き、残りは明日の自分に預けてみましょう。',tip:'星からの問い：明日の自分に残したい希望は？'}
+ ]
 ];
 
 const tarotCards = [
@@ -1162,10 +1215,21 @@ function renderRichResult(id, title, lead, body, extra='') {
   const p2 = document.createElement('p'); p2.textContent = body;
   target.append(h, p1, p2);
   if (extra) { const more = document.createElement('p'); more.className = 'hint'; more.textContent = extra; target.append(more); }
+  const copy = document.createElement('button');
+  copy.type='button'; copy.className='result-copy'; copy.textContent='✧ この言葉をコピー';
+  copy.addEventListener('click',async()=>{
+    const message=[title,lead,body,extra].filter(Boolean).join('\\n\\n');
+    try { await navigator.clipboard.writeText(message); copy.textContent='コピーしました ✧'; }
+    catch (_) { copy.textContent='コピーできませんでした'; }
+  });
+  target.append(copy);
   target.hidden = false;
   target.classList.remove('is-revealing');
   void target.offsetWidth;
   target.classList.add('is-revealing');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    requestAnimationFrame(()=>target.scrollIntoView({behavior:'smooth',block:'nearest'}));
+  }
 }
 
 function dateLocal() { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
@@ -1209,7 +1273,9 @@ window.addEventListener('hashchange', () => {
 });
 
 document.querySelectorAll('[data-star]').forEach(b=>b.addEventListener('click',()=>{
-  const item=starMessages[Number(b.dataset.star)];
+  const starIndex=Number(b.dataset.star);
+  const messages=[starMessages[starIndex],...starMessageVariants[starIndex]];
+  const item=messages[hashText(dateLocal()+'|'+starIndex)%messages.length];
   document.querySelectorAll('[data-star]').forEach(choice => choice.setAttribute('aria-pressed', String(choice === b)));
   renderRichResult('threeResult', item.title, item.lead, item.body, item.tip);
 }));
@@ -1250,6 +1316,30 @@ document.getElementById('omikujiButton').addEventListener('click',()=>{
   stage.classList.add('is-drawing');
   renderRichResult('omikujiResult', f.name, f.lead, f.body, f.tip);
 });
+
+/* SNSでの紹介：外部のDiscord招待先は未指定のため、招待リンクを捏造しない */
+function copyShareText(value, button) {
+  async function run(){
+    let ok=false;
+    if (navigator.clipboard && window.isSecureContext) {
+      try { await navigator.clipboard.writeText(value); ok=true; } catch (_) {}
+    }
+    if (!ok) {
+      const t=document.createElement('textarea');t.value=value;t.style.cssText='position:fixed;left:-10000px;top:0;';
+      document.body.appendChild(t);t.focus();t.select();
+      try { ok=document.execCommand('copy'); } catch(_) {}
+      t.remove();
+    }
+    button.textContent=ok?'✓ コピーしました':'コピーできませんでした';
+  }
+  run();
+}
+const officialUrl='https://stella-observatory.github.io/stella-fortune/';
+document.getElementById('copySiteUrl').addEventListener('click', function(){copyShareText(officialUrl,this)});
+document.getElementById('copyDiscordIntro').addEventListener('click', function(){
+  copyShareText('🌙 星々と月の占い｜Stella 星の観測所\n星や月の言葉にふれながら、今日の運勢・タロット・おみくじを楽しめます。\n気になった言葉だけ、そっと持ち帰ってください。\n'+officialUrl,this);
+});
+
 </script>
 </body>
 </html>

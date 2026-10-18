@@ -1,16 +1,29 @@
-星々と月の占い（GitHub Pages 公開用・軽量版）
+星々と月の占い｜公開サイト更新版（外部リンク対応）
 
-1. ZIPを解凍してください。
-2. GitHub の stella-fortune リポジトリのルートに、index.html / guide.html / favicon.ico / assets フォルダー / README.txt をアップロードしてください。
-3. Settings → Pages → Deploy from a branch → main / (root) → Save を選びます。
-4. 公開サイトで各占いが使えるか確認してください。
+公開URL： https://stella-observatory.github.io/stella-fortune/
 
-公開後、Discord や X のカード画像（OGP）が表示されない場合は、index.html の次のタグを確認してください。
-<meta property="og:image" content="assets/ogp.jpg"/>
-<meta name="twitter:image" content="assets/ogp.jpg"/>
-この２つの content を https://ユーザー名.github.io/stella-fortune/assets/ogp.jpg のような公開サイトの完全なURLに変更してください。
+■ 今回の追加・変更
+- 外部リンク用の新しいロゴ：assets/external-logo.png
+- 小さな紋章アイコン：assets/link-icon.png
+- 他のサイトやDiscord紹介用バナー：assets/link-badge.png
+- X／Discordなどに掲載するOGP画像を更新：assets/ogp.jpg
+- OGP画像・サイトURLは公開先の絶対URLに変更済み
+- フッターに「リンクをコピー」「Xで紹介」「Discord用紹介文をコピー」を追加
+- 利用案内にバナーのプレビューとリンクを追加
+- 既存のメインタイトルロゴと占い文章・占いの仕組みは維持
+- 三択占いのJavaScriptに残っていた改行文字の不具合を修正
 
-注意事項は guide.html の利用案内に掲載しています。
-メイン画面から「大切なお知らせ」の大きなパネルや種類数の宣伝文句を削除して、占いを選びやすく整えています。
+■ 公開方法
+1. ZIPを展開する。
+2. 展開したファイル一式を GitHub の stella-observatory/stella-fortune に反映する。
+   index.html と guide.html はリポジトリの最上位へ、assets フォルダはその下に配置。
+3. GitHub Pages の公開が更新されるのを待つ。
+4. https://stella-observatory.github.io/stella-fortune/ で確認する。
 
-演出強化版：星々と月の占いのロゴは旧デザインを維持。各占いの光・星・カードの動きを強化し、文字の種類数などは非表示。
+■ 他のサイトに置けるバナーのHTML例
+<a href="https://stella-observatory.github.io/stella-fortune/" target="_blank" rel="noopener noreferrer"><img src="https://stella-observatory.github.io/stella-fortune/assets/link-badge.png" alt="星々と月の占い" width="480"></a>
+
+■ 注意
+- GitHub上の既存ファイルを変更する際は、ZIP自体を置くのではなくファイルを更新する。
+- Discordサーバーの招待URLは指定されていないため、作成していない。
+- OGP画像は投稿先のキャッシュにより新しいものが反映されるまで時間がかかる場合がある。
