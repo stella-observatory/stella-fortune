@@ -787,40 +787,14 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
 
 
 /* おみくじ専用：原画の横長比率を維持し、左右を切り抜かない。 */
-#omikuji .section-visual picture { display:block; width:100%; }
-@media (min-width:861px) {
-  #omikuji .section-visual picture img {
-    display:block;
-    width:100%;
-    height:auto;
-    aspect-ratio:4 / 3;
-    object-fit:contain;
-    object-position:center;
-    background:transparent;
-  }
-}
-/* タブレット・スマホでは顔と祈る手を中心にした軽量な正方形画像を使う。 */
-@media (max-width:860px) {
-  #omikuji .section-visual picture { flex:0 0 113px; width:113px; height:113px; }
-  #omikuji .section-visual picture img {
-    display:block;
-    width:113px;
-    height:113px;
-    aspect-ratio:1 / 1;
-    object-fit:contain;
-    object-position:center;
-  }
-}
-@media (max-width:570px) {
-  #omikuji .section-visual picture { flex-basis:70px; width:70px; height:70px; }
-  #omikuji .section-visual picture img { width:70px; height:70px; }
-}
+#omikuji 
 
 </style>
+<link rel="stylesheet" href="assets/stella-polish.css"/>
 </head>
 <body>
 <main class="container">
-  <header class="hero">
+  <header class="hero hero-home">
     <img class="hero-image" src="assets/hero.jpg" width="1450" height="816" alt="星明かりの観測所で迎える、銀髪の星詠み" fetchpriority="high" decoding="async"/>
     <div class="hero-content">
       <div class="eyebrow">Stella · 星の観測所</div>
@@ -922,10 +896,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="omikuji-gallery-entry"><a href="omikuji-gallery.html">✧ 月夜のおみくじの絵札を眺める <span aria-hidden="true">→</span></a></p>
       </div>
       <aside class="section-visual">
-        <picture>
-          <source media="(max-width: 860px)" srcset="assets/omikuji-thumb.webp" type="image/webp"/>
-          <img src="assets/omikuji.jpg" width="1448" height="1086" alt="月明かりの神社で静かに手を合わせる銀髪の星詠みの少年" loading="lazy" decoding="async"/>
-        </picture>
+        <img src="assets/omikuji.jpg" width="960" height="1200" alt="月明かりの神社で静かに手を合わせる銀髪の星詠みの少年" loading="lazy" decoding="async"/>
         <p class="visual-caption">月明かりの社で、心に小さな願いを。</p>
       </aside>
     </div>

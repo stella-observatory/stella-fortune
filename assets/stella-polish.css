@@ -1,0 +1,177 @@
+/* Stella 星々と月の占い：装飾のみの微調整
+   ・既存の占い処理・データ・イラストには変更を加えません
+   ・PCの余白に星座と観測所を控えめに配置
+   ・タイトルの画面比率を保ち、少女の顔が見えるよう調整 */
+
+/* 星座背景：パソコンのみ。装飾なので中央の文章とは重ねない */
+@media(min-width:981px){
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:.46;
+    background-image:
+      url("constellation-left.svg"),
+      url("constellation-right.svg"),
+      radial-gradient(circle,rgba(255,255,255,.98) 1px,transparent 1.5px),
+      radial-gradient(circle,rgba(149,177,225,.34) 1px,transparent 1.6px);
+    background-position:left -26px top 146px,right -26px top 207px,0 0,13px 29px;
+    background-size:206px auto,200px auto,62px 69px,137px 143px;
+    background-repeat:no-repeat,no-repeat,repeat,repeat;
+  }
+  body::after{
+    content:"";
+    position:fixed;
+    left:0;right:0;bottom:0;
+    height:170px;
+    z-index:0;
+    pointer-events:none;
+    opacity:.19;
+    background:url("observatory-silhouette.svg") center bottom / 100% 100% no-repeat;
+  }
+}
+.container,main{position:relative;z-index:1;}
+@media(max-width:980px){body::after{display:none;}}
+
+/* トップ：背景少女の髪・顔を残しつつ、ロゴを元比率で表示 */
+.hero-home{height:auto;min-height:340px;}
+.hero-home .hero-image{object-position:68% 18%;}
+.hero-home .hero-content{
+  min-height:338px;
+  height:auto;
+  max-width:560px;
+  padding:23px 29px 25px;
+  justify-content:center;
+  gap:4px;
+}
+.hero-home .site-logo{
+  display:block;
+  width:min(100%,408px);
+  height:auto!important;
+  max-height:none;
+  object-fit:contain;
+  flex-shrink:0;
+  margin:0;
+}
+/* 同名の見出しはアクセシビリティ用に保持。見た目はロゴだけにする。 */
+.hero-home h1.visually-hidden{
+  position:absolute!important;
+  width:1px!important;height:1px!important;
+  padding:0!important;margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  clip-path:inset(50%)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.hero-home .eyebrow{margin-bottom:4px;}
+.hero-home .site-official{margin:4px 0 8px;}
+.hero-home .hero-note{margin:0;max-width:31em;padding:12px 15px 13px;}
+.hero-home .hero-note .sub{font-size:14px;line-height:1.75;}
+
+/* メニュー：アイコン・名称・説明を明確に区切る */
+.entry-stage{margin-bottom:25px;}
+.entry-stage .nav .tab{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:3px;min-height:101px;
+  padding:11px 8px;text-align:center;
+}
+.entry-stage .nav .tab .tab-sigil{
+  display:block;flex-shrink:0;line-height:1.1;margin:0 0 2px;
+}
+.entry-stage .nav .tab .tab-name{
+  display:block;white-space:normal;line-height:1.44;margin:0;
+}
+.entry-stage .nav .tab .tab-caption{
+  display:block;white-space:normal;line-height:1.4;margin:0;
+}
+
+/* 利用案内：少女を右側に、文章を左側に配置。切り抜きを抑える */
+.hero-guide{min-height:388px;}
+.hero-guide img.bg{
+  position:absolute;
+  inset:17px 17px 17px auto;
+  width:38%;min-width:300px;
+  height:calc(100% - 34px);
+  object-fit:cover;
+  object-position:52% 16%;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.86);
+  box-shadow:0 15px 36px rgba(75,112,173,.16);
+}
+.hero-guide::after{
+  background:linear-gradient(90deg,rgba(249,253,255,.98) 0%,rgba(246,251,255,.92) 47%,rgba(241,248,255,.25) 72%,rgba(241,248,255,.06) 100%);
+}
+.hero-guide .hero-content{
+  min-height:388px;max-width:58%;
+  padding:27px 27px 30px;
+  justify-content:center;
+}
+.hero-guide .site-logo{width:min(100%,408px);height:auto;}
+.hero-guide .sub{line-height:1.88;}
+
+@media(max-width:980px){
+  .hero-home .hero-image{object-position:64% 18%;}
+  .hero-home .site-logo{width:min(100%,320px);}
+}
+@media(max-width:860px){
+  .hero-home{min-height:330px;}
+  .hero-home .hero-content{min-height:328px;max-width:100%;padding:20px 20px 22px;}
+  .hero-guide{min-height:345px;}
+  .hero-guide img.bg{
+    inset:0;width:100%;min-width:0;height:100%;
+    border:none;border-radius:0;box-shadow:none;
+    object-position:58% 20%;
+  }
+  .hero-guide::after{
+    background:linear-gradient(180deg,rgba(243,248,255,.12) 0%,rgba(241,247,255,.75) 45%,rgba(239,246,255,.98) 100%);
+  }
+  .hero-guide .hero-content{
+    max-width:100%;min-height:345px;padding:20px 20px 23px;justify-content:flex-end;
+  }
+}
+@media(max-width:570px){
+  .hero-home{min-height:305px;}
+  .hero-home .hero-content{
+    min-height:303px;padding:18px 16px 18px;justify-content:flex-end;
+  }
+  .hero-home .hero-image{object-position:60% 19%;}
+  .hero-home .site-logo{width:min(100%,276px);}
+  .hero-home .site-official{font-size:11px;padding:4px 10px;margin:1px 0 7px;}
+  .hero-home .hero-note{max-width:100%;padding:10px 12px 11px;border-radius:18px;}
+  .hero-home .hero-note .sub{font-size:12.5px;line-height:1.72;}
+  .entry-head{gap:7px;}
+  .entry-head .entry-badge{align-self:flex-start;}
+  .entry-head h2{font-size:21px;line-height:1.48;}
+  .entry-stage .nav .tab{min-height:92px;padding:10px 6px;}
+  .entry-stage .nav .tab .tab-name{font-size:14px;}
+  .entry-stage .nav .tab .tab-caption{font-size:10px;}
+  .hero-guide{min-height:320px;}
+  .hero-guide .hero-content{min-height:320px;padding:18px 16px 20px;}
+  .hero-guide .site-logo{width:min(100%,290px);height:auto;}
+  .hero-guide .sub{font-size:13px;line-height:1.75;}
+}
+@media(max-width:350px){
+  .hero-home .hero-content{padding-left:14px;padding-right:14px;}
+  .hero-home .site-logo{width:min(100%,245px);}
+  .hero-home .hero-note .sub{font-size:12px;}
+}
+
+/* 最終微調整：少女の髪飾りまで見せる・スマホの見出しを縦方向に整理 */
+@media(min-width:861px){
+  .hero-home .hero-image{object-position:68% 5%;}
+}
+@media(max-width:570px){
+  .entry-stage .entry-head{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:7px!important;
+  }
+  .entry-stage .entry-head .entry-badge{align-self:flex-start;}
+  .entry-stage .entry-head h2{display:block;width:100%;margin:0;font-size:21px;}
+  .entry-stage .entry-head p{width:100%;margin:0;}
+}
