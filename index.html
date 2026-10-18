@@ -592,7 +592,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
       <img class="site-logo" src="assets/logo.png" alt="星々と月の占い"/>
       <h1 class="visually-hidden">星々と月の占い</h1>
       <p class="site-official"><span aria-hidden="true">✧</span> Stella公式占いサイト</p>
-      <div class="hero-note"><p class="sub">静かな星の夜に、心へ届くひとことを。<br/>気になる光を、そっと選んでみてください。</p><p class="hero-guidance">今夜の気分に合う入口から、ひとつ選んで進めます。</p></div>
+      <div class="hero-note"><p class="sub">静かな星の夜に、心へ届くひとことを。<br/>気になる光を、そっと選んでみてください。</p><p class="hero-guidance">今夜の気分に合う入口から、ひとつ選んで進めます。</p><p class="hero-guidance">タロットの大アルカナは、愚者＝0から世界＝XXIまでの体系で並んでいます。</p></div>
     </div>
   </header>
 
@@ -1556,10 +1556,15 @@ document.querySelectorAll('[data-star]').forEach(b=>b.addEventListener('click',(
   renderRichResult('threeResult', item.title, item.lead, item.body, item.tip);
 }));
 
+const majorArcanaNumbers = ['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX','XXI'];
+function tarotCardLabel(index, cardName) {
+  return majorArcanaNumbers[index] + ' ' + cardName;
+}
+
 function tarotCardArt(index, cardName, position='') {
   return {
     src:'assets/tarot_cards/' + String(index).padStart(2,'0') + '.webp',
-    alt:cardName + 'のStella絵札',
+    alt:tarotCardLabel(index, cardName) + 'のStella絵札',
     variant:'is-tarot-card'
   };
 }
@@ -1577,12 +1582,12 @@ function drawTarot() {
   const face = reverse ? card.reversed : card.upright;
   const tarotButton = document.getElementById('tarotButton');
   tarotButton.classList.remove('is-revealed');
-  document.getElementById('tarotFaceName').textContent = card.name;
+  document.getElementById('tarotFaceName').textContent = tarotCardLabel(cardIndex, card.name);
   document.getElementById('tarotFacePosition').textContent = reverse ? '逆位置' : '正位置';
-  tarotButton.setAttribute('aria-label', 'タロットを引き直す。現在のカード：' + card.name + '・' + (reverse ? '逆位置' : '正位置'));
+  tarotButton.setAttribute('aria-label', 'タロットを引き直す。現在のカード：' + tarotCardLabel(cardIndex, card.name) + '・' + (reverse ? '逆位置' : '正位置'));
   void tarotButton.offsetWidth;
   tarotButton.classList.add('is-revealed');
-  renderRichResult('tarotResult', card.name + ' ・ ' + (reverse ? '逆位置' : '正位置'), face.lead, face.body, '星からの問い：' + card.question, tarotCardArt(cardIndex, card.name, reverse ? '逆位置' : '正位置'));
+  renderRichResult('tarotResult', tarotCardLabel(cardIndex, card.name) + ' ・ ' + (reverse ? '逆位置' : '正位置'), face.lead, face.body, '星からの問い：' + card.question, tarotCardArt(cardIndex, card.name, reverse ? '逆位置' : '正位置'));
 }
 document.getElementById('tarotButton').addEventListener('click', drawTarot);
 document.getElementById('tarotAgain').addEventListener('click', drawTarot);
@@ -1596,7 +1601,7 @@ document.getElementById('dailyButton').addEventListener('click',()=>{
   const item = dailyFortunes[cardIndex];
   const variant = item.variants[variantIndex];
   const color = luckyColors[Math.floor(seed / 97) % luckyColors.length];
-  renderRichResult('dailyResult', date + 'の運勢 ・ 今日のカード「' + item.card + '」', variant.lead, variant.body, variant.tip + ' ／ ラッキーカラー：' + color, tarotCardArt(cardIndex, item.card));
+  renderRichResult('dailyResult', date + 'の運勢 ・ 今日のカード「' + tarotCardLabel(cardIndex, item.card) + '」', variant.lead, variant.body, variant.tip + ' ／ ラッキーカラー：' + color, tarotCardArt(cardIndex, item.card));
 });
 
 
@@ -1609,7 +1614,7 @@ document.getElementById('weeklyButton').addEventListener('click',()=>{
   const reverse=Math.floor(seed / tarotCards.length)%2===1;
   const position=reverse ? '逆位置' : '正位置';
   const face=reverse ? card.reversed : card.upright;
-  renderRichResult('weeklyResult', '今週の一枚 ・ '+card.name+'（'+position+'）', face.lead, face.body, '星からの問い：'+card.question, tarotCardArt(index,card.name,position));
+  renderRichResult('weeklyResult', '今週の一枚 ・ ' + tarotCardLabel(index, card.name) + '（' + position + '）', face.lead, face.body, '星からの問い：' + card.question, tarotCardArt(index, card.name, position));
 });
 
 const omikujiArtwork = {
