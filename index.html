@@ -330,8 +330,8 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
 }
 
  
-.result::before{content:'✦　☽　✧';display:block;text-align:center;color:#9badd7;letter-spacing:.7em;font-size:19px;margin-bottom:9px}
-.result::after{content:'✧　星明かりの便り　✧';display:block;text-align:center;color:#7893bc;letter-spacing:.12em;font-size:11px;border-top:1px solid #d7e3f7;padding-top:13px;margin-top:15px}
+.result::before{content:'✦　☽　✧';display:block;text-align:center;color:#9bb0d2;letter-spacing:.7em;font-size:19px;margin-bottom:9px;text-shadow:0 0 10px rgba(255,255,255,.8)}
+.result::after{content:'✧　星明かりの便り　✧';display:block;text-align:center;color:#7089b6;letter-spacing:.12em;font-size:11px;padding-top:16px;margin-top:16px;border-top:none;background:linear-gradient(90deg,rgba(184,203,236,0),rgba(176,198,235,.85) 18%,rgba(244,248,255,.98) 50%,rgba(196,210,237,.88) 82%,rgba(184,203,236,0)) top/100% 3px no-repeat}
 .result-copy{display:block;margin:18px auto 0;border:1px solid #b8cbeb;background:linear-gradient(135deg,#fff,#eaf2ff);border-radius:999px;padding:11px 19px;color:#365586;font:inherit;cursor:pointer}
 .result-copy:focus-visible{outline:3px solid #668dd1;outline-offset:3px}
 @media(max-width:600px){.result p{font-size:15px;line-height:1.9}.tab-caption,.hint{font-size:13px!important;color:#506c99}}
@@ -429,6 +429,134 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
 .omikuji-gallery-entry a:hover{color:#244879;border-bottom-color:#6d90cd}
 .omikuji-gallery-entry a:focus-visible{outline:3px solid #719ad9;outline-offset:3px;border-radius:4px}
 
+
+/* 一枚ずつ届く星詠みの絵札 */
+.result-figure.is-tarot-card{max-width:242px;margin:0 auto 17px;padding:8px;border:1px solid #c8d9f3;border-radius:17px;background:linear-gradient(165deg,#fffefc,#e8f2ff);box-shadow:0 14px 32px rgba(54,91,156,.14),inset 0 0 0 3px rgba(255,255,255,.78)}
+.result-figure.is-tarot-card img{aspect-ratio:3 / 5;object-fit:contain;width:100%;height:auto;border-radius:10px;background:#f8fbff}
+.result-figure.is-tarot-card figcaption{padding:8px 6px 4px;text-align:center;background:transparent;color:#42628d;font-size:12px;letter-spacing:.04em}
+.weekly-draw{position:relative;isolation:isolate;margin:26px 0 0;padding:22px 18px;border:1px solid #c7d8f1;border-radius:24px;background:radial-gradient(circle at 88% 0%,rgba(235,244,255,.85),transparent 58%),linear-gradient(160deg,#fff,#edf5ff);box-shadow:0 10px 26px rgba(71,107,179,.09)}
+.weekly-draw::before{content:'☾';position:absolute;right:20px;top:10px;color:#8faad0;font:30px Georgia,serif;opacity:.72;pointer-events:none}
+.weekly-draw h3{position:relative;margin:0 26px 7px 0;font-family:'Yu Mincho',serif;font-size:21px;color:#2d4978}
+.weekly-draw p{position:relative;margin:0 0 14px;color:#5b759f;font-size:13px;line-height:1.8}
+.weekly-draw .btn{position:relative;z-index:1}
+.weekly-draw .result{margin-top:16px}
+.weekly-draw .result p{font-size:14px;line-height:1.9;color:#304b77}
+@media(max-width:570px){.weekly-draw{padding:18px 13px;border-radius:19px}.result-figure.is-tarot-card{max-width:225px}}
+
+
+/* ── Stella：結果を静かに受け取るための余白と文字組み ── */
+:root{--fortune-ink:#294670;--fortune-muted:#4f6b94;--fortune-line:#c4d6ed;--fortune-white:#ffffff}
+.result{
+  margin:20px 0 16px;
+  padding:23px clamp(17px,2.4vw,27px) 22px;
+  border:1px solid var(--fortune-line);
+  border-radius:24px;
+  background:linear-gradient(164deg,rgba(255,255,255,.98) 0%,#f5f9ff 57%,#ecf4ff 100%);
+  box-shadow:0 12px 30px rgba(63,97,156,.11),inset 0 0 0 4px rgba(255,255,255,.6);
+  scroll-margin-top:18px;
+}
+.result::before{
+  content:'✧　☾　✧';
+  position:static;display:block;top:auto;right:auto;
+  margin:0 auto 13px;
+  color:#9bafd1;
+  font-size:16px;letter-spacing:.18em;text-align:center;line-height:1.4;
+  text-shadow:0 0 12px rgba(255,255,255,.8);opacity:1;
+}
+.result::after{
+  content:'✧　星明かりの便り　✧';
+  display:block;position:static;
+  width:100%;height:auto;margin:21px auto 0;padding:17px 0 0;
+  text-align:center;letter-spacing:.1em;font-size:12px;line-height:1.6;
+  color:#6884ad;border:0;
+  background:linear-gradient(90deg,transparent 0%,#d7e5f6 17%,#a8c3e3 48%,#d7e5f6 83%,transparent 100%) top/100% 1px no-repeat;
+  box-shadow:none;
+}
+.result h3{
+  margin:0 0 12px;
+  padding:0;text-align:center;
+  color:var(--fortune-ink);
+  font-family:'Yu Mincho','Hiragino Mincho ProN',serif;
+  font-weight:600;font-size:clamp(19px,2vw,23px);
+  line-height:1.65;letter-spacing:.025em;
+  overflow-wrap:anywhere;
+}
+.result p,.weekly-draw .result p{
+  font-size:15px;line-height:1.98;
+  margin:12px 0;color:#334e75;
+  overflow-wrap:anywhere;
+}
+.result .lead,.weekly-draw .result .lead{
+  margin:0 0 13px;
+  text-align:center;color:#385986;
+  font-weight:650;font-size:16px;line-height:1.9;
+}
+.result .hint,.weekly-draw .result .hint{
+  margin:17px 0 0;padding:13px 15px;
+  font-size:13px;line-height:1.8;
+  color:var(--fortune-muted);
+  border:1px solid #dbe6f5;
+  border-radius:13px;
+  background:rgba(244,249,255,.8);
+}
+.result-figure,
+.result-figure.is-tarot-card,
+.result-figure.is-card{
+  margin:0 auto 19px;max-width:220px;
+  padding:7px;
+  border-radius:18px;
+  border:1px solid #c5d6ee;
+  background:linear-gradient(150deg,#fff,#edf5ff);
+  box-shadow:0 9px 22px rgba(63,97,156,.12),inset 0 0 0 2px rgba(255,255,255,.84);
+}
+.result-figure img,
+.result-figure.is-tarot-card img{
+  display:block;width:100%;height:auto;
+  border-radius:11px;
+  object-fit:contain;
+  background:#f9fbff;
+}
+.result-figure figcaption,
+.result-figure.is-tarot-card figcaption{
+  margin:0;padding:9px 5px 4px;
+  background:transparent;text-align:center;
+  color:#526f9c;font-size:12px;line-height:1.6;
+  letter-spacing:0;
+}
+.result-copy{
+  display:flex;align-items:center;justify-content:center;
+  margin:21px auto 0;padding:11px 21px;
+  min-height:45px;max-width:100%;
+  border-radius:999px;
+  border:1px solid #bbcfe9;
+  background:linear-gradient(150deg,#fff,#ebf4ff);
+  color:#32527f;font-size:14px;line-height:1.5;
+  font-weight:500;letter-spacing:.02em;
+  box-shadow:0 6px 14px rgba(91,120,180,.08);
+  cursor:pointer;
+}
+.result-copy:hover{background:#f2f8ff;border-color:#98b6db}
+.result-copy:focus-visible{outline:3px solid #88a7d3;outline-offset:3px}
+.weekly-draw .result{padding:21px 18px 20px;margin-top:18px}
+.weekly-draw .result h3{font-size:20px}
+@media(max-width:570px){
+  .result,.weekly-draw .result{
+    margin-top:17px;padding:19px 15px 18px;
+    border-radius:19px;
+  }
+  .result::before{font-size:14px;margin-bottom:10px}
+  .result::after{font-size:11px;margin-top:18px;padding-top:15px}
+  .result h3,.weekly-draw .result h3{font-size:19px;line-height:1.6;margin-bottom:10px}
+  .result p,.weekly-draw .result p{font-size:15px;line-height:1.93;margin:10px 0}
+  .result .lead,.weekly-draw .result .lead{font-size:15.5px;line-height:1.86;margin:0 0 11px}
+  .result .hint,.weekly-draw .result .hint{font-size:13px;line-height:1.77;padding:12px 12px;margin-top:14px}
+  .result-figure,.result-figure.is-tarot-card,.result-figure.is-card{max-width:193px;margin-bottom:16px;padding:6px;border-radius:16px}
+  .result-figure figcaption,.result-figure.is-tarot-card figcaption{font-size:12px;padding-top:7px}
+  .result-copy{width:100%;font-size:14px;margin-top:17px}
+  .weekly-draw{padding:17px 13px;border-radius:20px}
+  .weekly-draw h3{font-size:19px}
+}
+
 </style>
 </head>
 <body>
@@ -462,7 +590,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
       <nav class="nav" role="tablist" aria-label="占いを選ぶ">
     <button class="tab" id="tab-three" role="tab" aria-controls="three" data-tab="three" aria-selected="true" tabindex="0"><span class="tab-sigil" aria-hidden="true">✦</span><span class="tab-name">三択占い</span><span class="tab-caption">心に響く星を選ぶ</span></button>
     <button class="tab" id="tab-tarot" role="tab" aria-controls="tarot" data-tab="tarot" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">☽</span><span class="tab-name">タロット</span><span class="tab-caption">月のカードをひらく</span></button>
-    <button class="tab" id="tab-daily" role="tab" aria-controls="daily" data-tab="daily" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">✧</span><span class="tab-name">今日の運勢</span><span class="tab-caption">今日の星を読み解く</span></button>
+    <button class="tab" id="tab-daily" role="tab" aria-controls="daily" data-tab="daily" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">✧</span><span class="tab-name">今日の運勢</span><span class="tab-caption">今日と今週の星を読む</span></button>
     <button class="tab" id="tab-omikuji" role="tab" aria-controls="omikuji" data-tab="omikuji" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">✵</span><span class="tab-name">おみくじ</span><span class="tab-caption">星明かりの便りを引く</span></button>
   </nav>
     </div>
@@ -501,7 +629,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="hint">心に残る言葉だけを、そっと持ち帰ってください。</p>
       </div>
       <aside class="section-visual">
-        <img src="assets/tarot.jpg" alt="カードを差し出す少女のタロット占いイラスト"/>
+        <img src="assets/tarot.jpg" alt="中性的な星詠みがカードを差し出すタロット案内イラスト"/>
         <p class="visual-caption">一枚のカードが、今のあなたへやさしいテーマを映します。</p>
       </aside>
     </div>
@@ -511,11 +639,17 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
     <div class="panel-grid">
       <div class="section-copy">
         <span class="panel-meta">Daily Message</span><h2>✧ 今日の運勢</h2>
-        <p class="intro">星の本をそっと開くように。今日という一日に、寄り添う言葉をお届けします。</p>
+        <p class="intro">星の本をそっと開くように。今日と今週のあなたに、寄り添う言葉をお届けします。</p>
         <div class="name-field"><label for="nickname">お名前・ニックネーム（入力は任意）</label><input id="nickname" maxlength="30" autocomplete="nickname" placeholder="例：星の旅人"/></div>
         <button class="btn" id="dailyButton">今日の運勢を見る</button>
         <div id="dailyResult" class="result" hidden aria-live="polite"></div>
         <p class="hint">入力したお名前は、サイトの外へ送信されません。</p>
+        <section class="weekly-draw" aria-labelledby="weeklyTitle">
+          <h3 id="weeklyTitle">☾ 今週の一枚</h3>
+          <p>今週のあなたへ、星明かりから一枚の絵札を。週が変わると、新しい言葉に出会えます。</p>
+          <button class="btn" type="button" id="weeklyButton">今週のカードをひらく</button>
+          <div id="weeklyResult" class="result" hidden aria-live="polite"></div>
+        </section>
       </div>
       <aside class="section-visual">
         <img src="assets/daily.jpg" alt="星の本をひらく少女の今日の運勢イラスト"/>
@@ -536,7 +670,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="omikuji-gallery-entry"><a href="omikuji-gallery.html">✧ 月夜のおみくじの絵札を眺める <span aria-hidden="true">→</span></a></p>
       </div>
       <aside class="section-visual">
-        <img src="assets/omikuji.jpg" alt="おみくじの札を差し出す少女のイラスト"/>
+        <img src="assets/omikuji.jpg" alt="中性的な星詠みが護符を差し出すおみくじ案内イラスト"/>
         <p class="visual-caption">月の札に込められた、小さなひとこと。</p>
       </aside>
     </div>
@@ -1397,8 +1531,23 @@ document.querySelectorAll('[data-star]').forEach(b=>b.addEventListener('click',(
   renderRichResult('threeResult', item.title, item.lead, item.body, item.tip);
 }));
 
+function tarotCardArt(index, cardName, position='') {
+  return {
+    src:'assets/tarot_cards/' + String(index).padStart(2,'0') + '.webp',
+    alt:cardName + 'のStella絵札',
+    variant:'is-tarot-card'
+  };
+}
+function thisWeekStart() {
+  const today = new Date();
+  const monday = new Date(today.getFullYear(),today.getMonth(),today.getDate());
+  monday.setDate(monday.getDate() - ((monday.getDay()+6)%7));
+  return [monday.getFullYear(),String(monday.getMonth()+1).padStart(2,'0'),String(monday.getDate()).padStart(2,'0')].join('-');
+}
+
 function drawTarot() {
-  const card = tarotCards[randomIndex(tarotCards.length)];
+  const cardIndex = randomIndex(tarotCards.length);
+  const card = tarotCards[cardIndex];
   const reverse = randomIndex(2)===1;
   const face = reverse ? card.reversed : card.upright;
   const tarotButton = document.getElementById('tarotButton');
@@ -1408,7 +1557,7 @@ function drawTarot() {
   tarotButton.setAttribute('aria-label', 'タロットを引き直す。現在のカード：' + card.name + '・' + (reverse ? '逆位置' : '正位置'));
   void tarotButton.offsetWidth;
   tarotButton.classList.add('is-revealed');
-  renderRichResult('tarotResult', card.name + ' ・ ' + (reverse ? '逆位置' : '正位置'), face.lead, face.body, '星からの問い：' + card.question, {src:'assets/tarot_overview.jpg', alt:'大アルカナ二十二枚の一覧イメージ', caption:'中性的な星詠みの気配で描いた、大アルカナ二十二枚の一覧です。', variant:'is-overview'});
+  renderRichResult('tarotResult', card.name + ' ・ ' + (reverse ? '逆位置' : '正位置'), face.lead, face.body, '星からの問い：' + card.question, tarotCardArt(cardIndex, card.name, reverse ? '逆位置' : '正位置'));
 }
 document.getElementById('tarotButton').addEventListener('click', drawTarot);
 document.getElementById('tarotAgain').addEventListener('click', drawTarot);
@@ -1422,7 +1571,20 @@ document.getElementById('dailyButton').addEventListener('click',()=>{
   const item = dailyFortunes[cardIndex];
   const variant = item.variants[variantIndex];
   const color = luckyColors[Math.floor(seed / 97) % luckyColors.length];
-  renderRichResult('dailyResult', date + 'の運勢 ・ 今日のカード「' + item.card + '」', variant.lead, variant.body, variant.tip + ' ／ ラッキーカラー：' + color);
+  renderRichResult('dailyResult', date + 'の運勢 ・ 今日のカード「' + item.card + '」', variant.lead, variant.body, variant.tip + ' ／ ラッキーカラー：' + color, tarotCardArt(cardIndex, item.card));
+});
+
+
+document.getElementById('weeklyButton').addEventListener('click',()=>{
+  const nickname=document.getElementById('nickname').value.trim() || '星の旅人';
+  const monday=thisWeekStart();
+  const seed=hashText(nickname+'|weekly|'+monday);
+  const index=seed % tarotCards.length;
+  const card=tarotCards[index];
+  const reverse=Math.floor(seed / tarotCards.length)%2===1;
+  const position=reverse ? '逆位置' : '正位置';
+  const face=reverse ? card.reversed : card.upright;
+  renderRichResult('weeklyResult', '今週の一枚 ・ '+card.name+'（'+position+'）', face.lead, face.body, '星からの問い：'+card.question, tarotCardArt(index,card.name,position));
 });
 
 const omikujiArtwork = {
@@ -1454,7 +1616,7 @@ document.getElementById('omikujiButton').addEventListener('click',()=>{
   stage.classList.remove('is-drawing');
   void stage.offsetWidth;
   stage.classList.add('is-drawing');
-  renderRichResult('omikujiResult', f.name, f.lead, f.body, f.tip, {src: omikujiArtwork[f.name], alt: f.name + 'のおみくじイメージ', caption:'中性的な星詠みが手渡す、青と銀と白の星明かりのおみくじ札です。', variant:'is-card'});
+  renderRichResult('omikujiResult', f.name, f.lead, f.body, f.tip, {src: omikujiArtwork[f.name], alt: f.name + 'のおみくじイメージ', variant:'is-card'});
 });
 
 /* SNSでの紹介：外部のDiscord招待先は未指定のため、招待リンクを捏造しない */
