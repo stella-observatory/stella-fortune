@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#e6f2ff"/>
+<title>星明かりの絵札 | 星々と月の占い</title>
+<meta name="description" content="月夜のおみくじに登場する星明かりの絵札を眺める場所。白と青と銀に包まれた、Stellaの小さな絵札の間。"/>
+<link rel="canonical" href="https://stella-observatory.github.io/stella-fortune/omikuji-gallery.html"/>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<style>
+:root{--ink:#253e68;--ink-sub:#55709c;--silver:#bbcee8;--silver-light:#d9e5f5}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;line-height:1.9;background:radial-gradient(ellipse at 12% 0%,#ffffff 0%,transparent 33%),radial-gradient(ellipse at 90% 6%,#d6e8ff 0%,transparent 39%),linear-gradient(160deg,#f6fbff 0%,#ebf4ff 50%,#f9fbff 100%)}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(#fff 1px,transparent 1.5px) 0 0/53px 57px,radial-gradient(#aac5ec 1px,transparent 1.8px) 25px 12px/97px 108px;opacity:.5}
+a{color:inherit}
+a:focus-visible{outline:3px solid #7fa7dd;outline-offset:4px}
+.container{position:relative;max-width:1140px;margin:auto;padding:24px 18px 75px}
+.crumbs{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:#55729e;margin:0 0 22px}
+.crumbs a{text-decoration:none;border-bottom:1px solid #b2c9ea}
+.page-head{border:1px solid #d0e0f3;background:linear-gradient(140deg,rgba(255,255,255,.96),rgba(228,240,255,.92));border-radius:32px;box-shadow:0 22px 60px rgba(69,109,167,.12);padding:35px 22px 31px;text-align:center;overflow:hidden;position:relative}
+.page-head::after{content:'✧　☾　✧';position:absolute;right:21px;top:12px;color:#90aacc;font-size:20px;letter-spacing:.2em;opacity:.75}
+.moon{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 40% 32%,#fff,#d7e8ff 72%);display:grid;place-items:center;margin:0 auto 14px;box-shadow:0 0 0 1px #c5d8f2,0 8px 25px rgba(118,151,211,.17);font-size:31px;color:#5a7cb7}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:#6e89b4;margin:0 0 8px}
+h1{font-family:'Yu Mincho','Hiragino Mincho ProN',serif;font-size:clamp(28px,4.2vw,44px);line-height:1.4;font-weight:600;margin:0 0 12px;color:#284673}
+.intro{max-width:34em;margin:auto;color:#557098;font-size:15px;line-height:2}
+.divider{height:1px;max-width:360px;margin:22px auto 0;background:linear-gradient(90deg,transparent,#a9c1e5,transparent)}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 18px;margin-top:30px}
+.fortune-card{margin:0;padding:10px 10px 15px;background:linear-gradient(165deg,#fff,#f2f7ff);border:1px solid var(--silver);border-radius:21px;box-shadow:0 12px 32px rgba(71,108,167,.1);text-align:center;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.fortune-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(71,108,167,.15)}
+.fortune-card a{display:flex;height:330px;align-items:center;justify-content:center;background:linear-gradient(145deg,#f9fcff,#e8f2ff);border:1px solid #d8e5f6;border-radius:14px;text-decoration:none;overflow:hidden}
+.fortune-card img{display:block;width:auto;height:100%;max-width:100%;object-fit:contain}
+.fortune-card figcaption{font-family:'Yu Mincho','Hiragino Mincho ProN',serif;font-size:19px;font-weight:600;letter-spacing:.03em;margin-top:10px;color:#294978}
+.bottom{margin:36px auto 0;text-align:center;background:linear-gradient(160deg,#fff,#ebf4ff);border:1px solid #c6d8f0;border-radius:22px;padding:22px 16px 25px;max-width:730px}
+.bottom p{margin:0 auto 12px;color:#5a729b;font-size:14px;line-height:1.95}
+.bottom a{display:inline-flex;border-radius:99px;min-height:44px;align-items:center;justify-content:center;text-decoration:none;padding:8px 22px;margin:5px;background:linear-gradient(160deg,#fff,#e2edff);border:1px solid #b6cde9;font-weight:600;font-size:14px}
+.footer{margin-top:25px;text-align:center;font-size:12px;color:#7188ad}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:630px){.container{padding:16px 12px 50px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}.page-head{padding:28px 16px 25px;border-radius:24px}.fortune-card{padding:7px 7px 11px;border-radius:16px}.fortune-card a{height:260px;border-radius:11px}.fortune-card figcaption{font-size:16px;margin-top:6px}.intro{font-size:14px}}
+@media(max-width:385px){.fortune-card a{height:205px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fortune-card{transition:none}.fortune-card:hover{transform:none}}
+</style>
+</head>
+<body>
+<main class="container">
+  <nav class="crumbs" aria-label="現在のページ"><a href="index.html">星々と月の占い</a><span aria-hidden="true">›</span><span>星明かりの絵札</span></nav>
+  <header class="page-head">
+    <span class="moon" aria-hidden="true">☾</span>
+    <p class="eyebrow">Stella · 星の観測所</p>
+    <h1>星明かりの絵札</h1>
+    <p class="intro">月夜のおみくじに並ぶ、小さな星の便り。<br/>一枚ずつ、心の赴くままに眺めてみてください。</p>
+    <div class="divider" aria-hidden="true"></div>
+  </header>
+  <section aria-label="月夜のおみくじの絵札一覧" class="gallery">
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/01.jpg" target="_blank" rel="noopener noreferrer" aria-label="大大吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/01.jpg" alt="大大吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>大大吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/02.jpg" target="_blank" rel="noopener noreferrer" aria-label="極吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/02.jpg" alt="極吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>極吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/03.jpg" target="_blank" rel="noopener noreferrer" aria-label="月光吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/03.jpg" alt="月光吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>月光吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/04.jpg" target="_blank" rel="noopener noreferrer" aria-label="星福吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/04.jpg" alt="星福吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>星福吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/05.jpg" target="_blank" rel="noopener noreferrer" aria-label="朝露吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/05.jpg" alt="朝露吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>朝露吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/06.jpg" target="_blank" rel="noopener noreferrer" aria-label="花灯吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/06.jpg" alt="花灯吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>花灯吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/07.jpg" target="_blank" rel="noopener noreferrer" aria-label="青空吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/07.jpg" alt="青空吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>青空吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/08.jpg" target="_blank" rel="noopener noreferrer" aria-label="銀風吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/08.jpg" alt="銀風吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>銀風吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/09.jpg" target="_blank" rel="noopener noreferrer" aria-label="虹雫吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/09.jpg" alt="虹雫吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>虹雫吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/10.jpg" target="_blank" rel="noopener noreferrer" aria-label="中吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/10.jpg" alt="中吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>中吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/11.jpg" target="_blank" rel="noopener noreferrer" aria-label="光吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/11.jpg" alt="光吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>光吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/12.jpg" target="_blank" rel="noopener noreferrer" aria-label="音羽吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/12.jpg" alt="音羽吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>音羽吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/13.jpg" target="_blank" rel="noopener noreferrer" aria-label="吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/13.jpg" alt="吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/14.jpg" target="_blank" rel="noopener noreferrer" aria-label="和み吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/14.jpg" alt="和み吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>和み吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/15.jpg" target="_blank" rel="noopener noreferrer" aria-label="宵星吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/15.jpg" alt="宵星吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>宵星吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/16.jpg" target="_blank" rel="noopener noreferrer" aria-label="半吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/16.jpg" alt="半吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>半吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/17.jpg" target="_blank" rel="noopener noreferrer" aria-label="小吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/17.jpg" alt="小吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>小吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/18.jpg" target="_blank" rel="noopener noreferrer" aria-label="雪月吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/18.jpg" alt="雪月吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>雪月吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/19.jpg" target="_blank" rel="noopener noreferrer" aria-label="末吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/19.jpg" alt="末吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>末吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/20.jpg" target="_blank" rel="noopener noreferrer" aria-label="願い吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/20.jpg" alt="願い吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>願い吉</figcaption>
+      </figure>
+      <figure class="fortune-card">
+        <a href="assets/omikuji_cards/21.jpg" target="_blank" rel="noopener noreferrer" aria-label="凪吉の絵札を大きく見る（新しいタブ）">
+          <img src="assets/omikuji_cards/21.jpg" alt="凪吉を描いた星明かりのおみくじ絵札" loading="lazy" decoding="async" width="272" height="520"/>
+        </a>
+        <figcaption>凪吉</figcaption>
+      </figure>
+  </section>
+  <section class="bottom">
+    <p>気になった絵札を見つけたら、今夜の星にそっと問いかけてみませんか。<br/>占いの言葉は、心に残るところだけ持ち帰ってください。</p>
+    <a href="index.html#omikuji">月夜のおみくじを引く →</a>
+    <a href="guide.html">占いとの付き合い方</a>
+  </section>
+  <footer class="footer">© Stella · 星の観測所</footer>
+</main>
+</body>
+</html>

@@ -422,6 +422,13 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
 #tab-omikuji .tab-caption{color:#6680ad}
 #omikuji .panel-meta,#omikuji .btn{filter:saturate(1.02)}
 
+
+/* 絵札の間への入口は、操作の邪魔をしない静かな案内に */
+.omikuji-gallery-entry{margin:14px 0 0;text-align:center;font-size:13px;line-height:1.9}
+.omikuji-gallery-entry a{color:#3b5b91;text-decoration:none;border-bottom:1px solid #afc5e9;padding:8px 4px;display:inline-block}
+.omikuji-gallery-entry a:hover{color:#244879;border-bottom-color:#6d90cd}
+.omikuji-gallery-entry a:focus-visible{outline:3px solid #719ad9;outline-offset:3px;border-radius:4px}
+
 </style>
 </head>
 <body>
@@ -526,6 +533,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <div style="text-align:center"><button class="btn" id="omikujiButton">おみくじを引く</button></div>
         <div id="omikujiResult" class="result" hidden aria-live="polite"></div>
         <p class="hint">そのとき出会った言葉を、気軽に楽しんでください。</p>
+        <p class="omikuji-gallery-entry"><a href="omikuji-gallery.html">✧ 月夜のおみくじの絵札を眺める <span aria-hidden="true">→</span></a></p>
       </div>
       <aside class="section-visual">
         <img src="assets/omikuji.jpg" alt="おみくじの札を差し出す少女のイラスト"/>
@@ -1327,9 +1335,7 @@ function renderRichResult(id, title, lead, body, extra='', artwork=null) {
   copy.title='占いの言葉を文章としてコピーします';
   copy.setAttribute('aria-label','この占い結果をコピーして持ち帰る');
   copy.addEventListener('click',async()=>{
-    const message=[title,lead,body,extra].filter(Boolean).join('
-
-');
+    const message=[title,lead,body,extra].filter(Boolean).join('\n\n');
     try { await navigator.clipboard.writeText(message); copy.textContent='言葉を持ち帰りました ✧'; }
     catch (_) { copy.textContent='コピーできませんでした'; }
   });
