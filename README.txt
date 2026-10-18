@@ -41,3 +41,26 @@ index.html / guide.html / tarot-gallery.html / omikuji-gallery.html / assets/ / 
 ZIPを展開し、その中身（index.html、guide.html、tarot-gallery.html、omikuji-gallery.html、assetsフォルダー等）をリポジトリ直下へ反映してください。
 旧画像の logo.png、link-icon.png、link-badge.png は新しい .webp に置き換わりました。GitHub Desktopで同期する場合は未使用の旧画像が削除対象になります。
 公開後に Ctrl+Shift+R で再読み込みしてください。
+
+
+【画像サイズ統一の修正】
+・三択／タロット／今日の運勢／おみくじの導入画像を、すべて960×1200（4:5）の軽量JPEGに統一。
+・縦横比の異なる元絵は、人物と占い道具が残る範囲を選んで周辺をトリミングし、引き伸ばさずに統一しました。
+・パソコン表示は4:5の縦長、スマートフォン表示は従来どおり同サイズの正方形サムネイル。
+・占いの結果、絵札、利用案内、ロゴのデザインは変更していません。
+
+
+【画像とレイアウトの最終調整版】
+・採用済みのアニメ調イラスト／占い文／占い機能は変更なし
+・タイトルロゴを原本から高画質なWebPへ再書き出し（1600×533）。表示サイズはほぼ従来通り
+・パソコンでは4種類の占いイラストの表示幅に共通の上限を設定（最大365pxの枠内）
+・スマートフォンでは従来どおり4種類すべて70×70pxの案内サムネイル
+・タブ、OGP、タロット22枚／おみくじ21枚などは維持
+・画像参照の変更はロゴのみ。HTMLと assets/ をセットで更新してください
+
+【GitHub Pages更新手順】
+1. 本ZIPを解凍
+2. フォルダーの中にある index.html、guide.html、tarot-gallery.html、omikuji-gallery.html、assets/ を、
+   GitHub の stella-observatory/stella-fortune に同じ階層で上書き
+3. Commit changes で保存。反映後に https://stella-observatory.github.io/stella-fortune/ を確認
+※ ZIPファイルそのものをアップロードするのではなく、解凍した中身をアップロードしてください。

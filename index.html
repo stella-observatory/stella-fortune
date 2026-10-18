@@ -698,6 +698,90 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
  .oracle-moon{font-size:77px}
 }
 
+
+/* 四種類の占いイラストの表示比率を以前の縦長(4:5)に統一。 */
+@media (min-width:861px) {
+  #three .section-visual img,
+  #tarot .section-visual img,
+  #daily .section-visual img,
+  #omikuji .section-visual img {
+    width:100%;
+    height:auto;
+    aspect-ratio:4 / 5;
+    object-fit:cover;
+    object-position:center;
+  }
+}
+/* モバイルでは以前どおり、すべて同じ正方形サムネイルに揃える。 */
+@media (max-width:860px) and (min-width:571px) {
+  #three .section-visual img,#tarot .section-visual img,
+  #daily .section-visual img,#omikuji .section-visual img {
+    width:113px;height:113px;aspect-ratio:1 / 1;object-fit:cover;
+  }
+}
+@media (max-width:570px) {
+  #three .section-visual img,#tarot .section-visual img,
+  #daily .section-visual img,#omikuji .section-visual img {
+    width:70px;height:70px;aspect-ratio:1 / 1;object-fit:cover;
+  }
+}
+
+
+/* Stella 最終調整：画像の美しさを保ったまま、画面の視覚的バランスを揃える */
+.site-logo {
+  display:block;
+  width:min(100%,410px);
+  height:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 3px 8px rgba(255,255,255,.55));
+}
+.hero-content { max-width:600px; }
+@media(min-width:861px) {
+  .panel-grid {
+    grid-template-columns:minmax(0,1.1fr) minmax(245px,.9fr);
+    align-items:start;
+  }
+  #three .section-visual, #tarot .section-visual,
+  #daily .section-visual, #omikuji .section-visual {
+    justify-self:center;
+    align-self:start;
+    width:100%;
+    max-width:365px;
+    margin:0 auto;
+  }
+  #three .section-visual img, #tarot .section-visual img,
+  #daily .section-visual img, #omikuji .section-visual img {
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    object-position:center;
+    filter:none;
+  }
+}
+@media (max-width:860px) {
+  .site-logo { width:min(100%,390px); }
+  #three .section-visual img, #tarot .section-visual img,
+  #daily .section-visual img, #omikuji .section-visual img {
+    flex:0 0 auto;
+    object-fit:cover;
+    object-position:50% 30%;
+    filter:none;
+  }
+}
+@media (max-width:570px) {
+  .site-logo { width:min(100%,289px); }
+  .hero-content { padding-bottom:16px; }
+  #three .section-visual img, #tarot .section-visual img,
+  #daily .section-visual img, #omikuji .section-visual img {
+    width:70px;
+    height:70px;
+    aspect-ratio:1;
+    object-fit:cover;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -706,7 +790,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
     <img class="hero-image" src="assets/hero.jpg" width="1450" height="816" alt="星明かりの観測所で迎える、銀髪の星詠み" fetchpriority="high" decoding="async"/>
     <div class="hero-content">
       <div class="eyebrow">Stella · 星の観測所</div>
-      <img class="site-logo" src="assets/logo.webp" width="1200" height="400" alt="星々と月の占い"/>
+      <img class="site-logo" src="assets/logo.webp" width="1600" height="533" alt="星々と月の占い"/>
       <h1 class="visually-hidden">星々と月の占い</h1>
       <p class="site-official"><span aria-hidden="true">✧</span> Stella公式占いサイト</p>
       <div class="hero-note"><p class="sub">静かな星明かりの下で、<br/>今の心に合う言葉と出会えますように。</p></div>
@@ -743,7 +827,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="hint">気になる光は、いつでも選び直せます。</p>
       </div>
       <aside class="section-visual">
-        <img src="assets/three.jpg" width="1200" height="900" alt="三枚のカードを展開して占う星詠みの少年" loading="lazy" decoding="async"/>
+        <img src="assets/three.jpg" width="960" height="1200" alt="三枚のカードを展開して占う星詠みの少年" loading="lazy" decoding="async"/>
         <p class="visual-caption">星詠みと一緒に、心が惹かれる光を選んでください。</p>
       </aside>
     </div>
@@ -763,7 +847,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="omikuji-gallery-entry"><a href="tarot-gallery.html">✧ タロットの絵札を眺める <span aria-hidden="true">→</span></a></p>
       </div>
       <aside class="section-visual">
-        <img src="assets/tarot.jpg" alt="銀髪で青い瞳の星詠みが月のカードを手渡す" loading="lazy" decoding="async"/>
+        <img src="assets/tarot.jpg" width="960" height="1200" alt="銀髪で青い瞳の星詠みが月のカードを手渡す" loading="lazy" decoding="async"/>
         <p class="visual-caption">星詠みが手渡す一枚に、そっと耳を傾けて。</p>
       </aside>
     </div>
@@ -786,7 +870,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         </section>
       </div>
       <aside class="section-visual">
-        <img src="assets/daily.jpg" alt="月夜の星の本を開く星詠み" loading="lazy" decoding="async"/>
+        <img src="assets/daily.jpg" width="960" height="1200" alt="月夜の星の本を開く星詠み" loading="lazy" decoding="async"/>
         <p class="visual-caption">星詠みの本をひらくように、今日と今週の言葉を。</p>
       </aside>
     </div>
@@ -804,7 +888,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="omikuji-gallery-entry"><a href="omikuji-gallery.html">✧ 月夜のおみくじの絵札を眺める <span aria-hidden="true">→</span></a></p>
       </div>
       <aside class="section-visual">
-        <img src="assets/omikuji.jpg" width="1200" height="900" alt="神社で祈る星詠みの少年とおみくじ" loading="lazy" decoding="async"/>
+        <img src="assets/omikuji.jpg" width="960" height="1200" alt="神社で祈る星詠みの少年とおみくじ" loading="lazy" decoding="async"/>
         <p class="visual-caption">星詠みが手渡す、月明かりの小さな便り。</p>
       </aside>
     </div>
