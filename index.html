@@ -581,36 +581,144 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
   .entry-badge,.panel-meta{letter-spacing:.02em;font-size:11px}
 }
 
+
+/* 2026 Stella 観測所：機能はそのまま、月白・銀青・星夜の青に整える */
+:root{--st-white:#fbfdff;--st-blue:#eaf2fc;--st-silver:#bacde6;--st-ink:#29466f;--st-muted:#527097;}
+.hero{min-height:315px;margin:5px 0 16px;border-radius:30px;box-shadow:0 13px 32px rgba(57,95,150,.12)}
+.hero-content{min-height:315px;max-width:580px;padding:24px 29px;justify-content:flex-end}
+.hero::before{background:radial-gradient(circle at 78% 17%,rgba(255,255,255,.23),transparent 29%)}
+.hero-note{padding:11px 15px 10px;border:1px solid #dbe7f5;border-radius:17px;max-width:440px;box-shadow:0 6px 18px rgba(72,109,158,.075)}
+.hero-note .sub{font-size:14px;line-height:1.75}
+.site-logo{width:min(100%,390px)}
+.site-official{background:rgba(255,255,255,.88);border-color:#cedef0}
+.entry-stage{display:block;margin:0 0 18px}
+.entry-select{padding:18px 20px 20px;background:linear-gradient(180deg,#fbfdff,#f1f7ff);border-radius:24px;box-shadow:0 8px 24px rgba(61,95,149,.09)}
+.entry-select::before{opacity:.2}
+.entry-head{display:flex;align-items:center;justify-content:space-between;gap:7px 18px;flex-direction:row;flex-wrap:wrap;margin:0 0 14px}
+.entry-head h2{font:600 clamp(20px,2.4vw,25px)/1.5 'Yu Mincho','Hiragino Mincho ProN',serif;color:#2c4874;margin:0}
+.entry-head p{font-size:13px;flex-basis:100%;line-height:1.55;color:#6078a0}
+.entry-badge{padding:4px 12px;font-size:11px;letter-spacing:.05em;background:#f7fbff}
+.nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0}
+.tab{min-height:109px;padding:13px 12px;align-items:center;text-align:center;border-radius:19px;box-shadow:0 5px 15px rgba(76,108,159,.08);background:linear-gradient(155deg,#fff,#edf5ff)}
+.tab::before{width:61px;height:61px;right:-20px;top:-19px;opacity:.6}
+.tab-sigil{width:39px;height:39px;font-size:22px;margin:0 auto 8px;box-shadow:0 3px 9px rgba(81,115,169,.1)}
+.tab-name{font-size:16px;color:#34517b;margin:0 0 3px}
+.tab-caption{font-size:11px;line-height:1.5;max-width:none;letter-spacing:0;color:#5b749c}
+.tab[aria-selected=true]{border-color:#9ebadf;background:linear-gradient(155deg,#fff,#eaf3ff);box-shadow:0 0 0 2px rgba(148,179,224,.17),0 8px 20px rgba(74,107,156,.12)}
+.panel{padding:17px;border-radius:26px;min-height:0;margin:0;box-shadow:0 12px 33px rgba(70,103,155,.10)}
+.panel::after{inset:8px;border-radius:19px;border-color:rgba(217,230,248,.52)}
+.panel-grid{grid-template-columns:minmax(0,1.1fr) minmax(245px,.9fr);gap:15px;align-items:start}
+.section-copy{padding:22px 21px 20px;border-radius:20px;box-shadow:none}
+.section-copy h2{font-size:clamp(23px,2.4vw,28px);margin-bottom:7px}
+.panel-meta{padding:4px 10px;margin-bottom:9px;letter-spacing:.045em}
+.intro{margin:0 0 14px;font-size:14px;line-height:1.78;color:#526f95}
+.section-visual{padding:9px;border-radius:20px;box-shadow:none;border:1px solid #cdddf1}
+.section-visual::after{content:none}
+.section-visual img{aspect-ratio:4/3;object-fit:cover;object-position:50% 32%;border-radius:13px;box-shadow:none}
+.visual-caption{text-align:center;margin:9px 4px 3px;line-height:1.7;font-size:12px;color:#5e7a9f}
+.choices{gap:9px;margin:14px 0 0}
+.choice{min-height:104px;border-radius:17px;padding:10px 5px}
+.choice .symbol{font-size:35px;line-height:1.4}
+.cardwrap{margin:6px auto 0}
+.cardpick{margin:8px auto 12px}
+.weekly-draw{margin-top:18px;padding:17px;border-radius:20px}
+.oracle-stage{transform:scale(.84);transform-origin:center;margin:0 auto -12px}
+.result{margin:16px 0 11px;padding:19px clamp(16px,2.2vw,24px) 18px;border:1px solid #c4d6eb;border-radius:21px;background:linear-gradient(165deg,#fff,#f3f8ff 88%);box-shadow:0 9px 23px rgba(64,95,142,.1);animation:fade .35s ease;scroll-margin-top:13px}
+.result::before,.result::after{content:none!important;display:none!important}
+.letter-mark{text-align:center;color:#7089b0;font-size:12px;font-family:'Yu Mincho',serif;letter-spacing:.12em;padding-bottom:11px;margin-bottom:14px;border-bottom:1px solid #d9e6f4}
+.result-figure,.result-figure.is-tarot-card,.result-figure.is-card{max-width:180px;padding:5px;border:1px solid #c7d9ee;background:#f8fbff;border-radius:13px;margin:0 auto 14px;box-shadow:0 6px 15px rgba(54,90,143,.09)}
+.result-figure img,.result-figure.is-tarot-card img{width:100%;height:auto;aspect-ratio:364/526;object-fit:cover;border-radius:9px;background:#e8f1fb}
+.result-figure.is-card img{aspect-ratio:auto;object-fit:contain}
+.result-figure figcaption{display:none}
+.result h3,.weekly-draw .result h3{font-size:clamp(19px,2vw,22px);color:#28466f;line-height:1.55;margin:0 0 10px}
+.result p,.weekly-draw .result p{font-size:15px;line-height:1.87;margin:10px 0;color:#354f73}
+.result .lead,.weekly-draw .result .lead{font-size:15.5px;line-height:1.77;margin:0 0 12px;color:#3f618b}
+.result .hint,.weekly-draw .result .hint{margin-top:12px;padding:10px 12px;font-size:12.5px;line-height:1.7;border:1px solid #dce7f5;background:rgba(245,249,255,.92)}
+.result-copy{min-height:44px;margin:16px auto 0;font-size:13.5px;background:linear-gradient(150deg,#fff,#edf6ff);box-shadow:none}
+.omikuji-gallery-entry{margin:11px 0 0}
+.hint{margin-top:12px;line-height:1.7;color:#5e7697}
+.footer-card{box-shadow:none;border-color:#d1dff0}
+@media(max-width:860px){.panel-grid{grid-template-columns:1fr}.section-visual{display:flex;align-items:center;gap:12px}.section-visual img{width:113px;height:113px;aspect-ratio:1;object-position:50% 29%}.section-visual .visual-caption{font-size:12px;text-align:left;flex:1}.hero,.hero-content{min-height:285px}}
+@media(max-width:570px){
+ .container{padding:12px 11px 42px}
+ .hero{min-height:235px;margin:0 0 12px;border-radius:22px}
+ .hero-content{min-height:235px;max-width:100%;padding:15px 16px 14px;justify-content:flex-end}
+ .hero-image{object-position:65% center}
+ .hero::after{background:linear-gradient(180deg,rgba(244,250,255,.08) 0%,rgba(240,247,255,.59) 50%,rgba(241,248,255,.94) 100%)}
+ .site-logo{width:min(100%,275px);margin-bottom:0}
+ .eyebrow{font-size:10px;margin-bottom:2px}
+ .site-official{font-size:10px;padding:3px 9px;margin:0 0 7px}
+ .hero-note{margin-top:3px;padding:8px 10px}
+ .hero-note .sub{font-size:12.5px;line-height:1.55}
+ .entry-stage{margin:0 0 12px}
+ .entry-select{padding:13px 12px;border-radius:19px}
+ .entry-head{gap:4px 10px;margin-bottom:10px}
+ .entry-head h2{font-size:21px}
+ .entry-head p{font-size:12px;line-height:1.5}
+ .entry-badge{font-size:10px;padding:2px 10px}
+ .nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .tab{min-height:86px;padding:10px 8px;border-radius:16px}
+ .tab-sigil{width:30px;height:30px;font-size:18px;margin-bottom:5px}
+ .tab-name{font-size:14px}
+ .tab-caption{font-size:10.5px!important;line-height:1.4}
+ .panel{padding:10px;border-radius:19px}
+ .panel::after{inset:5px;border-radius:14px}
+ .section-copy{padding:17px 13px;border-radius:15px}
+ .section-copy h2{font-size:23px}
+ .intro{font-size:13px;line-height:1.7;margin-bottom:10px}
+ .section-visual{order:-1;margin:0 0 1px;padding:6px 9px;gap:9px;border-radius:15px}
+ .section-visual img{width:70px;height:70px;border-radius:10px;object-position:50% 28%}
+ .visual-caption{font-size:11px!important;line-height:1.55!important}
+ .result,.weekly-draw .result{margin:14px 0 10px;padding:16px 12px;border-radius:16px}
+ .letter-mark{font-size:11px;margin-bottom:11px;padding-bottom:8px}
+ .result-figure,.result-figure.is-tarot-card,.result-figure.is-card{max-width:160px;margin-bottom:12px;padding:4px}
+ .result h3,.weekly-draw .result h3{font-size:19px;line-height:1.48;margin-bottom:7px}
+ .result p,.weekly-draw .result p{font-size:14px;line-height:1.78;margin:8px 0}
+ .result .lead,.weekly-draw .result .lead{font-size:14.5px;line-height:1.7;margin-bottom:7px}
+ .result .hint,.weekly-draw .result .hint{padding:9px 10px;font-size:12.5px}
+ .result-copy{width:100%;min-height:44px;font-size:13px;padding:10px 12px}
+ .cardpick{margin:5px auto 10px}
+ .weekly-draw{padding:14px 10px;border-radius:15px}
+ .footer-card{padding:13px 10px}
+}
+@media(prefers-reduced-motion:reduce){.tab,.choice,.btn,.cardpick,.result{animation:none!important;transition:none!important}html{scroll-behavior:auto!important}}
+
+
+/* タロットの入り口は小さく、結果の言葉を主役にする */
+@media(max-width:570px){
+ .cardwrap{padding-top:2px}
+ .cardwrap::before{width:195px;height:185px;top:0}
+ .cardpick{width:142px;height:190px;border-radius:17px}
+ .tarot-face{border-radius:17px}
+ .tarot-back-moon{font-size:57px}
+ .tarot-front-icon{font-size:30px}
+ .tarot-front-name{font-size:18px}
+ .cardwrap .btn{min-height:45px}
+ .oracle-stage{height:116px;transform:scale(.78);margin:0 auto 2px}
+ .oracle-moon{font-size:77px}
+}
+
 </style>
 </head>
 <body>
 <main class="container">
   <header class="hero">
-    <img class="hero-image" src="assets/hero.jpg" alt="月夜の観測所で微笑む銀髪の少女と星空"/>
+    <img class="hero-image" src="assets/hero.jpg" alt="星明かりの観測所で迎える、銀髪の星詠み" fetchpriority="high" decoding="async"/>
     <div class="hero-content">
       <div class="eyebrow">Stella · 星の観測所</div>
       <img class="site-logo" src="assets/logo.png" alt="星々と月の占い"/>
       <h1 class="visually-hidden">星々と月の占い</h1>
       <p class="site-official"><span aria-hidden="true">✧</span> Stella公式占いサイト</p>
-      <div class="hero-note"><p class="sub">静かな星の夜に、心へ届くひとことを。<br/>気になる光を、そっと選んでみてください。</p><p class="hero-guidance">今夜の気分に合う入口から、ひとつ選んで進めます。</p><p class="hero-guidance">タロットの大アルカナは、愚者＝0から世界＝XXIまでの体系で並んでいます。</p></div>
+      <div class="hero-note"><p class="sub">静かな星明かりの下で、<br/>今の心に合う言葉と出会えますように。</p></div>
     </div>
   </header>
 
   <section class="entry-stage" aria-labelledby="entry-title">
-    <div class="entry-copy">
-      <span class="entry-badge">月明かりの入り口</span>
-      <h2 id="entry-title">今夜の入り口を選ぶ</h2>
-      <p>気になる光を、ひとつ。いまの気持ちに合う言葉を、あなたのペースで探してみてください。</p>
-      <ul class="entry-points">
-        <li><strong>ひらめきで選ぶ</strong><span>気になる光を、そのまま入り口に。</span></li>
-        <li><strong>好きな言葉だけ</strong><span>心に残ったひとことだけで大丈夫。</span></li>
-        <li><strong>自由に選び直す</strong><span>そのときの気分を大切に。</span></li>
-      </ul>
-    </div>
     <div class="entry-select">
       <div class="entry-head">
-        <span class="entry-badge soft">星の占い</span>
-        <p>心が惹かれる占いを、そっと選んでください。</p>
+        <span class="entry-badge">☾ 月夜の入り口</span>
+        <h2 id="entry-title">今夜の入り口を選ぶ</h2>
+        <p>気になる占いを、ひとつ。好きな言葉だけを受け取ってください。</p>
       </div>
       <nav class="nav" role="tablist" aria-label="占いを選ぶ">
     <button class="tab" id="tab-three" role="tab" aria-controls="three" data-tab="three" aria-selected="true" tabindex="0"><span class="tab-sigil" aria-hidden="true">✦</span><span class="tab-name">三択占い</span><span class="tab-caption">心に響く星を選ぶ</span></button>
@@ -635,8 +743,8 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="hint">気になる光は、いつでも選び直せます。</p>
       </div>
       <aside class="section-visual">
-        <img src="assets/three.jpg" alt="三つのきらめくオーブを示す少女の三択占いイラスト"/>
-        <p class="visual-caption">月・星・流れ星のきらめきから、ひとつ選んでください。</p>
+        <img src="assets/three.jpg" alt="銀髪の星詠みと三つの星明かり" loading="lazy" decoding="async"/>
+        <p class="visual-caption">星詠みと一緒に、心が惹かれる光を選んでください。</p>
       </aside>
     </div>
   </section>
@@ -655,8 +763,8 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="omikuji-gallery-entry"><a href="tarot-gallery.html">✧ タロットの絵札を眺める <span aria-hidden="true">→</span></a></p>
       </div>
       <aside class="section-visual">
-        <img src="assets/tarot.jpg" alt="中性的な星詠みがカードを差し出すタロット案内イラスト"/>
-        <p class="visual-caption">一枚のカードが、今のあなたへやさしいテーマを映します。</p>
+        <img src="assets/tarot.jpg" alt="銀髪で青い瞳の星詠みが月のカードを手渡す" loading="lazy" decoding="async"/>
+        <p class="visual-caption">星詠みが手渡す一枚に、そっと耳を傾けて。</p>
       </aside>
     </div>
   </section>
@@ -678,8 +786,8 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         </section>
       </div>
       <aside class="section-visual">
-        <img src="assets/daily.jpg" alt="星の本をひらく少女の今日の運勢イラスト"/>
-        <p class="visual-caption">今夜の星の本から、心に寄り添うひとことを。</p>
+        <img src="assets/daily.jpg" alt="月夜の星の本を開く星詠み" loading="lazy" decoding="async"/>
+        <p class="visual-caption">星詠みの本をひらくように、今日と今週の言葉を。</p>
       </aside>
     </div>
   </section>
@@ -696,8 +804,8 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
         <p class="omikuji-gallery-entry"><a href="omikuji-gallery.html">✧ 月夜のおみくじの絵札を眺める <span aria-hidden="true">→</span></a></p>
       </div>
       <aside class="section-visual">
-        <img src="assets/omikuji.jpg" alt="中性的な星詠みが護符を差し出すおみくじ案内イラスト"/>
-        <p class="visual-caption">月の札に込められた、小さなひとこと。</p>
+        <img src="assets/omikuji.jpg" alt="銀髪で青い瞳の星詠みが星の札を手渡す" loading="lazy" decoding="async"/>
+        <p class="visual-caption">星詠みが手渡す、月明かりの小さな便り。</p>
       </aside>
     </div>
   </section>
@@ -1471,12 +1579,14 @@ const luckyColors = ['月白','銀青','淡い水色','星空の青','勿忘草�
 function renderRichResult(id, title, lead, body, extra='', artwork=null) {
   const target = document.getElementById(id);
   target.replaceChildren();
+  const marker=document.createElement('div'); marker.className='letter-mark'; marker.textContent='✧ 星明かりの便り ✧'; target.append(marker);
   if (artwork && artwork.src) {
     const fig = document.createElement('figure');
     fig.className = 'result-figure ' + (artwork.variant || '');
     const img = document.createElement('img');
     img.src = artwork.src;
     img.alt = artwork.alt || title;
+    img.decoding='async';
     fig.append(img);
     if (artwork.caption) {
       const cap = document.createElement('figcaption');
@@ -1496,8 +1606,19 @@ function renderRichResult(id, title, lead, body, extra='', artwork=null) {
   copy.setAttribute('aria-label','この占い結果をコピーして持ち帰る');
   copy.addEventListener('click',async()=>{
     const message=[title,lead,body,extra].filter(Boolean).join('\n\n');
-    try { await navigator.clipboard.writeText(message); copy.textContent='言葉を持ち帰りました ✧'; }
-    catch (_) { copy.textContent='コピーできませんでした'; }
+    let copied=false;
+    if (navigator.clipboard && window.isSecureContext) {
+      try { await navigator.clipboard.writeText(message); copied=true; } catch (_) {}
+    }
+    if (!copied) {
+      const field=document.createElement('textarea');
+      field.value=message; field.setAttribute('aria-hidden','true');
+      field.style.cssText='position:fixed;left:-9999px;top:0;';
+      document.body.appendChild(field); field.focus(); field.select();
+      try { copied=document.execCommand('copy'); } catch (_) {}
+      field.remove();
+    }
+    copy.textContent=copied?'言葉を持ち帰りました ✧':'コピーできませんでした';
   });
   target.append(copy);
   target.hidden = false;
