@@ -64,3 +64,10 @@ ZIPを展開し、その中身（index.html、guide.html、tarot-gallery.html、
    GitHub の stella-observatory/stella-fortune に同じ階層で上書き
 3. Commit changes で保存。反映後に https://stella-observatory.github.io/stella-fortune/ を確認
 ※ ZIPファイルそのものをアップロードするのではなく、解凍した中身をアップロードしてください。
+
+
+2026-10-19 イラスト復元:
+- タロット: 浮遊するカードに囲まれた銀髪の星詠みの少女を復元
+- おみくじ: 神社で祈る銀髪の星詠みの少年を、トリミングせずに全体を表示
+- 4種類の表示枠は4:5に統一したまま
+- 画像を適正なJPEG形式で保存し、サイト・占い機能は変更なし
