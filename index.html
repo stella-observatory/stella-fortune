@@ -348,6 +348,70 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
 .site-share-button:focus-visible,.site-share-logo:focus-visible{outline:3px solid #82a7e7;outline-offset:2px}
 @media(max-width:570px){.site-share{padding:13px 8px}.site-share-button{font-size:13px;padding:8px 12px}.site-share-actions{gap:7px}}
 
+
+/* layout refinement: stronger hierarchy and memorable composition */
+.hero{min-height:390px;margin-bottom:22px;border-radius:38px;box-shadow:0 22px 56px rgba(59,95,170,.18)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 16%,rgba(255,245,198,.34),transparent 26%),radial-gradient(circle at 30% 22%,rgba(255,255,255,.32),transparent 22%);pointer-events:none;z-index:0}
+.hero-content{max-width:640px;justify-content:flex-end;padding:30px 30px 28px}
+.hero-note{margin-top:8px;padding:16px 18px 14px;border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(236,245,255,.78));border:1px solid rgba(190,211,244,.92);box-shadow:0 14px 34px rgba(88,121,186,.12), inset 0 1px 0 rgba(255,255,255,.7);backdrop-filter:blur(5px)}
+.hero-note .sub{margin:0}
+.hero-guidance{margin:10px 0 0;font-size:13px;color:#58719a;letter-spacing:.02em}
+.entry-stage{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);gap:18px;align-items:stretch;margin:0 0 28px}
+.entry-copy,.entry-select{background:linear-gradient(180deg,rgba(251,253,255,.97),rgba(240,247,255,.97));border:1px solid rgba(181,204,243,.95);border-radius:30px;box-shadow:var(--shadow);padding:22px 22px 20px;position:relative;overflow:hidden}
+.entry-copy::before,.entry-select::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 10%,rgba(255,255,255,.55),transparent 20%),radial-gradient(circle at 100% 0%,rgba(232,240,255,.58),transparent 26%);pointer-events:none}
+.entry-badge{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;background:linear-gradient(180deg,#ffffff,#e6efff);border:1px solid #c7d8f7;color:#5877a9;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.entry-badge.soft{background:linear-gradient(180deg,#fffefc,#eef3ff)}
+.entry-copy h2{margin:14px 0 8px;font-family:'Yu Mincho',Georgia,serif;font-size:28px;line-height:1.35;color:#27416d}
+.entry-copy p,.entry-head p{margin:0;color:#56729e;font-size:14px;line-height:1.9}
+.entry-points{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}
+.entry-points li{display:grid;gap:2px;padding:14px 15px;border-radius:18px;background:linear-gradient(180deg,#ffffff,#edf4ff);border:1px solid #c6d8f6;box-shadow:0 7px 18px rgba(96,132,197,.08)}
+.entry-points strong{font-size:14px;color:#355281}
+.entry-points span{font-size:13px;color:#627ba6;line-height:1.7}
+.entry-head{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.nav{margin:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tab{position:relative;min-height:132px;padding:18px 18px 16px;align-items:flex-start;text-align:left;border-radius:24px;background:linear-gradient(160deg,#ffffff 0%,#edf4ff 72%,#e2ecff 100%);border:1px solid #c2d6f6;box-shadow:0 10px 24px rgba(96,131,196,.1),inset 0 1px 0 rgba(255,255,255,.8)}
+.tab::before{content:"";position:absolute;right:-20px;top:-18px;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(214,228,255,.78) 44%,transparent 72%);opacity:.92}
+.tab[aria-selected=true]{background:linear-gradient(155deg,#fffefb 0%,#eff5ff 68%,#e0ebff 100%);border-color:#a7c2f3;box-shadow:0 0 0 2px rgba(132,167,246,.22),0 16px 32px rgba(93,143,240,.16)}
+.tab-sigil{display:inline-grid;place-items:center;width:48px;height:48px;margin-bottom:12px;border-radius:50%;font-size:24px;color:#6f8cc8;background:radial-gradient(circle at 50% 38%,#ffffff,#dfeaff 68%,#c9daf8 100%);box-shadow:0 0 0 1px rgba(191,210,243,.95),0 8px 18px rgba(98,129,191,.12)}
+.tab-name{font-size:17px;line-height:1.35;margin-bottom:4px}
+.tab-caption{font-size:12px;line-height:1.65;color:#6078a1;max-width:14em}
+.panel{padding:24px;border-radius:34px;background:linear-gradient(180deg,rgba(251,253,255,.98),rgba(240,247,255,.98));box-shadow:0 20px 50px rgba(71,104,171,.14);margin-top:0}
+.panel::after{content:"";display:block;position:absolute;inset:14px;border-radius:26px;border:1px solid rgba(210,224,248,.72);pointer-events:none}
+.panel-grid{gap:20px;align-items:stretch}
+.section-copy{position:relative;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(244,249,255,.86));border:1px solid rgba(191,211,243,.92);border-radius:28px;padding:24px 22px 22px;box-shadow:0 12px 28px rgba(88,122,188,.08)}
+.section-visual{border-radius:28px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(241,247,255,.92));box-shadow:0 12px 28px rgba(88,122,188,.08)}
+.section-visual img{border-radius:20px}
+.panel-meta{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;margin-bottom:12px;background:linear-gradient(180deg,#ffffff,#e9f1ff);border:1px solid #cad9f5;color:#5f7eae;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.section-copy h2{margin-bottom:10px;font-family:'Yu Mincho',Georgia,serif;font-size:29px;line-height:1.35}
+.intro{font-size:14px;line-height:1.9;margin-bottom:18px}
+.result{margin-top:18px}
+.footer{margin-top:28px;padding:0;border:0;background:none}
+.footer-card{max-width:880px;margin:0 auto;padding:22px 18px 18px;border-radius:28px;background:linear-gradient(180deg,rgba(251,253,255,.95),rgba(240,247,255,.97));border:1px solid rgba(181,204,243,.95);box-shadow:var(--shadow)}
+.footer-lead{margin-top:0;font-size:14px;color:#4f6994;line-height:1.9}
+.site-share{margin:18px auto 16px}
+@media(max-width:860px){
+  .entry-stage{grid-template-columns:1fr}
+  .hero{min-height:340px}
+  .hero-content{min-height:340px}
+}
+@media(max-width:570px){
+  .hero{min-height:300px;border-radius:26px}
+  .hero-content{padding:22px 18px 20px;min-height:300px}
+  .hero-note{padding:14px 14px 12px;border-radius:18px}
+  .entry-copy,.entry-select{padding:18px 16px;border-radius:24px}
+  .entry-copy h2{font-size:24px}
+  .nav{grid-template-columns:1fr 1fr;gap:10px}
+  .tab{min-height:118px;padding:14px 13px 12px;border-radius:20px}
+  .tab-sigil{width:42px;height:42px;font-size:22px;margin-bottom:10px}
+  .tab-name{font-size:14px}
+  .tab-caption{font-size:11px;line-height:1.5}
+  .panel{padding:16px;border-radius:25px}
+  .panel::after{inset:8px;border-radius:19px}
+  .section-copy,.section-visual{border-radius:22px;padding:18px 16px}
+  .section-copy h2{font-size:24px}
+  .footer-card{padding:18px 13px 16px;border-radius:22px}
+}
+
 </style>
 </head>
 <body>
@@ -358,22 +422,39 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
       <div class="eyebrow">Stella · 星の観測所</div>
       <img class="site-logo" src="assets/logo.png" alt="星々と月の占い"/>
       <h1 class="visually-hidden">星々と月の占い</h1>
-      <p class="sub">静かな星の夜に、心へ届くひとことを。<br/>気になる光を、そっと選んでみてください。</p>
+      <div class="hero-note"><p class="sub">静かな星の夜に、心へ届くひとことを。<br/>気になる光を、そっと選んでみてください。</p><p class="hero-guidance">今夜の気分に合う入口から、ひとつ選んで進めます。</p></div>
     </div>
   </header>
 
-  <nav class="nav" role="tablist" aria-label="占いを選ぶ">
+  <section class="entry-stage" aria-labelledby="entry-title">
+    <div class="entry-copy">
+      <span class="entry-badge">Moonlight Entrance</span>
+      <h2 id="entry-title">今夜の入り口を選ぶ</h2>
+      <p>占いは、答えを急いで決めるためではなく、いまの気持ちをそっと見つめるためのもの。気になる入口から、静かに始めてみてください。</p>
+      <ul class="entry-points">
+        <li><strong>ひらめきで選ぶ</strong><span>最初に目に留まった光を、そのまま入り口に。</span></li>
+        <li><strong>短く受け取る</strong><span>全部を持ち帰らず、心に残るひとことだけで大丈夫です。</span></li>
+        <li><strong>何度でも選び直せる</strong><span>その夜の気分に合わせて、別の占いへ移っても構いません。</span></li>
+      </ul>
+    </div>
+    <div class="entry-select">
+      <div class="entry-head">
+        <span class="entry-badge soft">Fortune Menu</span>
+        <p>4つの占いから、今夜の一歩をお選びください。</p>
+      </div>
+      <nav class="nav" role="tablist" aria-label="占いを選ぶ">
     <button class="tab" id="tab-three" role="tab" aria-controls="three" data-tab="three" aria-selected="true" tabindex="0"><span class="tab-sigil" aria-hidden="true">✦</span><span class="tab-name">三択占い</span><span class="tab-caption">心に響く星を選ぶ</span></button>
     <button class="tab" id="tab-tarot" role="tab" aria-controls="tarot" data-tab="tarot" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">☽</span><span class="tab-name">タロット</span><span class="tab-caption">月のカードをひらく</span></button>
     <button class="tab" id="tab-daily" role="tab" aria-controls="daily" data-tab="daily" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">✧</span><span class="tab-name">今日の運勢</span><span class="tab-caption">今日の星を読み解く</span></button>
     <button class="tab" id="tab-omikuji" role="tab" aria-controls="omikuji" data-tab="omikuji" aria-selected="false" tabindex="-1"><span class="tab-sigil" aria-hidden="true">✵</span><span class="tab-name">おみくじ</span><span class="tab-caption">星明かりの便りを引く</span></button>
   </nav>
-
+    </div>
+  </section>
 
   <section id="three" aria-labelledby="tab-three" role="tabpanel" class="panel active">
     <div class="panel-grid">
       <div class="section-copy">
-        <h2>✦ 星の三択占い</h2>
+        <span class="panel-meta">Constellation Choice</span><h2>✦ 星の三択占い</h2>
         <p class="intro">月の光、星の光、宵の光。心が惹かれるものを、ひとつ選んでください。</p>
         <div class="choices">
           <button class="choice" data-star="0" aria-pressed="false"><span class="symbol" aria-hidden="true">☽</span><span class="choice-name">月の星</span><span class="choice-trace">静けさのひかり</span></button>
@@ -393,7 +474,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
   <section id="tarot" aria-labelledby="tab-tarot" role="tabpanel" class="panel">
     <div class="panel-grid">
       <div class="section-copy">
-        <h2>☾ タロット1枚引き</h2>
+        <span class="panel-meta">Moon Tarot</span><h2>☾ タロット1枚引き</h2>
         <p class="intro">心に浮かぶ問いを、大切にしてみてください。カードが映す言葉を、今のあなたに合う形で受け取れます。</p>
         <div class="cardwrap">
           <button class="cardpick" id="tarotButton" aria-label="タロットカードを1枚引く"><span class="tarot-card-inner"><span class="tarot-face tarot-card-back"><span class="tarot-back-moon" aria-hidden="true">☾</span><small>✦ STELLA ✦</small></span><span class="tarot-face tarot-card-front"><span class="tarot-front-icon" aria-hidden="true">✧</span><span class="tarot-front-name" id="tarotFaceName">星のカード</span><span class="tarot-front-orientation" id="tarotFacePosition"></span></span></span></button>
@@ -412,7 +493,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
   <section id="daily" aria-labelledby="tab-daily" role="tabpanel" class="panel">
     <div class="panel-grid">
       <div class="section-copy">
-        <h2>✧ 今日の運勢</h2>
+        <span class="panel-meta">Daily Message</span><h2>✧ 今日の運勢</h2>
         <p class="intro">星の本をそっと開くように。今日という一日に、寄り添う言葉をお届けします。</p>
         <div class="name-field"><label for="nickname">お名前・ニックネーム（入力は任意）</label><input id="nickname" maxlength="30" autocomplete="nickname" placeholder="例：星の旅人"/></div>
         <button class="btn" id="dailyButton">今日の運勢を見る</button>
@@ -429,7 +510,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
   <section id="omikuji" aria-labelledby="tab-omikuji" role="tabpanel" class="panel">
     <div class="panel-grid">
       <div class="section-copy">
-        <h2>☆ 月夜のおみくじ</h2>
+        <span class="panel-meta">Moon Letter</span><h2>☆ 月夜のおみくじ</h2>
         <p class="intro">月明かりに包まれた小さな箱から、今のあなたへ一枚の便りを。</p>
         <div class="oracle-stage" id="oracleStage" aria-hidden="true"><span class="oracle-star a">✦</span><span class="oracle-star b">✧</span><span class="oracle-moon">☾</span><span class="oracle-star c">✦</span></div>
         <div style="text-align:center"><button class="btn" id="omikujiButton">おみくじを引く</button></div>
@@ -444,7 +525,8 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
   </section>
 
   <footer class="footer">
-    <p>すべての言葉を受け取らなくても大丈夫。<br/>今夜、心に残ったひとことだけを。</p>
+    <div class="footer-card">
+    <p class="footer-lead">すべての言葉を受け取らなくても大丈夫。<br/>今夜、心に残ったひとことだけを。</p>
     <p><a class="footer-link" href="guide.html">占いとの付き合い方・利用案内</a></p>
     <div class="site-share" aria-label="サイトを紹介・共有する">
       <p class="site-share-label">✧ この小さな観測所を、誰かにも</p>
@@ -457,6 +539,7 @@ body::before{opacity:.72;background-image:radial-gradient(rgba(255,255,255,.98) 
     </div>
 
     <strong>© Stella · 星の観測所</strong>
+    </div>
   </footer>
 </main>
 
@@ -1216,10 +1299,12 @@ function renderRichResult(id, title, lead, body, extra='') {
   target.append(h, p1, p2);
   if (extra) { const more = document.createElement('p'); more.className = 'hint'; more.textContent = extra; target.append(more); }
   const copy = document.createElement('button');
-  copy.type='button'; copy.className='result-copy'; copy.textContent='✧ この言葉をコピー';
+  copy.type='button'; copy.className='result-copy'; copy.textContent='✧ この言葉を持ち帰る';
+  copy.title='占いの言葉を文章としてコピーします';
+  copy.setAttribute('aria-label','この占い結果をコピーして持ち帰る');
   copy.addEventListener('click',async()=>{
-    const message=[title,lead,body,extra].filter(Boolean).join('\\n\\n');
-    try { await navigator.clipboard.writeText(message); copy.textContent='コピーしました ✧'; }
+    const message=[title,lead,body,extra].filter(Boolean).join('\n\n');
+    try { await navigator.clipboard.writeText(message); copy.textContent='言葉を持ち帰りました ✧'; }
     catch (_) { copy.textContent='コピーできませんでした'; }
   });
   target.append(copy);
