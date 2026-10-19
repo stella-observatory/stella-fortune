@@ -1,9 +1,9 @@
 /* Stella 星々と月の占い：装飾のみの微調整
    ・既存の占い処理・データ・イラストには変更を加えません
-   ・PCの余白に星座と観測所を控えめに配置
+   ・PC背景を月と星の装飾に変更
    ・タイトルの画面比率を保ち、少女の顔が見えるよう調整 */
 
-/* 星座背景：パソコンのみ。装飾なので中央の文章とは重ねない */
+/* 月と星の背景：パソコンのみ。主張しすぎない明るい装飾にする */
 @media(min-width:981px){
   body::before{
     content:"";
@@ -11,25 +11,32 @@
     inset:0;
     z-index:0;
     pointer-events:none;
-    opacity:.46;
+    opacity:.72;
     background-image:
-      url("constellation-left.svg"),
-      url("constellation-right.svg"),
-      radial-gradient(circle,rgba(255,255,255,.98) 1px,transparent 1.5px),
-      radial-gradient(circle,rgba(149,177,225,.34) 1px,transparent 1.6px);
-    background-position:left -26px top 146px,right -26px top 207px,0 0,13px 29px;
-    background-size:206px auto,200px auto,62px 69px,137px 143px;
-    background-repeat:no-repeat,no-repeat,repeat,repeat;
+      url("moon-left.svg"),
+      url("moon-right.svg"),
+      radial-gradient(circle,rgba(255,255,255,.98) 1px,transparent 1.7px),
+      radial-gradient(circle,rgba(159,186,232,.38) 1px,transparent 1.8px),
+      radial-gradient(circle at 16% 12%,rgba(255,255,255,.56),transparent 18%),
+      radial-gradient(circle at 84% 16%,rgba(226,236,255,.58),transparent 22%);
+    background-position:left -6px top 88px,right -8px top 126px,0 0,23px 17px,0 0,0 0;
+    background-size:248px auto,238px auto,72px 72px,156px 156px,100% 100%,100% 100%;
+    background-repeat:no-repeat,no-repeat,repeat,repeat,no-repeat,no-repeat;
   }
   body::after{
     content:"";
     position:fixed;
-    left:0;right:0;bottom:0;
-    height:170px;
+    inset:0;
     z-index:0;
     pointer-events:none;
-    opacity:.19;
-    background:url("observatory-silhouette.svg") center bottom / 100% 100% no-repeat;
+    opacity:.34;
+    background:
+      radial-gradient(circle at 22% 82%, rgba(255,255,255,.22), transparent 16%),
+      radial-gradient(circle at 76% 78%, rgba(220,232,255,.26), transparent 18%),
+      radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1.7px);
+    background-size:auto,auto,132px 132px;
+    background-position:0 0,0 0,14px 34px;
+    mix-blend-mode:screen;
   }
 }
 .container,main{position:relative;z-index:1;}
@@ -174,4 +181,78 @@
   .entry-stage .entry-head .entry-badge{align-self:flex-start;}
   .entry-stage .entry-head h2{display:block;width:100%;margin:0;font-size:21px;}
   .entry-stage .entry-head p{width:100%;margin:0;}
+}
+
+
+/* 最終調整：スマートフォンの少女の口元とタイトルロゴを明確に分離 */
+@media (max-width:570px){
+  .hero-home{
+    min-height:0!important;
+    height:auto!important;
+    border-radius:25px;
+    background:#f5faff;
+  }
+  .hero-home .hero-image{
+    position:relative;
+    inset:auto;
+    display:block;
+    width:100%;
+    height:clamp(175px,54vw,220px);
+    object-fit:cover;
+    object-position:center 24%;
+  }
+  .hero-home::after{display:none;}
+  .hero-home::before{height:220px;bottom:auto;opacity:.28;}
+  .hero-home .hero-content{
+    position:relative;
+    min-height:0!important;
+    height:auto!important;
+    width:100%;
+    max-width:100%;
+    padding:12px 16px 17px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    text-align:center;
+    background:linear-gradient(180deg,rgba(250,253,255,.99),rgba(235,245,255,.96));
+  }
+  .hero-home .eyebrow{
+    margin:0 0 1px;
+    font-size:10px;
+    line-height:1.5;
+    letter-spacing:.14em;
+  }
+  .hero-home .site-logo{
+    display:block;
+    width:min(100%,266px)!important;
+    height:auto!important;
+    max-height:none;
+    margin:0 auto;
+    object-fit:contain;
+  }
+  .hero-home .site-official{
+    align-self:center;
+    margin:2px auto 5px;
+    padding:4px 11px;
+  }
+  .hero-home .hero-note{
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:9px 11px;
+    border-radius:16px;
+    box-shadow:0 5px 15px rgba(83,115,174,.06);
+  }
+  .hero-home .hero-note .sub{
+    font-size:12.5px;
+    line-height:1.7;
+    text-align:center;
+    text-shadow:none;
+  }
+}
+@media(max-width:350px){
+  .hero-home .hero-content{padding-left:12px;padding-right:12px;}
+  .hero-home .site-logo{width:min(100%,238px)!important;}
 }
