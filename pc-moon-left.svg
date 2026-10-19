@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="960" viewBox="0 0 720 960" fill="none">
+<defs>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(210 170) rotate(90) scale(210 210)">
+    <stop stop-color="#FFFFFF" stop-opacity="0.78"/>
+    <stop offset="1" stop-color="#DCE9FF" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="moon" x1="110" y1="40" x2="270" y2="280" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFFFFF"/>
+    <stop offset="1" stop-color="#D9E6FF"/>
+  </linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+<circle cx="220" cy="190" r="190" fill="url(#glow)"/>
+<g opacity="0.95">
+  <path d="M176 73c-48 24-87 66-110 117-45 100-5 218 92 269 57 30 122 34 181 16-47 39-111 57-176 47C52 503-22 380 10 261 39 153 133 76 241 64c-22 8-44 11-65 9Z" fill="url(#moon)"/>
+  <path d="M182 97c-37 24-65 60-80 102-35 93 10 194 100 237 34 16 70 22 105 18-35 22-79 31-123 23C90 463 24 371 44 271 61 188 122 120 199 93c-6 2-11 3-17 4Z" fill="#EFF5FF" opacity="0.88"/>
+</g>
+<g fill="#FFFFFF" opacity="0.95">
+  <path d="M406 124l8 20 20 8-20 8-8 20-8-20-20-8 20-8 8-20Z"/>
+  <path d="M458 203l5 13 13 5-13 5-5 13-5-13-13-5 13-5 5-13Z" opacity="0.86"/>
+  <path d="M356 234l4 10 10 4-10 4-4 10-4-10-10-4 10-4 4-10Z" opacity="0.82"/>
+  <circle cx="337" cy="153" r="3"/>
+  <circle cx="382" cy="193" r="2.6"/>
+  <circle cx="435" cy="250" r="2.8"/>
+  <circle cx="314" cy="281" r="2.4"/>
+</g>
+<g opacity="0.68" stroke="#AFC6EF" stroke-width="2">
+  <line x1="358" y1="344" x2="406" y2="318"/>
+  <line x1="406" y1="318" x2="458" y2="344"/>
+  <line x1="458" y1="344" x2="446" y2="405"/>
+  <line x1="446" y1="405" x2="383" y2="427"/>
+  <line x1="383" y1="427" x2="344" y2="391"/>
+  <line x1="344" y1="391" x2="358" y2="344"/>
+  <circle cx="358" cy="344" r="5" fill="#fff" stroke="none"/>
+  <circle cx="406" cy="318" r="5" fill="#fff" stroke="none"/>
+  <circle cx="458" cy="344" r="5" fill="#fff" stroke="none"/>
+  <circle cx="446" cy="405" r="5" fill="#fff" stroke="none"/>
+  <circle cx="383" cy="427" r="5" fill="#fff" stroke="none"/>
+  <circle cx="344" cy="391" r="5" fill="#fff" stroke="none"/>
+</g>
+</svg>

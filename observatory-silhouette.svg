@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 210" preserveAspectRatio="none">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d8f4" stop-opacity=".72"/><stop offset="1" stop-color="#aebfdf" stop-opacity=".8"/></linearGradient>
+</defs>
+<path d="M0 166 Q130 145 245 158 T510 155 T780 164 T1080 154 T1340 166 T1600 158 V210 H0 Z" fill="url(#g)" opacity=".65"/>
+<path d="M0 179 Q140 160 280 171 T540 170 T835 178 T1120 170 T1400 177 T1600 172 V210 H0 Z" fill="#b9cae7" opacity=".78"/>
+<g fill="#99afd3" opacity=".95">
+  <rect x="684" y="104" width="122" height="58" rx="3"/>
+  <rect x="725" y="90" width="40" height="18" rx="2"/>
+  <path d="M703 104 a42 42 0 0 1 84 0z"/>
+  <path d="M752 50 l16 24 h-32z"/>
+  <rect x="750" y="74" width="4" height="18"/>
+  <rect x="650" y="118" width="28" height="44" rx="2"/>
+  <rect x="812" y="124" width="34" height="38" rx="2"/>
+</g>
+<g stroke="#c8d8f1" stroke-width="2.2" opacity=".78">
+  <path d="M752 74 l-22 -22"/>
+  <path d="M752 74 l30 -18"/>
+  <path d="M752 74 l0 -31"/>
+</g>
+<g fill="#f9f4cf" opacity=".58">
+  <circle cx="752" cy="72" r="3.5"/><circle cx="772" cy="59" r="2.7"/><circle cx="730" cy="52" r="2.4"/>
+</g>
+</svg>

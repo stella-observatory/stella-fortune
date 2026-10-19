@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="960" viewBox="0 0 720 960" fill="none">
+<defs>
+  <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(515 205) rotate(90) scale(240 240)">
+    <stop stop-color="#FFFFFF" stop-opacity="0.72"/>
+    <stop offset="1" stop-color="#D9E7FF" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<circle cx="500" cy="220" r="210" fill="url(#glow2)"/>
+<g fill="#FFFFFF" opacity="0.95">
+  <path d="M470 110l11 27 27 11-27 11-11 27-11-27-27-11 27-11 11-27Z"/>
+  <path d="M570 156l7 18 18 7-18 7-7 18-7-18-18-7 18-7 7-18Z" opacity="0.9"/>
+  <path d="M414 188l6 14 14 6-14 6-6 14-6-14-14-6 14-6 6-14Z" opacity="0.82"/>
+  <path d="M526 262l5 13 13 5-13 5-5 13-5-13-13-5 13-5 5-13Z" opacity="0.8"/>
+  <circle cx="596" cy="250" r="3.2"/>
+  <circle cx="440" cy="274" r="3"/>
+  <circle cx="494" cy="320" r="2.8"/>
+  <circle cx="560" cy="300" r="2.6"/>
+</g>
+<g opacity="0.7" stroke="#B5CBF1" stroke-width="2">
+  <line x1="392" y1="360" x2="438" y2="334"/>
+  <line x1="438" y1="334" x2="489" y2="352"/>
+  <line x1="489" y1="352" x2="532" y2="324"/>
+  <line x1="532" y1="324" x2="582" y2="354"/>
+  <line x1="582" y1="354" x2="562" y2="411"/>
+  <line x1="562" y1="411" x2="505" y2="425"/>
+  <line x1="505" y1="425" x2="450" y2="407"/>
+  <line x1="450" y1="407" x2="392" y2="360"/>
+  <circle cx="392" cy="360" r="5" fill="#fff" stroke="none"/>
+  <circle cx="438" cy="334" r="5" fill="#fff" stroke="none"/>
+  <circle cx="489" cy="352" r="5" fill="#fff" stroke="none"/>
+  <circle cx="532" cy="324" r="5" fill="#fff" stroke="none"/>
+  <circle cx="582" cy="354" r="5" fill="#fff" stroke="none"/>
+  <circle cx="562" cy="411" r="5" fill="#fff" stroke="none"/>
+  <circle cx="505" cy="425" r="5" fill="#fff" stroke="none"/>
+  <circle cx="450" cy="407" r="5" fill="#fff" stroke="none"/>
+</g>
+<g opacity="0.3" filter="url(#shadow)"></g>
+</svg>
