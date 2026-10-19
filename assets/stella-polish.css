@@ -253,3 +253,63 @@
   .hero-home .hero-content{padding-left:12px;padding-right:12px;}
   .hero-home .site-logo{width:min(100%,238px)!important;}
 }
+
+
+/* 2026-10: 参考画像の月夜と星空を静かに再現。
+   背景の文字・UIを含めない専用壁紙。既存のカードと占いプログラムはそのまま。 */
+@media (min-width: 981px) {
+  body {
+    background:
+      radial-gradient(ellipse at 50% 14%,rgba(255,255,255,.94),transparent 60%),
+      linear-gradient(180deg,#e5f0ff 0%,#f4f9ff 51%,#e7f1ff 100%);
+  }
+  body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:.94;
+    background-image:url("stella-reference-moonstar.webp");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    background-position:center center;
+  }
+  body::after {
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:1;
+    background:
+      linear-gradient(90deg,transparent 0%,rgba(251,253,255,.18) 25%,rgba(251,253,255,.30) 50%,rgba(251,253,255,.18) 75%,transparent 100%);
+    mix-blend-mode:normal;
+  }
+  /* PCの余白だけを豊かに。主役となるコンテンツは明るさを守る。 */
+  .entry-select,.panel,.card,.page-head {
+    box-shadow:0 15px 38px rgba(73,107,165,.14);
+  }
+}
+/* 入口は背景の装飾に埋もれない、ごく細い銀青の輪郭。 */
+.entry-stage .nav .tab {
+  border-color:#afc8ed;
+  background:linear-gradient(156deg,rgba(255,255,255,.99),rgba(238,245,255,.96));
+  box-shadow:0 7px 22px rgba(84,125,195,.12),inset 0 1px 0 rgba(255,255,255,.98);
+}
+.entry-stage .nav .tab[aria-selected="true"] {
+  border-color:#8eaddd;
+  box-shadow:0 0 0 2px rgba(167,193,234,.20),0 12px 28px rgba(70,112,183,.15);
+}
+/* スマホでは大きな風景画像を読み込まず、月白の軽い背景だけにする。 */
+@media (max-width: 980px) {
+  body::before {
+    background-image:radial-gradient(rgba(255,255,255,.92) 1px,transparent 1.7px),
+                     radial-gradient(rgba(163,194,237,.21) 1px,transparent 1.8px);
+    background-size:68px 78px,146px 152px;
+    background-position:0 0,22px 31px;
+    opacity:.45;
+  }
+  body::after{display:none;}
+}
+@media (prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
