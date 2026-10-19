@@ -3,7 +3,7 @@
    ・PC背景を月と星の装飾に変更
    ・タイトルの画面比率を保ち、少女の顔が見えるよう調整 */
 
-/* 月と星の背景：パソコンのみ。主張しすぎない明るい装飾にする */
+/* 月と星の背景：パソコンのみ。左右に大きく、中央は静かに保つ */
 @media(min-width:981px){
   body::before{
     content:"";
@@ -11,16 +11,16 @@
     inset:0;
     z-index:0;
     pointer-events:none;
-    opacity:.72;
+    opacity:.82;
     background-image:
-      url("moon-left.svg"),
-      url("moon-right.svg"),
-      radial-gradient(circle,rgba(255,255,255,.98) 1px,transparent 1.7px),
-      radial-gradient(circle,rgba(159,186,232,.38) 1px,transparent 1.8px),
-      radial-gradient(circle at 16% 12%,rgba(255,255,255,.56),transparent 18%),
-      radial-gradient(circle at 84% 16%,rgba(226,236,255,.58),transparent 22%);
-    background-position:left -6px top 88px,right -8px top 126px,0 0,23px 17px,0 0,0 0;
-    background-size:248px auto,238px auto,72px 72px,156px 156px,100% 100%,100% 100%;
+      url("pc-moon-left.svg"),
+      url("pc-star-right.svg"),
+      radial-gradient(circle,rgba(255,255,255,.94) 1px,transparent 1.8px),
+      radial-gradient(circle,rgba(173,197,236,.34) 1px,transparent 1.85px),
+      radial-gradient(circle at 18% 14%,rgba(255,255,255,.55),transparent 16%),
+      radial-gradient(circle at 84% 20%,rgba(228,237,255,.52),transparent 18%);
+    background-position:left -22px top 72px,right -18px top 96px,0 0,22px 18px,0 0,0 0;
+    background-size:330px auto,330px auto,84px 84px,164px 164px,100% 100%,100% 100%;
     background-repeat:no-repeat,no-repeat,repeat,repeat,no-repeat,no-repeat;
   }
   body::after{
@@ -29,14 +29,11 @@
     inset:0;
     z-index:0;
     pointer-events:none;
-    opacity:.34;
+    opacity:.18;
     background:
-      radial-gradient(circle at 22% 82%, rgba(255,255,255,.22), transparent 16%),
-      radial-gradient(circle at 76% 78%, rgba(220,232,255,.26), transparent 18%),
-      radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1.7px);
-    background-size:auto,auto,132px 132px;
-    background-position:0 0,0 0,14px 34px;
-    mix-blend-mode:screen;
+      radial-gradient(circle at 14% 78%, rgba(255,255,255,.32), transparent 14%),
+      radial-gradient(circle at 86% 74%, rgba(219,231,255,.34), transparent 15%),
+      radial-gradient(circle at 50% 100%, rgba(205,220,246,.18), transparent 28%);
   }
 }
 .container,main{position:relative;z-index:1;}
