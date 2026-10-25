@@ -146,3 +146,18 @@ README.txt（更新記録）
 
 【GitHub Pagesへの公開】
 ZIPを解凍して中身の index.html / guide.html / tarot-gallery.html / omikuji-gallery.html / assets フォルダー等をリポジトリ stella-observatory/stella-fortune 直下へ反映してください。
+
+
+【2026-10-26 PC背景・URL共有画像の再修正】
+・PC背景から少女の重複表示をなくし、月・星・淡青色の背景画像に復元しました。
+・採用済みの新しい少女はタイトル上部とURL共有画像に残しています。
+・背景画像は assets/stella-background-moon-stars-20261026.webp を参照します。
+・URL共有画像は assets/stella-share-girl-20261026.jpg に変更しました。
+・index.html の og:image と twitter:image を新画像へ更新しました。
+・既存の ogp.jpg も同じ新しい少女の画像のまま保持しています。
+・「サイトのリンクをコピー」「Discord用の紹介文」「Xで紹介」のURLには ?v=20261026 を付けました。
+  URL末尾の識別子は古い共有プレビューを更新させるためのものです。通常のサイト表示や占い結果に影響しません。
+・CSSファイルの参照にも ?v=20261026 を付け、更新時のブラウザキャッシュに配慮しました。
+・占い結果342通り、4種類の占い、カード一覧、利用案内などは変更していません。
+・ZIP内のファイルを解凍し、index.html と assets をリポジトリ直下に上書きしてください。
+・古いDiscord投稿のカード画像が残ることがあります。新しい ?v=20261026 のURLを再投稿してください。
